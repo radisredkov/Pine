@@ -6,3 +6,15 @@ D:\Radi's Folder\PineProject\Pine\Pine.Models\obj\Debug\netcoreapp3.1\Pine.Model
 D:\Radi's Folder\PineProject\Pine\Pine.Models\bin\Debug\netcoreapp3.1\Pine.Models.runtimeconfig.json
 D:\Radi's Folder\PineProject\Pine\Pine.Models\bin\Debug\netcoreapp3.1\Pine.Models.runtimeconfig.dev.json
 D:\Radi's Folder\PineProject\Pine\Pine.Models\obj\Debug\netcoreapp3.1\Pine.Models.genruntimeconfig.cache
+D:\Radi's Folder\Pine\Pine\Pine.Models\obj\Debug\netcoreapp3.1\Pine.Models.csprojAssemblyReference.cache
+D:\Radi's Folder\Pine\Pine\Pine.Models\obj\Debug\netcoreapp3.1\Pine.Models.AssemblyInfoInputs.cache
+D:\Radi's Folder\Pine\Pine\Pine.Models\obj\Debug\netcoreapp3.1\Pine.Models.AssemblyInfo.cs
+D:\Radi's Folder\Pine\Pine\Pine.Models\obj\Debug\netcoreapp3.1\Pine.Models.csproj.CoreCompileInputs.cache
+D:\Radi's Folder\Pine\Pine\Pine.Models\bin\Debug\netcoreapp3.1\Pine.Models.deps.json
+D:\Radi's Folder\Pine\Pine\Pine.Models\bin\Debug\netcoreapp3.1\Pine.Models.runtimeconfig.json
+D:\Radi's Folder\Pine\Pine\Pine.Models\bin\Debug\netcoreapp3.1\Pine.Models.runtimeconfig.dev.json
+D:\Radi's Folder\Pine\Pine\Pine.Models\bin\Debug\netcoreapp3.1\Pine.Models.dll
+D:\Radi's Folder\Pine\Pine\Pine.Models\bin\Debug\netcoreapp3.1\Pine.Models.pdb
+D:\Radi's Folder\Pine\Pine\Pine.Models\obj\Debug\netcoreapp3.1\Pine.Models.dll
+D:\Radi's Folder\Pine\Pine\Pine.Models\obj\Debug\netcoreapp3.1\Pine.Models.pdb
+D:\Radi's Folder\Pine\Pine\Pine.Models\obj\Debug\netcoreapp3.1\Pine.Models.genruntimeconfig.cache

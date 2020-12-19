@@ -1,0 +1,28 @@
+﻿@model TeamDeliriumProject.Models.Account.LoginViewModel
+
+@{
+    ViewData["Title"] = "Login";
+}
+<body>
+        <div class="row">
+            <div class="col-md-12" style="color:aqua;">
+                <form asp-action="Login">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="userName" class="control-label"></label>
+                        <input asp-for="userName" class="form-control" />
+                        <span asp-validation-for="userName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Password" class="control-label"></label>
+                        <input asp-for="Password" class="form-control" />
+                        <span asp-validation-for="Password" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Login" class="btn btn-primary" />
+                        <input type="button" value="Register" class="btn btn-purple" onclick="location.href='@Url.Action("Register", "Account")'" />
+                    </div>
+                </form>
+            </div>
+        </div>
+</body>

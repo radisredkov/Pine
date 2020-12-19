@@ -3,7 +3,31 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30320.27
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pine.Data", "Pine.Data\Pine.Data.csproj", "{37865891-CEB0-44E5-B2ED-21A5DE6A89BF}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pine.Models", "Pine.Models\Pine.Models.csproj", "{E6CFCA96-B3BE-453E-93E2-E0311456CB32}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pine", "Pine\Pine.csproj", "{7F04DE32-911E-4848-8A7B-AF2C52F7418D}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{37865891-CEB0-44E5-B2ED-21A5DE6A89BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{37865891-CEB0-44E5-B2ED-21A5DE6A89BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{37865891-CEB0-44E5-B2ED-21A5DE6A89BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{37865891-CEB0-44E5-B2ED-21A5DE6A89BF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E6CFCA96-B3BE-453E-93E2-E0311456CB32}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E6CFCA96-B3BE-453E-93E2-E0311456CB32}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E6CFCA96-B3BE-453E-93E2-E0311456CB32}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E6CFCA96-B3BE-453E-93E2-E0311456CB32}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7F04DE32-911E-4848-8A7B-AF2C52F7418D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F04DE32-911E-4848-8A7B-AF2C52F7418D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F04DE32-911E-4848-8A7B-AF2C52F7418D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F04DE32-911E-4848-8A7B-AF2C52F7418D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
