@@ -1,0 +1,9 @@
+D:\Radi's Folder\PineProject\Pine\Data\obj\Debug\netcoreapp3.1\Pine.Data.csprojAssemblyReference.cache
+D:\Radi's Folder\PineProject\Pine\Data\obj\Debug\netcoreapp3.1\Pine.Data.AssemblyInfoInputs.cache
+D:\Radi's Folder\PineProject\Pine\Data\obj\Debug\netcoreapp3.1\Pine.Data.AssemblyInfo.cs
+D:\Radi's Folder\PineProject\Pine\Data\obj\Debug\netcoreapp3.1\Pine.Data.csproj.CoreCompileInputs.cache
+D:\Radi's Folder\PineProject\Pine\Data\bin\Debug\netcoreapp3.1\Pine.Data.deps.json
+D:\Radi's Folder\PineProject\Pine\Data\bin\Debug\netcoreapp3.1\Pine.Data.dll
+D:\Radi's Folder\PineProject\Pine\Data\bin\Debug\netcoreapp3.1\Pine.Data.pdb
+D:\Radi's Folder\PineProject\Pine\Data\obj\Debug\netcoreapp3.1\Pine.Data.dll
+D:\Radi's Folder\PineProject\Pine\Data\obj\Debug\netcoreapp3.1\Pine.Data.pdb
