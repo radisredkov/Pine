@@ -19,7 +19,7 @@ a {
 }
 .btn-green {
     color: #fff;
-    background-color: #00e33f;
+    background-color: #0ea100;
     border-color: #0ea100;
 }
 .btn-purple {
@@ -92,11 +92,12 @@ div.transbox {
     }
 
 img {
-    user-select: none;
-    -moz-user-select: none;
-    -webkit-user-drag: none;
-    -webkit-user-select: none;
-    -ms-user-select: none;
+    border: hidden;
+    user-select: none !important;
+    -moz-user-select: none !important;
+    -webkit-user-drag: none !important;
+    -webkit-user-select: none !important;
+    -ms-user-select: none !important;
 }
 
 .backgroundImage {
@@ -113,6 +114,22 @@ img {
     -webkit-user-drag: none;
     -webkit-user-select: none;
     -ms-user-select: none;
+}
+
+.RGBButton {
+    background-color: transparent;
+    border-color: transparent;
+    user-select: none !important;
+    -moz-user-select: none !important;
+    -webkit-user-drag: none !important;
+    -webkit-user-select: none !important;
+    -ms-user-select: none !important;
+    padding: 0;
+    margin: 0;
+    border: 0;
+}
+.RGBButton:focus {
+    outline: 0;
 }
 
 @-webkit-keyframes mover {

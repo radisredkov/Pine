@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 
@@ -12,6 +13,7 @@ namespace Pine.Models.Account
         public string Email { get; set; }
 
         [Required]
+        [DisplayName("User Name")]
         public string Username { get; set; }
 
         [Required]
