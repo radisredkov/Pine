@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
-using TeamDeliriumProject.Data.Identity;
+using Pine.Data.Identity;
 
-namespace TeamDeliriumProject.Data.Entities
+namespace Pine.Data.Entities
 {
     public class Post
     {

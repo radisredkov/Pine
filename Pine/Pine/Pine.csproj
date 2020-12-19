@@ -21,8 +21,4 @@
     <ProjectReference Include="..\Pine.Models\Pine.Models.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Models\" />
-  </ItemGroup>
-
 </Project>

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 
-namespace TeamDeliriumProject.Models.Account
+namespace Pine.Models.Account
 {
     public class RegisterViewModel
     {

@@ -1,13 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
+using Pine.Data.Identity;
 
-namespace TeamDeliriumProject.Data.Entities
+namespace Pine.Data.Entities
 {
     public class Community
     {
+        [Key]
         [Required]
         public int id { get; set; }
         [Required]
@@ -16,11 +19,12 @@ namespace TeamDeliriumProject.Data.Entities
         [Required]
         public string description { get; set; }
 
-        // [FK]
+        [ForeignKey("ownerId")]
         public string ownerId { get; set; }
 
-        public string communityMembers { get; set; }
+        [ForeignKey("communityMembers")]
+        public List<User> communityMembers { get; set; }
 
-        // public string posts { get; set; }
+        public List<Post> posts { get; set; }
     }
 }

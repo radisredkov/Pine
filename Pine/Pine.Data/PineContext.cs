@@ -5,8 +5,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using TeamDeliriumProject.Data.Entities;
-using TeamDeliriumProject.Data.Identity;
+using Pine.Data.Entities;
+using Pine.Data.Identity;
 
 namespace Pine.Data
 {

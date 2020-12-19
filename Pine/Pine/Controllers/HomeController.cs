@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Pine.Models;
 
-namespace TeamDeliriumProject.Controllers
+namespace Pine.Controllers
 {
     public class HomeController : Controller
     {

@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace TeamDeliriumProject.Models.Account
+namespace Pine.Models.Account
 {
     public class LoginViewModel
     {

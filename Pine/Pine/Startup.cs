@@ -11,8 +11,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Pine.Data;
-using TeamDeliriumProject.Data;
-using TeamDeliriumProject.Data.Identity;
+using Pine.Data;
+using Pine.Data.Identity;
 
 namespace Pine
 {

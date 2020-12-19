@@ -2,10 +2,10 @@
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using TeamDeliriumProject.Data.Identity;
-using TeamDeliriumProject.Models.Account;
+using Pine.Data.Identity;
+using Pine.Models.Account;
 
-namespace PcBuildingSite.Controllers
+namespace Pine.Controllers
 {
     public class AccountController : Controller
     {
