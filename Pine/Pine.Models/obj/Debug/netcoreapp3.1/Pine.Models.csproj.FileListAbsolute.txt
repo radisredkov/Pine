@@ -18,3 +18,15 @@ D:\Radi's Folder\Pine\Pine\Pine.Models\bin\Debug\netcoreapp3.1\Pine.Models.pdb
 D:\Radi's Folder\Pine\Pine\Pine.Models\obj\Debug\netcoreapp3.1\Pine.Models.dll
 D:\Radi's Folder\Pine\Pine\Pine.Models\obj\Debug\netcoreapp3.1\Pine.Models.pdb
 D:\Radi's Folder\Pine\Pine\Pine.Models\obj\Debug\netcoreapp3.1\Pine.Models.genruntimeconfig.cache
+D:\Project\Pine\Pine.Models\bin\Debug\netcoreapp3.1\Pine.Models.deps.json
+D:\Project\Pine\Pine.Models\bin\Debug\netcoreapp3.1\Pine.Models.runtimeconfig.json
+D:\Project\Pine\Pine.Models\bin\Debug\netcoreapp3.1\Pine.Models.runtimeconfig.dev.json
+D:\Project\Pine\Pine.Models\bin\Debug\netcoreapp3.1\Pine.Models.dll
+D:\Project\Pine\Pine.Models\bin\Debug\netcoreapp3.1\Pine.Models.pdb
+D:\Project\Pine\Pine.Models\obj\Debug\netcoreapp3.1\Pine.Models.csprojAssemblyReference.cache
+D:\Project\Pine\Pine.Models\obj\Debug\netcoreapp3.1\Pine.Models.AssemblyInfoInputs.cache
+D:\Project\Pine\Pine.Models\obj\Debug\netcoreapp3.1\Pine.Models.AssemblyInfo.cs
+D:\Project\Pine\Pine.Models\obj\Debug\netcoreapp3.1\Pine.Models.csproj.CoreCompileInputs.cache
+D:\Project\Pine\Pine.Models\obj\Debug\netcoreapp3.1\Pine.Models.dll
+D:\Project\Pine\Pine.Models\obj\Debug\netcoreapp3.1\Pine.Models.pdb
+D:\Project\Pine\Pine.Models\obj\Debug\netcoreapp3.1\Pine.Models.genruntimeconfig.cache
