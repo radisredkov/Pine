@@ -10,10 +10,10 @@ namespace Pine.Data.Entities
     class ShopListing : Post
     {
         [Key]
-        public int Id { get; set; }
+        public string Id { get; set; }
 
         [ForeignKey("ownerId")]
-        public int ownerId { get; set; }
+        public string ownerId { get; set; }
 
         //public string picture { get; set; }
 

@@ -25,10 +25,10 @@ namespace Pine.Migrations
                 name: "communities",
                 columns: table => new
                 {
-                    id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    id = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     description = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    keyWords = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ownerId = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
@@ -63,7 +63,7 @@ namespace Pine.Migrations
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     Discriminator = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    communityMembers = table.Column<int>(type: "int", nullable: true),
+                    UserID = table.Column<string>(type: "nvarchar(450)", nullable: true),
                     UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     Email = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
@@ -83,8 +83,8 @@ namespace Pine.Migrations
                 {
                     table.PrimaryKey("PK_AspNetUsers", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_AspNetUsers_communities_communityMembers",
-                        column: x => x.communityMembers,
+                        name: "FK_AspNetUsers_communities_UserID",
+                        column: x => x.UserID,
                         principalTable: "communities",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Restrict);
@@ -179,25 +179,31 @@ namespace Pine.Migrations
                 name: "posts",
                 columns: table => new
                 {
-                    id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    id = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     title = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     description = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    creatorId = table.Column<string>(type: "nvarchar(450)", nullable: true),
-                    Communityid = table.Column<int>(type: "int", nullable: true)
+                    keywords = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: true),
+                    PostId = table.Column<string>(type: "nvarchar(450)", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_posts", x => x.id);
                     table.ForeignKey(
-                        name: "FK_posts_AspNetUsers_creatorId",
-                        column: x => x.creatorId,
+                        name: "FK_posts_AspNetUsers_PostId",
+                        column: x => x.PostId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_posts_communities_Communityid",
-                        column: x => x.Communityid,
+                        name: "FK_posts_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_posts_communities_PostId",
+                        column: x => x.PostId,
                         principalTable: "communities",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Restrict);
@@ -207,10 +213,9 @@ namespace Pine.Migrations
                 name: "comments",
                 columns: table => new
                 {
-                    id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    id = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     content = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Postid = table.Column<int>(type: "int", nullable: true)
+                    Postid = table.Column<string>(type: "nvarchar(450)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -256,9 +261,9 @@ namespace Pine.Migrations
                 column: "NormalizedEmail");
 
             migrationBuilder.CreateIndex(
-                name: "IX_AspNetUsers_communityMembers",
+                name: "IX_AspNetUsers_UserID",
                 table: "AspNetUsers",
-                column: "communityMembers");
+                column: "UserID");
 
             migrationBuilder.CreateIndex(
                 name: "UserNameIndex",
@@ -273,14 +278,14 @@ namespace Pine.Migrations
                 column: "Postid");
 
             migrationBuilder.CreateIndex(
-                name: "IX_posts_Communityid",
+                name: "IX_posts_PostId",
                 table: "posts",
-                column: "Communityid");
+                column: "PostId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_posts_creatorId",
+                name: "IX_posts_UserId",
                 table: "posts",
-                column: "creatorId");
+                column: "UserId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

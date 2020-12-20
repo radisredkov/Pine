@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Pine.Data;
 
 namespace Pine.Migrations
 {
     [DbContext(typeof(PineContext))]
-    partial class PineContextModelSnapshot : ModelSnapshot
+    [Migration("20201220124848_initial")]
+    partial class initial
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -233,9 +235,6 @@ namespace Pine.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("timeOfCreation")
-                        .HasColumnType("datetime2");
-
                     b.HasKey("id");
 
                     b.HasIndex("Postid");
@@ -286,9 +285,6 @@ namespace Pine.Migrations
                     b.Property<string>("keywords")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("timeOfCreation")
-                        .HasColumnType("datetime2");
 
                     b.Property<string>("title")
                         .IsRequired()

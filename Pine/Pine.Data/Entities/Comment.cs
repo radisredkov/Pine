@@ -9,9 +9,12 @@ namespace Pine.Data.Entities
     public class Comment
     {
         [Key]
-        public int id { get; set; }
+        public string id { get; set; }
         [Required]
         public string content { get; set; }
+        [Required]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
+        public DateTime timeOfCreation { get; set; }
 
         // public int likes { get; set; }
         // public string file { get; set; }

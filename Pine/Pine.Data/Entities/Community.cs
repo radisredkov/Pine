@@ -12,19 +12,21 @@ namespace Pine.Data.Entities
     {
         [Key]
         [Required]
-        public int id { get; set; }
+        public string id { get; set; }
         [Required]
         public string name { get; set; }
 
         [Required]
         public string description { get; set; }
+        [Required]
+        public string keyWords { get; set; }
 
-        [ForeignKey("ownerId")]
+        [ForeignKey("UserID")]
         public string ownerId { get; set; }
 
-        [ForeignKey("communityMembers")]
+        [ForeignKey("UserID")]
         public List<User> communityMembers { get; set; }
-
+        [ForeignKey("PostId")]
         public List<Post> posts { get; set; }
     }
 }

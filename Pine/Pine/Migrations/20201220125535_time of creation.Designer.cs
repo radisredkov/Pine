@@ -10,8 +10,8 @@ using Pine.Data;
 namespace Pine.Migrations
 {
     [DbContext(typeof(PineContext))]
-    [Migration("20201219130408_initial")]
-    partial class initial
+    [Migration("20201220125535_time of creation")]
+    partial class timeofcreation
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -225,17 +225,18 @@ namespace Pine.Migrations
 
             modelBuilder.Entity("Pine.Data.Entities.Comment", b =>
                 {
-                    b.Property<int>("id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .UseIdentityColumn();
+                    b.Property<string>("id")
+                        .HasColumnType("nvarchar(450)");
 
-                    b.Property<int?>("Postid")
-                        .HasColumnType("int");
+                    b.Property<string>("Postid")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("content")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("timeOfCreation")
+                        .HasColumnType("datetime2");
 
                     b.HasKey("id");
 
@@ -246,12 +247,14 @@ namespace Pine.Migrations
 
             modelBuilder.Entity("Pine.Data.Entities.Community", b =>
                 {
-                    b.Property<int>("id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .UseIdentityColumn();
+                    b.Property<string>("id")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("keyWords")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -269,20 +272,25 @@ namespace Pine.Migrations
 
             modelBuilder.Entity("Pine.Data.Entities.Post", b =>
                 {
-                    b.Property<int>("id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .UseIdentityColumn();
+                    b.Property<string>("id")
+                        .HasColumnType("nvarchar(450)");
 
-                    b.Property<int?>("Communityid")
-                        .HasColumnType("int");
+                    b.Property<string>("PostId")
+                        .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("creatorId")
+                    b.Property<string>("UserId")
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("description")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("keywords")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("timeOfCreation")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("title")
                         .IsRequired()
@@ -290,9 +298,9 @@ namespace Pine.Migrations
 
                     b.HasKey("id");
 
-                    b.HasIndex("Communityid");
+                    b.HasIndex("PostId");
 
-                    b.HasIndex("creatorId");
+                    b.HasIndex("UserId");
 
                     b.ToTable("posts");
                 });
@@ -301,10 +309,10 @@ namespace Pine.Migrations
                 {
                     b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser");
 
-                    b.Property<int?>("communityMembers")
-                        .HasColumnType("int");
+                    b.Property<string>("UserID")
+                        .HasColumnType("nvarchar(450)");
 
-                    b.HasIndex("communityMembers");
+                    b.HasIndex("UserID");
 
                     b.HasDiscriminator().HasValue("User");
                 });
@@ -369,13 +377,17 @@ namespace Pine.Migrations
 
             modelBuilder.Entity("Pine.Data.Entities.Post", b =>
                 {
+                    b.HasOne("Pine.Data.Identity.User", null)
+                        .WithMany("posts")
+                        .HasForeignKey("PostId");
+
                     b.HasOne("Pine.Data.Entities.Community", null)
                         .WithMany("posts")
-                        .HasForeignKey("Communityid");
+                        .HasForeignKey("PostId");
 
                     b.HasOne("Pine.Data.Identity.User", "creator")
                         .WithMany()
-                        .HasForeignKey("creatorId");
+                        .HasForeignKey("UserId");
 
                     b.Navigation("creator");
                 });
@@ -384,7 +396,7 @@ namespace Pine.Migrations
                 {
                     b.HasOne("Pine.Data.Entities.Community", null)
                         .WithMany("communityMembers")
-                        .HasForeignKey("communityMembers");
+                        .HasForeignKey("UserID");
                 });
 
             modelBuilder.Entity("Pine.Data.Entities.Community", b =>
@@ -397,6 +409,11 @@ namespace Pine.Migrations
             modelBuilder.Entity("Pine.Data.Entities.Post", b =>
                 {
                     b.Navigation("comments");
+                });
+
+            modelBuilder.Entity("Pine.Data.Identity.User", b =>
+                {
+                    b.Navigation("posts");
                 });
 #pragma warning restore 612, 618
         }
