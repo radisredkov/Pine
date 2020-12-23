@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -15,6 +16,9 @@ namespace Pine.Data.Entities
         [Required]
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public DateTime timeOfCreation { get; set; }
+
+        [ForeignKey("postId")]
+        public Post post { get; set; }
 
         // public int likes { get; set; }
         // public string file { get; set; }

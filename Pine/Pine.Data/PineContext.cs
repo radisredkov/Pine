@@ -10,7 +10,7 @@ using Pine.Data.Identity;
 
 namespace Pine.Data
 {
-    public class PineContext : IdentityDbContext<IdentityUser>
+    public class PineContext : IdentityDbContext<User>
     {
         public PineContext(DbContextOptions<PineContext> options)
             : base(options)
@@ -24,6 +24,8 @@ namespace Pine.Data
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
+            builder.Entity<User>().HasMany(u => u.posts).WithOne(p => p.creator);
+            builder.Entity<Post>().HasMany(p => p.comments).WithOne(c => c.post);
             base.OnModelCreating(builder);
             // Customize the ASP.NET Identity model and override the defaults if needed.
             // For example, you can rename the ASP.NET Identity table names and more.

@@ -6380,19 +6380,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\mario\\.nuget\\packages\\": {}
+    "C:\\Users\\user\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\It-kariera\\PineP\\Pine\\Pine\\Pine.Models\\Pine.Models.csproj",
+      "projectUniqueName": "C:\\Users\\user\\Source\\Repos\\radisredkov\\Pine\\Pine\\Pine.Models\\Pine.Models.csproj",
       "projectName": "Pine.Models",
-      "projectPath": "D:\\It-kariera\\PineP\\Pine\\Pine\\Pine.Models\\Pine.Models.csproj",
-      "packagesPath": "C:\\Users\\mario\\.nuget\\packages\\",
-      "outputPath": "D:\\It-kariera\\PineP\\Pine\\Pine\\Pine.Models\\obj\\",
+      "projectPath": "C:\\Users\\user\\Source\\Repos\\radisredkov\\Pine\\Pine\\Pine.Models\\Pine.Models.csproj",
+      "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\user\\Source\\Repos\\radisredkov\\Pine\\Pine\\Pine.Models\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\mario\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -6404,7 +6404,6 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
-          "targetAlias": "netcoreapp3.1",
           "projectReferences": {}
         }
       },
@@ -6416,7 +6415,6 @@
     },
     "frameworks": {
       "netcoreapp3.1": {
-        "targetAlias": "netcoreapp3.1",
         "dependencies": {
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
             "target": "Package",
@@ -6460,7 +6458,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
       }
     }
   }

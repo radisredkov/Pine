@@ -14,11 +14,13 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.4" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Pine.Data\Pine.Data.csproj" />
     <ProjectReference Include="..\Pine.Models\Pine.Models.csproj" />
+    <ProjectReference Include="..\Pine.Services\Pine.Services.csproj" />
   </ItemGroup>
 
 </Project>

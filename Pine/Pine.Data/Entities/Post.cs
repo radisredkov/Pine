@@ -10,6 +10,12 @@ namespace Pine.Data.Entities
 {
     public class Post
     {
+
+        public Post()
+        {
+            this.id = Guid.NewGuid().ToString();
+        }
+
         [Key]
         [ForeignKey("PostId")]
         public string id { get; set; }
@@ -26,8 +32,10 @@ namespace Pine.Data.Entities
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public DateTime timeOfCreation { get; set; }
 
+        public string creatorId { get; set; }
+
         [ForeignKey("UserId")]
-        public User creator { get; set; }
+        public virtual User creator { get; set; }
 
         public List<Comment> comments { get; set; }
 

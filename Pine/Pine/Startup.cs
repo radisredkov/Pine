@@ -13,6 +13,7 @@ using Microsoft.Extensions.Hosting;
 using Pine.Data;
 using Pine.Data;
 using Pine.Data.Identity;
+using Pine.Services;
 
 namespace Pine
 {
@@ -44,6 +45,9 @@ namespace Pine
                 options.Password.RequireNonAlphanumeric = false;
                 options.Password.RequireUppercase = false;
             });
+
+            services.AddTransient<IPostServices, PostServices>();
+            services.AddTransient<IUserServices, UserServices>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

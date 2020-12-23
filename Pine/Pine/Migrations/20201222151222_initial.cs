@@ -62,7 +62,6 @@ namespace Pine.Migrations
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    Discriminator = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     UserID = table.Column<string>(type: "nvarchar(450)", nullable: true),
                     UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
@@ -183,18 +182,13 @@ namespace Pine.Migrations
                     title = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     description = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     keywords = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    timeOfCreation = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UserId = table.Column<string>(type: "nvarchar(450)", nullable: true),
                     PostId = table.Column<string>(type: "nvarchar(450)", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_posts", x => x.id);
-                    table.ForeignKey(
-                        name: "FK_posts_AspNetUsers_PostId",
-                        column: x => x.PostId,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_posts_AspNetUsers_UserId",
                         column: x => x.UserId,
@@ -215,14 +209,15 @@ namespace Pine.Migrations
                 {
                     id = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     content = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Postid = table.Column<string>(type: "nvarchar(450)", nullable: true)
+                    timeOfCreation = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    postId = table.Column<string>(type: "nvarchar(450)", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_comments", x => x.id);
                     table.ForeignKey(
-                        name: "FK_comments_posts_Postid",
-                        column: x => x.Postid,
+                        name: "FK_comments_posts_postId",
+                        column: x => x.postId,
                         principalTable: "posts",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Restrict);
@@ -273,9 +268,9 @@ namespace Pine.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
-                name: "IX_comments_Postid",
+                name: "IX_comments_postId",
                 table: "comments",
-                column: "Postid");
+                column: "postId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_posts_PostId",

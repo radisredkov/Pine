@@ -1,3 +1,20 @@
-﻿@{
+﻿@model Pine.Models.Entities.PostsViewModel
+@{
     ViewData["Title"] = "All Posts";
 }
+
+<div>
+    @if(Model.posts.Count == 0)
+    {
+        <div>No posts</div>
+    }
+    else
+    {
+        <div>
+            @foreach(var post in Model.posts)
+            {
+                <partial name="./PostCard.cshtml" model=@post />
+            }
+        </div>
+    }
+</div>
