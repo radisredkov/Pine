@@ -33,40 +33,41 @@
             @Html.DisplayFor(model => model.uploadDate)
         </dd>
     </dl-->
-    <div class="card border-secondary mb-3" style="max-width: 20rem; color: black;">
-        <div class="card-header">@Html.DisplayFor(model => model.userName)<div style="float: right;">@Html.DisplayFor(model => model.uploadDate)</div></div>
+    <div class="card border-secondary mb-3" style="margin-top: 2.5%; color: black;">
+        <div class="card-header">Post by @Html.DisplayFor(model => model.userName)<div style="float: right;">@Html.DisplayFor(model => model.uploadDate)</div></div>
         <div class="card-body">
             <h4 class="card-title">@Html.DisplayFor(model => model.title)</h4>
-            <p class="card-text">@Html.DisplayFor(model => model.description)</p>
+            <p class="card-text" style="white-space: pre-line;">@Html.DisplayFor(model => model.description)</p>
+            @if (User.Identity.Name == Model.userName)
+            {
+                <form method="post" asp-controller="Community" asp-action="DeletePost">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <input type="hidden" asp-for="title" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <input type="hidden" asp-for="description" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <input type="hidden" asp-for="keywords" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <input type="hidden" asp-for="id" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <input type="hidden" asp-for="userName" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <input type="hidden" asp-for="uploadDate" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Delete" class="btn btn-danger" />
+                    </div>
+                </form>
+            }
         </div>
     </div>
 </div>
 <div>
-    @if (User.Identity.Name == Model.userName)
-    {
-        <form method="post" asp-controller="Community" asp-action="DeletePost">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <input type="hidden" asp-for="title" class="form-control" />
-            </div>
-            <div class="form-group">
-                <input type="hidden" asp-for="description" class="form-control" />
-            </div>
-            <div class="form-group">
-                <input type="hidden" asp-for="keywords" class="form-control" />
-            </div>
-            <div class="form-group">
-                <input type="hidden" asp-for="id" class="form-control" />
-            </div>
-            <div class="form-group">
-                <input type="hidden" asp-for="userName" class="form-control" />
-            </div>
-            <div class="form-group">
-                <input type="hidden" asp-for="uploadDate" class="form-control" />
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Delete" class="btn btn-danger" />
-            </div>
-        </form>
-    }
+    
 </div>

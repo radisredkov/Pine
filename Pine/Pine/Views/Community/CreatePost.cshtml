@@ -1,11 +1,10 @@
 ﻿@model Pine.Models.Entities.PostViewModel
 
 @{
-    ViewData["Title"] = "View";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Create a post";
 }
 
-<h1>Create Post</h1>
+<h1 style="color: #00ff21;">Make a post</h1>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -13,12 +12,12 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="title" class="control-label">Title</label>
-                <input asp-for="title" class="form-control" />
+                <input asp-for="title" class="titleInput" />
                 <span asp-validation-for="title" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="description" class="control-label">Description</label>
-                <input asp-for="description" class="form-control" />
+                <textarea asp-for="description" class="post-comm-description"> </textarea>
                 <span asp-validation-for="description" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -31,10 +30,6 @@
             </div>
         </form>
     </div>
-</div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
 </div>
 
 @section Scripts {

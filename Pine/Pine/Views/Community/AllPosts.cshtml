@@ -2,11 +2,12 @@
 @{
     ViewData["Title"] = "All Posts";
 }
-
+    <a class="CreateButton" asp-area="" asp-controller="Community" asp-action="CreatePost">+ Create Post</a>
+<br />
 <div>
     @if(Model.posts.Count == 0)
     {
-        <div>No posts</div>
+        <div>There are currently no posts. Make one and start a discussion!</div>
     }
     else
     {

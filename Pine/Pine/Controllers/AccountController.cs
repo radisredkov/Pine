@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Pine.Data.Identity;
@@ -7,6 +8,7 @@ using Pine.Models.Account;
 
 namespace Pine.Controllers
 {
+    [AllowAnonymous]
     public class AccountController : Controller
     {
         private readonly UserManager<User> userManager;
@@ -80,6 +82,12 @@ namespace Pine.Controllers
         public IActionResult UserPanel()
         {
             return View();
+        }
+
+        public ActionResult Logout()
+        {
+            signInManager.SignOutAsync();
+            return RedirectToAction("AllPosts", "Community");
         }
     }
 }

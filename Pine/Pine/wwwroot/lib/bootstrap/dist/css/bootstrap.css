@@ -224,6 +224,7 @@ th {
 label {
   display: inline-block;
   margin-bottom: 0.5rem;
+  color: aqua !important;
 }
 
 button {
@@ -4567,8 +4568,8 @@ input[type="button"].btn-block {
   word-wrap: break-word;
   background-color: #fff;
   background-clip: border-box;
-  border: 1px solid rgba(0, 0, 0, 0.125);
-  border-radius: 0.25rem;
+  border-radius: 25px !important;
+  opacity: 0.9;
 }
 
 .card > hr {
@@ -4587,13 +4588,16 @@ input[type="button"].btn-block {
 }
 
 .card-body {
-  -ms-flex: 1 1 auto;
-  flex: 1 1 auto;
-  padding: 1.25rem;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    padding: 1.25rem;
+    background-color: #61eb69;
 }
 
 .card-title {
-  margin-bottom: 0.75rem;
+    margin-bottom: 0.75rem;
+    font-size: 50px;
+    color: #005f16;
 }
 
 .card-subtitle {
@@ -4603,6 +4607,9 @@ input[type="button"].btn-block {
 
 .card-text:last-child {
   margin-bottom: 0;
+}
+.card-text{
+    font-size: 20px;
 }
 
 .card-link:hover {
@@ -4616,8 +4623,10 @@ input[type="button"].btn-block {
 .card-header {
   padding: 0.75rem 1.25rem;
   margin-bottom: 0;
-  background-color: rgba(0, 0, 0, 0.03);
+  background-color: #009133;
   border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+  width:100% !important;
+  color: white;
 }
 
 .card-header:first-child {

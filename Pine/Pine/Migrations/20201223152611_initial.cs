@@ -183,6 +183,7 @@ namespace Pine.Migrations
                     description = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     keywords = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     timeOfCreation = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    creatorId = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     UserId = table.Column<string>(type: "nvarchar(450)", nullable: true),
                     PostId = table.Column<string>(type: "nvarchar(450)", nullable: true)
                 },

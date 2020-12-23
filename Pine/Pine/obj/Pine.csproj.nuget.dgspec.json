@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\user\\source\\repos\\radisredkov\\Pine\\Pine\\Pine\\Pine.csproj": {}
+    "D:\\Radi's Folder\\Pine\\Pine\\Pine\\Pine.csproj": {}
   },
   "projects": {
-    "C:\\Users\\user\\source\\repos\\radisredkov\\Pine\\Pine\\Pine.Data\\Pine.Data.csproj": {
+    "D:\\Radi's Folder\\Pine\\Pine\\Pine.Data\\Pine.Data.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\user\\source\\repos\\radisredkov\\Pine\\Pine\\Pine.Data\\Pine.Data.csproj",
+        "projectUniqueName": "D:\\Radi's Folder\\Pine\\Pine\\Pine.Data\\Pine.Data.csproj",
         "projectName": "Pine.Data",
-        "projectPath": "C:\\Users\\user\\source\\repos\\radisredkov\\Pine\\Pine\\Pine.Data\\Pine.Data.csproj",
-        "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\user\\source\\repos\\radisredkov\\Pine\\Pine\\Pine.Data\\obj\\",
+        "projectPath": "D:\\Radi's Folder\\Pine\\Pine\\Pine.Data\\Pine.Data.csproj",
+        "packagesPath": "C:\\Users\\RADI\\.nuget\\packages\\",
+        "outputPath": "D:\\Radi's Folder\\Pine\\Pine\\Pine.Data\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\RADI\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -78,21 +78,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.302\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\user\\source\\repos\\radisredkov\\Pine\\Pine\\Pine.Models\\Pine.Models.csproj": {
+    "D:\\Radi's Folder\\Pine\\Pine\\Pine.Models\\Pine.Models.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\user\\source\\repos\\radisredkov\\Pine\\Pine\\Pine.Models\\Pine.Models.csproj",
+        "projectUniqueName": "D:\\Radi's Folder\\Pine\\Pine\\Pine.Models\\Pine.Models.csproj",
         "projectName": "Pine.Models",
-        "projectPath": "C:\\Users\\user\\source\\repos\\radisredkov\\Pine\\Pine\\Pine.Models\\Pine.Models.csproj",
-        "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\user\\source\\repos\\radisredkov\\Pine\\Pine\\Pine.Models\\obj\\",
+        "projectPath": "D:\\Radi's Folder\\Pine\\Pine\\Pine.Models\\Pine.Models.csproj",
+        "packagesPath": "C:\\Users\\RADI\\.nuget\\packages\\",
+        "outputPath": "D:\\Radi's Folder\\Pine\\Pine\\Pine.Models\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\RADI\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -158,21 +158,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.302\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\user\\source\\repos\\radisredkov\\Pine\\Pine\\Pine.Services\\Pine.Services.csproj": {
+    "D:\\Radi's Folder\\Pine\\Pine\\Pine.Services\\Pine.Services.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\user\\source\\repos\\radisredkov\\Pine\\Pine\\Pine.Services\\Pine.Services.csproj",
+        "projectUniqueName": "D:\\Radi's Folder\\Pine\\Pine\\Pine.Services\\Pine.Services.csproj",
         "projectName": "Pine.Services",
-        "projectPath": "C:\\Users\\user\\source\\repos\\radisredkov\\Pine\\Pine\\Pine.Services\\Pine.Services.csproj",
-        "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\user\\source\\repos\\radisredkov\\Pine\\Pine\\Pine.Services\\obj\\",
+        "projectPath": "D:\\Radi's Folder\\Pine\\Pine\\Pine.Services\\Pine.Services.csproj",
+        "packagesPath": "C:\\Users\\RADI\\.nuget\\packages\\",
+        "outputPath": "D:\\Radi's Folder\\Pine\\Pine\\Pine.Services\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\RADI\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -185,11 +185,11 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "C:\\Users\\user\\source\\repos\\radisredkov\\Pine\\Pine\\Pine.Data\\Pine.Data.csproj": {
-                "projectPath": "C:\\Users\\user\\source\\repos\\radisredkov\\Pine\\Pine\\Pine.Data\\Pine.Data.csproj"
+              "D:\\Radi's Folder\\Pine\\Pine\\Pine.Data\\Pine.Data.csproj": {
+                "projectPath": "D:\\Radi's Folder\\Pine\\Pine\\Pine.Data\\Pine.Data.csproj"
               },
-              "C:\\Users\\user\\source\\repos\\radisredkov\\Pine\\Pine\\Pine.Models\\Pine.Models.csproj": {
-                "projectPath": "C:\\Users\\user\\source\\repos\\radisredkov\\Pine\\Pine\\Pine.Models\\Pine.Models.csproj"
+              "D:\\Radi's Folder\\Pine\\Pine\\Pine.Models\\Pine.Models.csproj": {
+                "projectPath": "D:\\Radi's Folder\\Pine\\Pine\\Pine.Models\\Pine.Models.csproj"
               }
             }
           }
@@ -217,21 +217,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.302\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\user\\source\\repos\\radisredkov\\Pine\\Pine\\Pine\\Pine.csproj": {
+    "D:\\Radi's Folder\\Pine\\Pine\\Pine\\Pine.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\user\\source\\repos\\radisredkov\\Pine\\Pine\\Pine\\Pine.csproj",
+        "projectUniqueName": "D:\\Radi's Folder\\Pine\\Pine\\Pine\\Pine.csproj",
         "projectName": "Pine",
-        "projectPath": "C:\\Users\\user\\source\\repos\\radisredkov\\Pine\\Pine\\Pine\\Pine.csproj",
-        "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\user\\source\\repos\\radisredkov\\Pine\\Pine\\Pine\\obj\\",
+        "projectPath": "D:\\Radi's Folder\\Pine\\Pine\\Pine\\Pine.csproj",
+        "packagesPath": "C:\\Users\\RADI\\.nuget\\packages\\",
+        "outputPath": "D:\\Radi's Folder\\Pine\\Pine\\Pine\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\RADI\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -244,14 +244,14 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "C:\\Users\\user\\source\\repos\\radisredkov\\Pine\\Pine\\Pine.Data\\Pine.Data.csproj": {
-                "projectPath": "C:\\Users\\user\\source\\repos\\radisredkov\\Pine\\Pine\\Pine.Data\\Pine.Data.csproj"
+              "D:\\Radi's Folder\\Pine\\Pine\\Pine.Data\\Pine.Data.csproj": {
+                "projectPath": "D:\\Radi's Folder\\Pine\\Pine\\Pine.Data\\Pine.Data.csproj"
               },
-              "C:\\Users\\user\\source\\repos\\radisredkov\\Pine\\Pine\\Pine.Models\\Pine.Models.csproj": {
-                "projectPath": "C:\\Users\\user\\source\\repos\\radisredkov\\Pine\\Pine\\Pine.Models\\Pine.Models.csproj"
+              "D:\\Radi's Folder\\Pine\\Pine\\Pine.Models\\Pine.Models.csproj": {
+                "projectPath": "D:\\Radi's Folder\\Pine\\Pine\\Pine.Models\\Pine.Models.csproj"
               },
-              "C:\\Users\\user\\source\\repos\\radisredkov\\Pine\\Pine\\Pine.Services\\Pine.Services.csproj": {
-                "projectPath": "C:\\Users\\user\\source\\repos\\radisredkov\\Pine\\Pine\\Pine.Services\\Pine.Services.csproj"
+              "D:\\Radi's Folder\\Pine\\Pine\\Pine.Services\\Pine.Services.csproj": {
+                "projectPath": "D:\\Radi's Folder\\Pine\\Pine\\Pine.Services\\Pine.Services.csproj"
               }
             }
           }
@@ -314,7 +314,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.302\\RuntimeIdentifierGraph.json"
         }
       }
     }
