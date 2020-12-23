@@ -36,6 +36,14 @@ namespace Pine.Services
             db.SaveChanges();
         }
 
+        public void deletePost(string postId)
+        {
+            Post todeletePost = db.posts.FirstOrDefault(p => p.id == postId);
+
+            db.posts.Remove(todeletePost);
+            db.SaveChanges();
+        }
+
         public ICollection<Post> getAllPosts()
         {
             return db.posts.ToList();

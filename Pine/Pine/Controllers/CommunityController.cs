@@ -33,6 +33,7 @@ namespace Pine.Controllers
                     id = p.id,
                     title = p.title,
                     description = p.description,
+                    keywords = p.keywords,
                     userName = userServices.getUserNameById(p.creatorId),
                     uploadDate = p.timeOfCreation
                 }).ToList()
@@ -72,6 +73,35 @@ namespace Pine.Controllers
             var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
 
             this.postServices.createPost(post, userId);
+
+            return this.Redirect("/");
+
+        }
+
+        [HttpPost]
+        public IActionResult DeletePost(OuputPostViewModel post)
+        {
+            if (!this.User.Identity.IsAuthenticated)
+            {
+                return this.Redirect("/");
+            }
+
+            if (!this.ModelState.IsValid)
+            {
+                return this.Redirect("/");
+            }
+
+            var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var userName = this.userServices.getUserNameById(userId);
+
+            Console.WriteLine(userName, post.userName, User.Identity.Name);
+
+            if(userName != post.userName)
+            {
+                return this.Redirect("/");
+            }
+
+            this.postServices.deletePost(post.id);
 
             return this.Redirect("/");
 

@@ -10,6 +10,8 @@ namespace Pine.Models.Entities
 
         public string title { get; set; }
 
+        public string keywords { get; set; }
+
         public string description { get; set; }
 
         public string userName { get; set; }

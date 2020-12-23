@@ -10,6 +10,8 @@ namespace Pine.Services
     {
         void createPost(PostViewModel model, string userId);
 
+        void deletePost(string postId);
+
         ICollection<Post> getAllPosts(); 
     }
 }
