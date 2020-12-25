@@ -36,6 +36,21 @@ namespace Pine.Services
             db.SaveChanges();
         }
 
+        public void editPost(OuputPostViewModel model)
+        {
+            var oldPost = db.posts.FirstOrDefault(p => p.id == model.id);
+
+            oldPost.title = model.title;
+            oldPost.keywords = model.keywords;
+            oldPost.description = model.description;
+            oldPost.timeOfCreation = DateTime.Now;
+
+            db.posts.Update(oldPost);
+            db.SaveChanges();
+            
+        }
+
+
         public void deletePost(string postId)
         {
             Post todeletePost = db.posts.FirstOrDefault(p => p.id == postId);

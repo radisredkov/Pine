@@ -45,6 +45,35 @@ namespace Pine.Controllers
             return View("AllPosts", model);
         }
 
+        [HttpGet("/posts/edit")]
+        public IActionResult EditPostView(OuputPostViewModel model)
+        {
+            if (!this.User.Identity.IsAuthenticated)
+            {
+                return this.Redirect("/");
+            }
+
+            return View("EditPost", model);
+        }
+
+        [HttpPost("posts/edit")]
+        public IActionResult EditPost(OuputPostViewModel model)
+        {
+            if (!this.User.Identity.IsAuthenticated)
+            {
+                return this.Redirect("/");
+            }
+
+            if (!this.ModelState.IsValid)
+            {
+                return this.View();
+            }
+
+            this.postServices.editPost(model);
+
+            return this.Redirect("/");
+        }
+
         [HttpGet("/posts/create")]
         public IActionResult CreatePost()
         {

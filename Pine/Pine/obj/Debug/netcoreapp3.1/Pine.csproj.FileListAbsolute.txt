@@ -432,3 +432,4 @@ D:\Radi's Folder\Pine\Pine\Pine\bin\Debug\netcoreapp3.1\Pine.Services.dll
 D:\Radi's Folder\Pine\Pine\Pine\bin\Debug\netcoreapp3.1\Pine.Services.pdb
 D:\Radi's Folder\Pine\Pine\Pine\obj\Debug\netcoreapp3.1\Razor\Views\Community\CreatePost.cshtml.g.cs
 D:\Radi's Folder\Pine\Pine\Pine\obj\Debug\netcoreapp3.1\Razor\Views\Community\PostCard.cshtml.g.cs
+C:\Users\user\Source\Repos\radisredkov\Pine\Pine\Pine\obj\Debug\netcoreapp3.1\Razor\Views\Community\EditPost.cshtml.g.cs

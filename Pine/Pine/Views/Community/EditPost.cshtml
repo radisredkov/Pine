@@ -1,0 +1,38 @@
+﻿@model Pine.Models.Entities.OuputPostViewModel
+
+@{
+    ViewData["Title"] = "Edit a post";
+}
+
+<h1 style="color: #00ff21;">Make a post</h1>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-controller="Community" asp-action="EditPost" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <input asp-for="id" type="hidden" />
+                <label asp-for="title" class="control-label">Title</label>
+                <input asp-for="title" class="titleInput" />
+                <span asp-validation-for="title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="description" class="control-label">Description</label>
+                <textarea asp-for="description" class="post-comm-description"> </textarea>
+                <span asp-validation-for="description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="keywords" class="control-label">Keywords</label>
+                <input asp-for="keywords" class="form-control" />
+                <span asp-validation-for="keywords" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Edit" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
