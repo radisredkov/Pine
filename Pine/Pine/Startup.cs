@@ -48,6 +48,7 @@ namespace Pine
 
             services.AddTransient<IPostServices, PostServices>();
             services.AddTransient<IUserServices, UserServices>();
+            services.AddTransient<IShopListingService, ShopListingService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -21,10 +21,12 @@ namespace Pine.Data
         public DbSet<Post> posts { get; set; }
         public DbSet<Community> communities { get; set; }
         public DbSet<Comment> comments { get; set; }
+        public DbSet<ShopListing> listings { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder.Entity<User>().HasMany(u => u.posts).WithOne(p => p.creator);
+            builder.Entity<User>().HasMany(u => u.listings).WithOne(l => l.creator);
             builder.Entity<Post>().HasMany(p => p.comments).WithOne(c => c.post);
             base.OnModelCreating(builder);
             // Customize the ASP.NET Identity model and override the defaults if needed.

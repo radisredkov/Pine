@@ -1,7 +1,21 @@
-﻿@{
+﻿@model Pine.Models.Entities.ShopListingsViewModel
+@{
     ViewData["Title"] = "Shop";
 }
-
-1 banica- 1 lev (Sold by user Pesho)
+<a class="CreateButton" asp-area="" asp-controller="Shop" asp-action="CreateListing">+ Create a listing</a>
 <br />
-2 kiflichki- 5 leva (Sold by user Gosho)
+<div>
+    @if (Model.listings.Count == 0)
+    {
+        <div>Nothing is up for sale at the moment. Want to trade? Click the green button in the top-right corner.</div>
+    }
+    else
+    {
+        <div class="transbox">
+            @foreach (var listing in Model.listings)
+            {
+                <partial name="./ListingCard.cshtml" model=@listing />
+            }
+        </div>
+    }
+</div>

@@ -10,7 +10,6 @@ namespace Pine.Data.Entities
 {
     public class Post
     {
-
         public Post()
         {
             this.id = Guid.NewGuid().ToString();
@@ -25,8 +24,7 @@ namespace Pine.Data.Entities
         [Required]
         public string description { get; set; }
 
-        [Required]
-        public string keywords { get; set; }
+        public string tags { get; set; }
 
         [Required]
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]

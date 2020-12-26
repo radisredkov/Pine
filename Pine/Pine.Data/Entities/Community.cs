@@ -18,8 +18,8 @@ namespace Pine.Data.Entities
 
         [Required]
         public string description { get; set; }
-        [Required]
-        public string keyWords { get; set; }
+
+        public string tags { get; set; }
 
         [ForeignKey("UserID")]
         public string ownerId { get; set; }

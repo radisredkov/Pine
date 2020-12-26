@@ -28,7 +28,7 @@ namespace Pine.Migrations
                     id = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     description = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    keyWords = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    tags = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     ownerId = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
@@ -175,13 +175,37 @@ namespace Pine.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "listings",
+                columns: table => new
+                {
+                    id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    description = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    price = table.Column<double>(type: "float", nullable: false),
+                    timeOfCreation = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    creatorId = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: true),
+                    ListingId = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_listings", x => x.id);
+                    table.ForeignKey(
+                        name: "FK_listings_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "posts",
                 columns: table => new
                 {
                     id = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     title = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     description = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    keywords = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    tags = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     timeOfCreation = table.Column<DateTime>(type: "datetime2", nullable: false),
                     creatorId = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     UserId = table.Column<string>(type: "nvarchar(450)", nullable: true),
@@ -274,6 +298,11 @@ namespace Pine.Migrations
                 column: "postId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_listings_UserId",
+                table: "listings",
+                column: "UserId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_posts_PostId",
                 table: "posts",
                 column: "PostId");
@@ -303,6 +332,9 @@ namespace Pine.Migrations
 
             migrationBuilder.DropTable(
                 name: "comments");
+
+            migrationBuilder.DropTable(
+                name: "listings");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");

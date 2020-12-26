@@ -10,7 +10,7 @@ using Pine.Data;
 namespace Pine.Migrations
 {
     [DbContext(typeof(PineContext))]
-    [Migration("20201225141715_initial")]
+    [Migration("20201226093006_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -183,15 +183,14 @@ namespace Pine.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("keyWords")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ownerId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("tags")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("id");
@@ -217,8 +216,7 @@ namespace Pine.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("keywords")
-                        .IsRequired()
+                    b.Property<string>("tags")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("timeOfCreation")
@@ -235,6 +233,41 @@ namespace Pine.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("posts");
+                });
+
+            modelBuilder.Entity("Pine.Data.Entities.ShopListing", b =>
+                {
+                    b.Property<string>("id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("ListingId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("creatorId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<double>("price")
+                        .HasColumnType("float");
+
+                    b.Property<DateTime>("timeOfCreation")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("listings");
                 });
 
             modelBuilder.Entity("Pine.Data.Identity.User", b =>
@@ -380,6 +413,15 @@ namespace Pine.Migrations
                     b.Navigation("creator");
                 });
 
+            modelBuilder.Entity("Pine.Data.Entities.ShopListing", b =>
+                {
+                    b.HasOne("Pine.Data.Identity.User", "creator")
+                        .WithMany("listings")
+                        .HasForeignKey("UserId");
+
+                    b.Navigation("creator");
+                });
+
             modelBuilder.Entity("Pine.Data.Identity.User", b =>
                 {
                     b.HasOne("Pine.Data.Entities.Community", null)
@@ -401,6 +443,8 @@ namespace Pine.Migrations
 
             modelBuilder.Entity("Pine.Data.Identity.User", b =>
                 {
+                    b.Navigation("listings");
+
                     b.Navigation("posts");
                 });
 #pragma warning restore 612, 618

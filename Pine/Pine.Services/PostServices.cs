@@ -24,32 +24,29 @@ namespace Pine.Services
             {
                 title = model.title,
                 description = model.description,
-                keywords = model.keywords,
+                tags = model.tags,
                 timeOfCreation = DateTime.Now,
                 creatorId = userId,
                 creator = db.Users.FirstOrDefault(u => u.Id == userId),
                 comments = new List<Comment>()
             };
 
-            
             db.posts.Add(post);
             db.SaveChanges();
         }
 
-        public void editPost(OuputPostViewModel model)
+        public void editPost(OutputPostViewModel model)
         {
             var oldPost = db.posts.FirstOrDefault(p => p.id == model.id);
 
             oldPost.title = model.title;
-            oldPost.keywords = model.keywords;
+            oldPost.tags = model.tags;
             oldPost.description = model.description;
             oldPost.timeOfCreation = DateTime.Now;
 
             db.posts.Update(oldPost);
-            db.SaveChanges();
-            
+            db.SaveChanges(); 
         }
-
 
         public void deletePost(string postId)
         {

@@ -10,7 +10,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
 </head>
 <body>
-    <img class="backgroundImage" border="0" src="https://i.imgur.com/8Nx4J2U.png" unselectable="on">
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
@@ -44,7 +43,7 @@
                         else
                         {
                             <li>
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="UserPanel" style="position:absolute;margin-right: 4%; right:0px;">@User.Identity.Name</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="UserPanel" asp-route-userName="@User.Identity.Name" style="position:absolute;margin-right: 4%; right:0px;">@User.Identity.Name</a>
                             </li>
                             <li>
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Logout" style="color:#ff0000 !important;font-weight: bold;position:absolute;right:0px;">Logout</a>

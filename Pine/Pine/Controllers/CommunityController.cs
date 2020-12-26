@@ -12,7 +12,6 @@ namespace Pine.Controllers
 {
     public class CommunityController : Controller
     {
-
         private readonly IPostServices postServices;
         private readonly IUserServices userServices;
 
@@ -22,18 +21,17 @@ namespace Pine.Controllers
             this.userServices = userServices;
         }
 
-        
         public IActionResult AllPosts()
         {
             ICollection<Post> posts = postServices.getAllPosts();
             PostsViewModel model = new PostsViewModel() {
 
-                posts = posts.Select(p => new OuputPostViewModel
+                posts = posts.Select(p => new OutputPostViewModel
                 {
                     id = p.id,
                     title = p.title,
                     description = p.description,
-                    keywords = p.keywords,
+                    tags = p.tags,
                     userName = userServices.getUserNameById(p.creatorId),
                     uploadDate = p.timeOfCreation
                 }).ToList()
@@ -46,7 +44,7 @@ namespace Pine.Controllers
         }
 
         [HttpGet("/posts/edit")]
-        public IActionResult EditPostView(OuputPostViewModel model)
+        public IActionResult EditPostView(OutputPostViewModel model)
         {
             if (!this.User.Identity.IsAuthenticated)
             {
@@ -57,7 +55,7 @@ namespace Pine.Controllers
         }
 
         [HttpPost("posts/edit")]
-        public IActionResult EditPost(OuputPostViewModel model)
+        public IActionResult EditPost(OutputPostViewModel model)
         {
             if (!this.User.Identity.IsAuthenticated)
             {
@@ -108,7 +106,7 @@ namespace Pine.Controllers
         }
 
         [HttpPost]
-        public IActionResult DeletePost(OuputPostViewModel post)
+        public IActionResult DeletePost(OutputPostViewModel post)
         {
             if (!this.User.Identity.IsAuthenticated)
             {

@@ -4,21 +4,39 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 using Pine.Data.Entities;
+using Pine.Data.Identity;
 
 namespace Pine.Data.Entities
 {
-    class ShopListing : Post
+    public class ShopListing
     {
+        public ShopListing()
+        {
+            this.id = Guid.NewGuid().ToString();
+        }
+
         [Key]
-        public string Id { get; set; }
+        [ForeignKey("ShopListingId")]
+        public string id { get; set; }
 
-        [ForeignKey("ownerId")]
-        public string ownerId { get; set; }
+        [Required]
+        public string name { get; set; }
 
-        //public string picture { get; set; }
+        [Required]
+        public string description { get; set; }
 
+        [Required]
         public double price { get; set; }
 
-        public string address { get; set; }
+        [Required]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
+        public DateTime timeOfCreation { get; set; }
+
+        public string creatorId { get; set; }
+
+        [ForeignKey("UserId")]
+        public virtual User creator { get; set; }
+
+        //public string picture { get; set; }
     }
 }

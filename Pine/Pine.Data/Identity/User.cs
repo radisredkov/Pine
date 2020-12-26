@@ -18,6 +18,9 @@ namespace Pine.Data.Identity
         [ForeignKey("PostId")]
         public List<Post> posts { get; set; }
 
+        [ForeignKey("ListingId")]
+        public List<ShopListing> listings { get; set; }
+
         //   public List<Community> communitiesOwned { get; set; }
     }
 }

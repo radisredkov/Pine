@@ -4,13 +4,13 @@ using System.Text;
 
 namespace Pine.Models.Entities
 {
-    public class OuputPostViewModel
+    public class OutputShopListingViewModel
     {
         public string id { get; set; }
 
-        public string title { get; set; }
+        public string name { get; set; }
 
-        public string keywords { get; set; }
+        public double price { get; set; }
 
         public string description { get; set; }
 

@@ -10,7 +10,7 @@ namespace Pine.Services
     {
         void createPost(PostViewModel model, string userId);
 
-        void editPost(OuputPostViewModel model);
+        void editPost(OutputPostViewModel model);
 
         void deletePost(string postId);
 

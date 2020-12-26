@@ -1,4 +1,4 @@
-﻿@model Pine.Models.Entities.OutputPostViewModel
+﻿@model Pine.Models.Entities.OutputShopListingViewModel
 
 <div>
     <!--dl class="row">
@@ -9,10 +9,10 @@
             @Html.DisplayFor(model => model.id)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.title)
+            @Html.DisplayNameFor(model => model.name)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.title)
+            @Html.DisplayFor(model => model.name)
         </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.description)
@@ -34,22 +34,22 @@
         </dd>
     </dl-->
     <div class="card border-secondary mb-3" style="margin-top: 2.5%; color: black;">
-        <div class="card-header">Post by <a type="submit" asp-controller="Account" asp-action="UserPanel" asp-route-userName="@Model.userName">@Html.DisplayFor(model => model.userName)</a> <div style="float: right;">@Html.DisplayFor(model => model.uploadDate)</div></div>
+        <div class="card-header">Listed by <a type="submit" asp-controller="Account" asp-action="UserPanel" asp-route-userName="@Model.userName">@Html.DisplayFor(model => model.userName)</a> <div style="float: right;">@Html.DisplayFor(model => model.uploadDate)</div></div>
         <div class="card-body">
-            <h4 class="card-title">@Html.DisplayFor(model => model.title)</h4>
+            <h4 class="card-title">@Html.DisplayFor(model => model.name) - @Html.DisplayFor(model => model.price)лв.</h4>
             <p class="card-text" style="white-space: pre-line;">@Html.DisplayFor(model => model.description)</p>
             @if (User.Identity.Name == Model.userName)
             {
-                <form method="post" asp-controller="Community" asp-action="DeletePost">
+                <form method="post" asp-controller="Shop" asp-action="DeleteListing">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                     <div class="form-group">
-                        <input type="hidden" asp-for="title" class="form-control" />
+                        <input type="hidden" asp-for="name" class="form-control" />
                     </div>
                     <div class="form-group">
                         <input type="hidden" asp-for="description" class="form-control" />
                     </div>
                     <div class="form-group">
-                        <input type="hidden" asp-for="tags" class="form-control" />
+                        <input type="hidden" asp-for="price" class="form-control" />
                     </div>
                     <div class="form-group">
                         <input type="hidden" asp-for="id" class="form-control" />
@@ -68,16 +68,16 @@
                         </button>
                     </div>
                 </form>
-                <form method="get" asp-controller="Community" asp-action="EditPostView">
+                <form method="get" asp-controller="Shop" asp-action="EditListingView">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                     <div class="form-group">
-                        <input type="hidden" asp-for="title" class="form-control" />
+                        <input type="hidden" asp-for="name" class="form-control" />
                     </div>
                     <div class="form-group">
                         <input type="hidden" asp-for="description" class="form-control" />
                     </div>
                     <div class="form-group">
-                        <input type="hidden" asp-for="tags" class="form-control" />
+                        <input type="hidden" asp-for="price" class="form-control" />
                     </div>
                     <div class="form-group">
                         <input type="hidden" asp-for="id" class="form-control" />
@@ -94,6 +94,33 @@
                                 <path d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z" />
                             </svg>
                         </button>
+                    </div>
+                </form>
+            }
+            else if(User.Identity.Name != Model.userName && User.Identity.Name != null)
+            {
+                <form method="post" asp-controller="Shop" asp-action="BuyListing">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <input type="hidden" asp-for="name" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <input type="hidden" asp-for="description" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <input type="hidden" asp-for="price" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <input type="hidden" asp-for="id" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <input type="hidden" asp-for="userName" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <input type="hidden" asp-for="uploadDate" class="form-control" />
+                    </div>
+                    <div class="moderationButtons">
+                        <button type="submit" class="buyButton" value="Buy Listing">Buy Listing</button>
                     </div>
                 </form>
             }

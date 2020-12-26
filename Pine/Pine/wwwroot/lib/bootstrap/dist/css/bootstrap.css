@@ -4592,6 +4592,8 @@ input[type="button"].btn-block {
     flex: 1 1 auto;
     padding: 1.25rem;
     background-color: #61eb69;
+    border-bottom-left-radius: 25px !important;
+    border-bottom-right-radius: 25px !important;
 }
 
 .card-title {
@@ -4621,12 +4623,14 @@ input[type="button"].btn-block {
 }
 
 .card-header {
-  padding: 0.75rem 1.25rem;
-  margin-bottom: 0;
-  background-color: #009133;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.125);
-  width:100% !important;
-  color: white;
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 0;
+    background-color: #009133;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+    width: 100% !important;
+    color: white;
+    border-top-left-radius: 25px !important;
+    border-top-right-radius: 25px !important;
 }
 
 .card-header:first-child {

@@ -4,8 +4,8 @@ using System.Text;
 
 namespace Pine.Models.Entities
 {
-    public class PostsViewModel
+    public class ShopListingsViewModel
     {
-        public ICollection<OutputPostViewModel> posts { get; set; }
+        public ICollection<OutputShopListingViewModel> listings { get; set; }
     }
 }

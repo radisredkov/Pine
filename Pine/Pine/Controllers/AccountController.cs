@@ -3,6 +3,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using Pine.Data;
 using Pine.Data.Identity;
 using Pine.Models.Account;
 
@@ -13,12 +15,15 @@ namespace Pine.Controllers
     {
         private readonly UserManager<User> userManager;
         private readonly SignInManager<User> signInManager;
+        private readonly PineContext db;
 
         public AccountController(UserManager<User> userManager,
-            SignInManager<User> signInManager)
+            SignInManager<User> signInManager,
+            PineContext Db)
         {
             this.userManager = userManager;
             this.signInManager = signInManager;
+            this.db = Db;
         }
 
         [HttpGet]
@@ -79,9 +84,20 @@ namespace Pine.Controllers
             }
             return View(login);
         }
-        public IActionResult UserPanel()
+        public async Task<IActionResult> UserPanel(string userName)
         {
-            return View();
+            if (userName == null)
+            {
+                return NotFound();
+            }
+
+            var user = await db.users.FirstOrDefaultAsync(u => u.UserName == userName);
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            return View(user);
         }
 
         public ActionResult Logout()
