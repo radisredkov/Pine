@@ -230,6 +230,28 @@ img {
         opacity: 1;
     }
 
+.SortByButton {
+    fill-opacity: 0.5;
+    background-color: aqua;
+    border: solid 2px;
+    border-color: darkblue;
+    border-radius: 2px;
+    color: black !important;
+    float: left;
+    margin-left: 2.5%;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    padding-left: 5px;
+    padding-right: 5px;
+    text-decoration: inherit !important;
+    opacity: 0.9 !important;
+    min-height: 35px;
+}
+
+    .SortByButton:hover {
+        background-color: #1b6ec2;
+    }
+
 @-webkit-keyframes mover {
     0% {
         transform: translateY(0);

@@ -2,7 +2,9 @@
 @{
     ViewData["Title"] = "Shop";
 }
-<a class="CreateButton" asp-area="" asp-controller="Shop" asp-action="CreateListing">+ Create a listing</a>
+<a class="CreateButton" asp-area="" asp-controller="Shop" asp-action="CreateListing">+ Create Listing</a>
+<a class="SortByButton" asp-area="" asp-controller="Shop" asp-action="ShopLowToHigh"><b>Price:</b> Low to High ↑</a>
+<a class="SortByButton" asp-area="" asp-controller="Shop" asp-action="ShopHighToLow"><b>Price:</b> High to Low ↓</a>
 <br />
 <div>
     @if (Model.listings.Count == 0)

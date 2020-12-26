@@ -25,7 +25,6 @@ namespace Pine.Controllers
         {
             ICollection<Post> posts = postServices.getAllPosts();
             PostsViewModel model = new PostsViewModel() {
-
                 posts = posts.Select(p => new OutputPostViewModel
                 {
                     id = p.id,
@@ -34,11 +33,28 @@ namespace Pine.Controllers
                     tags = p.tags,
                     userName = userServices.getUserNameById(p.creatorId),
                     uploadDate = p.timeOfCreation
-                }).ToList()
-
+                }).OrderByDescending(p => p.uploadDate).ToList()
             };
 
-            model.posts.Reverse();
+            return View("AllPosts", model);
+        }
+
+        [HttpGet("/Community/AllPosts/orderbydateascending")]
+        public IActionResult AllPostsSortByDateAscending()
+        {
+            ICollection<Post> posts = postServices.getAllPosts();
+            PostsViewModel model = new PostsViewModel()
+            {
+                posts = posts.Select(p => new OutputPostViewModel
+                {
+                    id = p.id,
+                    title = p.title,
+                    description = p.description,
+                    tags = p.tags,
+                    userName = userServices.getUserNameById(p.creatorId),
+                    uploadDate = p.timeOfCreation
+                }).OrderBy(p => p.uploadDate).ToList()
+            };
 
             return View("AllPosts", model);
         }
@@ -75,23 +91,12 @@ namespace Pine.Controllers
         [HttpGet("/posts/create")]
         public IActionResult CreatePost()
         {
-            if (!this.User.Identity.IsAuthenticated)
-            {
-                return this.Redirect("/");
-            }
-
             return this.View();
         }
 
         [HttpPost("/posts/create")]
         public IActionResult CreatePost(PostViewModel post)
         {
-
-            if (!this.User.Identity.IsAuthenticated)
-            {
-                return this.Redirect("/");
-            }
-
             if (!this.ModelState.IsValid)
             {
                 return this.View();
@@ -102,7 +107,6 @@ namespace Pine.Controllers
             this.postServices.createPost(post, userId);
 
             return this.Redirect("/");
-
         }
 
         [HttpPost]
@@ -131,7 +135,6 @@ namespace Pine.Controllers
             this.postServices.deletePost(post.id);
 
             return this.Redirect("/");
-
         }
 
         public IActionResult Communities()

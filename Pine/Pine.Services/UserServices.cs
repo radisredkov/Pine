@@ -17,7 +17,14 @@ namespace Pine.Services
 
         public string getUserNameById(string id)
         {
-            return db.users.FirstOrDefault(u => u.Id == id).UserName;
+            if (id == null)
+            {
+                return null;
+            }
+            else
+            {
+                return db.users.FirstOrDefault(u => u.Id == id).UserName;
+            }
         }
     }
 }

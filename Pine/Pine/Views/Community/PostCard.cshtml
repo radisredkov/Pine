@@ -34,11 +34,14 @@
         </dd>
     </dl-->
     <div class="card border-secondary mb-3" style="margin-top: 2.5%; color: black;">
-        <div class="card-header">Post by <a type="submit" asp-controller="Account" asp-action="UserPanel" asp-route-userName="@Model.userName">@Html.DisplayFor(model => model.userName)</a> <div style="float: right;">@Html.DisplayFor(model => model.uploadDate)</div></div>
+        <div class="card-header">Post by @if(Model.userName == null)
+        {
+            @Html.DisplayName("Anonymous");
+        }<a type="submit" asp-controller="Account" asp-action="UserPanel" asp-route-userName="@Model.userName">@Html.DisplayFor(model => model.userName)</a> <div style="float: right;">@Html.DisplayFor(model => model.uploadDate)</div></div>
         <div class="card-body">
             <h4 class="card-title">@Html.DisplayFor(model => model.title)</h4>
             <p class="card-text" style="white-space: pre-line;">@Html.DisplayFor(model => model.description)</p>
-            @if (User.Identity.Name == Model.userName)
+            @if (User.Identity.Name == Model.userName && User.Identity.Name != null)
             {
                 <form method="post" asp-controller="Community" asp-action="DeletePost">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>

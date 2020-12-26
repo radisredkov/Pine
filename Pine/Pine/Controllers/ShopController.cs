@@ -21,6 +21,7 @@ namespace Pine.Controllers
             this.userServices = userServices;
         }
 
+        [HttpGet("/Shop")]
         public IActionResult Shop()
         {
             ICollection<ShopListing> listings = shopListingService.getAllListings();
@@ -34,10 +35,47 @@ namespace Pine.Controllers
                     price = l.price,
                     userName = userServices.getUserNameById(l.creatorId),
                     uploadDate = l.timeOfCreation
-                }).ToList()
+                }).OrderByDescending(l => l.uploadDate).ToList()
             };
 
-            model.listings.Reverse();
+            return View("Shop", model);
+        }
+
+        [HttpGet("/Shop/orderbypricedescending")]
+        public IActionResult ShopHighToLow()
+        {
+            ICollection<ShopListing> listings = shopListingService.getAllListings();
+            ShopListingsViewModel model = new ShopListingsViewModel()
+            {
+                listings = listings.Select(l => new OutputShopListingViewModel
+                {
+                    id = l.id,
+                    name = l.name,
+                    description = l.description,
+                    price = l.price,
+                    userName = userServices.getUserNameById(l.creatorId),
+                    uploadDate = l.timeOfCreation
+                }).OrderByDescending(l => l.price).ToList()
+            };
+
+            return View("Shop", model);
+        }
+        [HttpGet("/Shop/orderbypriceascending")]
+        public IActionResult ShopLowToHigh()
+        {
+            ICollection<ShopListing> listings = shopListingService.getAllListings();
+            ShopListingsViewModel model = new ShopListingsViewModel()
+            {
+                listings = listings.Select(l => new OutputShopListingViewModel
+                {
+                    id = l.id,
+                    name = l.name,
+                    description = l.description,
+                    price = l.price,
+                    userName = userServices.getUserNameById(l.creatorId),
+                    uploadDate = l.timeOfCreation
+                }).OrderBy(l => l.price).ToList()
+            };
 
             return View("Shop", model);
         }
