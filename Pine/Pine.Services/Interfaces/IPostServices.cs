@@ -8,7 +8,7 @@ namespace Pine.Services
 {
     public interface IPostServices
     {
-        void createPost(PostViewModel model, string userId);
+        void createPost(PostViewModel model, string userId, byte[] img);
 
         void editPost(OutputPostViewModel model);
 

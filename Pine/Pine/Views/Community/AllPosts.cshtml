@@ -13,11 +13,16 @@
     }
     else
     {
-        <div class="transbox">
-            @foreach (var post in Model.posts)
-            {
-                <partial name="./PostCard.cshtml" model=@post />
-            }
-        </div>
+<div class="transbox">
+    @foreach (var post in Model.posts)
+    {
+        <partial name="./PostCard.cshtml" model=@post />
+        if (post.img != null)
+        {
+            <img class="img-responsive" width="300"  height="300" src="data:image/jpeg;base64,@Convert.ToBase64String(post.img)" />
+
+        }
+    }
+</div>
     }
 </div>

@@ -6380,19 +6380,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\RADI\\.nuget\\packages\\": {}
+    "C:\\Users\\mario\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Radi's Folder\\Pine\\Pine\\Pine.Models\\Pine.Models.csproj",
+      "projectUniqueName": "D:\\It-kariera\\Project\\Pine\\Pine.Models\\Pine.Models.csproj",
       "projectName": "Pine.Models",
-      "projectPath": "D:\\Radi's Folder\\Pine\\Pine\\Pine.Models\\Pine.Models.csproj",
-      "packagesPath": "C:\\Users\\RADI\\.nuget\\packages\\",
-      "outputPath": "D:\\Radi's Folder\\Pine\\Pine\\Pine.Models\\obj\\",
+      "projectPath": "D:\\It-kariera\\Project\\Pine\\Pine.Models\\Pine.Models.csproj",
+      "packagesPath": "C:\\Users\\mario\\.nuget\\packages\\",
+      "outputPath": "D:\\It-kariera\\Project\\Pine\\Pine.Models\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\RADI\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\mario\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -6404,6 +6404,7 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
           "projectReferences": {}
         }
       },
@@ -6415,6 +6416,7 @@
     },
     "frameworks": {
       "netcoreapp3.1": {
+        "targetAlias": "netcoreapp3.1",
         "dependencies": {
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
             "target": "Package",
@@ -6458,7 +6460,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.302\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
       }
     }
   }

@@ -42,3 +42,15 @@ C:\Users\user\Source\Repos\radisredkov\Pine\Pine\Pine.Models\bin\Debug\netcoreap
 C:\Users\user\Source\Repos\radisredkov\Pine\Pine\Pine.Models\bin\Debug\netcoreapp3.1\Pine.Models.dll
 C:\Users\user\Source\Repos\radisredkov\Pine\Pine\Pine.Models\bin\Debug\netcoreapp3.1\Pine.Models.pdb
 C:\Users\user\Source\Repos\radisredkov\Pine\Pine\Pine.Models\obj\Debug\netcoreapp3.1\Pine.Models.genruntimeconfig.cache
+D:\It-kariera\Project\Pine\Pine.Models\bin\Debug\netcoreapp3.1\Pine.Models.deps.json
+D:\It-kariera\Project\Pine\Pine.Models\bin\Debug\netcoreapp3.1\Pine.Models.runtimeconfig.json
+D:\It-kariera\Project\Pine\Pine.Models\bin\Debug\netcoreapp3.1\Pine.Models.runtimeconfig.dev.json
+D:\It-kariera\Project\Pine\Pine.Models\bin\Debug\netcoreapp3.1\Pine.Models.dll
+D:\It-kariera\Project\Pine\Pine.Models\bin\Debug\netcoreapp3.1\Pine.Models.pdb
+D:\It-kariera\Project\Pine\Pine.Models\obj\Debug\netcoreapp3.1\Pine.Models.csprojAssemblyReference.cache
+D:\It-kariera\Project\Pine\Pine.Models\obj\Debug\netcoreapp3.1\Pine.Models.AssemblyInfoInputs.cache
+D:\It-kariera\Project\Pine\Pine.Models\obj\Debug\netcoreapp3.1\Pine.Models.AssemblyInfo.cs
+D:\It-kariera\Project\Pine\Pine.Models\obj\Debug\netcoreapp3.1\Pine.Models.csproj.CoreCompileInputs.cache
+D:\It-kariera\Project\Pine\Pine.Models\obj\Debug\netcoreapp3.1\Pine.Models.dll
+D:\It-kariera\Project\Pine\Pine.Models\obj\Debug\netcoreapp3.1\Pine.Models.pdb
+D:\It-kariera\Project\Pine\Pine.Models\obj\Debug\netcoreapp3.1\Pine.Models.genruntimeconfig.cache

@@ -16,6 +16,8 @@ namespace Pine.Models.Entities
 
         public string userName { get; set; }
 
+        public byte[] img { get; set; }
+
         public DateTime uploadDate { get; set; }
     }
 }

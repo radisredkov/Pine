@@ -34,6 +34,7 @@ namespace Pine.Data.Entities
 
         [ForeignKey("UserId")]
         public virtual User creator { get; set; }
+        public byte[] Img { get; set; }
 
         public List<Comment> comments { get; set; }
 

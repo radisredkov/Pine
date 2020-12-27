@@ -34,3 +34,12 @@ C:\Users\user\Source\Repos\radisredkov\Pine\Pine\Pine.Data\obj\Debug\netcoreapp3
 C:\Users\user\Source\Repos\radisredkov\Pine\Pine\Pine.Data\obj\Debug\netcoreapp3.1\Pine.Data.csproj.CoreCompileInputs.cache
 C:\Users\user\Source\Repos\radisredkov\Pine\Pine\Pine.Data\obj\Debug\netcoreapp3.1\Pine.Data.dll
 C:\Users\user\Source\Repos\radisredkov\Pine\Pine\Pine.Data\obj\Debug\netcoreapp3.1\Pine.Data.pdb
+D:\It-kariera\Project\Pine\Pine.Data\bin\Debug\netcoreapp3.1\Pine.Data.deps.json
+D:\It-kariera\Project\Pine\Pine.Data\bin\Debug\netcoreapp3.1\Pine.Data.dll
+D:\It-kariera\Project\Pine\Pine.Data\bin\Debug\netcoreapp3.1\Pine.Data.pdb
+D:\It-kariera\Project\Pine\Pine.Data\obj\Debug\netcoreapp3.1\Pine.Data.csprojAssemblyReference.cache
+D:\It-kariera\Project\Pine\Pine.Data\obj\Debug\netcoreapp3.1\Pine.Data.AssemblyInfoInputs.cache
+D:\It-kariera\Project\Pine\Pine.Data\obj\Debug\netcoreapp3.1\Pine.Data.AssemblyInfo.cs
+D:\It-kariera\Project\Pine\Pine.Data\obj\Debug\netcoreapp3.1\Pine.Data.csproj.CoreCompileInputs.cache
+D:\It-kariera\Project\Pine\Pine.Data\obj\Debug\netcoreapp3.1\Pine.Data.dll
+D:\It-kariera\Project\Pine\Pine.Data\obj\Debug\netcoreapp3.1\Pine.Data.pdb

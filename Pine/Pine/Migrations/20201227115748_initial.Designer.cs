@@ -10,7 +10,7 @@ using Pine.Data;
 namespace Pine.Migrations
 {
     [DbContext(typeof(PineContext))]
-    [Migration("20201226093006_initial")]
+    [Migration("20201227115748_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

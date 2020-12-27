@@ -26,3 +26,17 @@ D:\Radi's Folder\Pine\Pine\Pine.Services\obj\Debug\netcoreapp3.1\Pine.Services.c
 D:\Radi's Folder\Pine\Pine\Pine.Services\obj\Debug\netcoreapp3.1\Pine.Services.csproj.CopyComplete
 D:\Radi's Folder\Pine\Pine\Pine.Services\obj\Debug\netcoreapp3.1\Pine.Services.dll
 D:\Radi's Folder\Pine\Pine\Pine.Services\obj\Debug\netcoreapp3.1\Pine.Services.pdb
+D:\It-kariera\Project\Pine\Pine.Services\bin\Debug\netcoreapp3.1\Pine.Services.deps.json
+D:\It-kariera\Project\Pine\Pine.Services\bin\Debug\netcoreapp3.1\Pine.Services.dll
+D:\It-kariera\Project\Pine\Pine.Services\bin\Debug\netcoreapp3.1\Pine.Services.pdb
+D:\It-kariera\Project\Pine\Pine.Services\bin\Debug\netcoreapp3.1\Pine.Data.dll
+D:\It-kariera\Project\Pine\Pine.Services\bin\Debug\netcoreapp3.1\Pine.Models.dll
+D:\It-kariera\Project\Pine\Pine.Services\bin\Debug\netcoreapp3.1\Pine.Data.pdb
+D:\It-kariera\Project\Pine\Pine.Services\bin\Debug\netcoreapp3.1\Pine.Models.pdb
+D:\It-kariera\Project\Pine\Pine.Services\obj\Debug\netcoreapp3.1\Pine.Services.csprojAssemblyReference.cache
+D:\It-kariera\Project\Pine\Pine.Services\obj\Debug\netcoreapp3.1\Pine.Services.AssemblyInfoInputs.cache
+D:\It-kariera\Project\Pine\Pine.Services\obj\Debug\netcoreapp3.1\Pine.Services.AssemblyInfo.cs
+D:\It-kariera\Project\Pine\Pine.Services\obj\Debug\netcoreapp3.1\Pine.Services.csproj.CoreCompileInputs.cache
+D:\It-kariera\Project\Pine\Pine.Services\obj\Debug\netcoreapp3.1\Pine.Services.csproj.CopyComplete
+D:\It-kariera\Project\Pine\Pine.Services\obj\Debug\netcoreapp3.1\Pine.Services.dll
+D:\It-kariera\Project\Pine\Pine.Services\obj\Debug\netcoreapp3.1\Pine.Services.pdb
