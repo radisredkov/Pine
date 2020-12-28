@@ -14,6 +14,7 @@ using Pine.Data;
 using Pine.Data;
 using Pine.Data.Identity;
 using Pine.Services;
+using Pine.Services.Interfaces;
 
 namespace Pine
 {
@@ -48,6 +49,7 @@ namespace Pine
 
             services.AddTransient<IPostServices, PostServices>();
             services.AddTransient<IUserServices, UserServices>();
+            services.AddTransient<ICommunityServices, CommunityServices>();
             services.AddTransient<IShopListingService, ShopListingService>();
         }
 

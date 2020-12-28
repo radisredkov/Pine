@@ -1,6 +1,9 @@
-﻿@{
+﻿@model Pine.Models.Entities.CommunitiesViewModel
+@{
     ViewData["Title"] = "Communities";
 }
+
+<a class="CreateButton"asp-controller="Community" asp-action="CreateCommunity">+ Create Community</a>
 
 <h1 style="color: aqua;">All communities:</h1>
 <hr />

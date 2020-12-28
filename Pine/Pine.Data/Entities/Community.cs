@@ -10,8 +10,12 @@ namespace Pine.Data.Entities
 {
     public class Community
     {
+        public Community()
+        {
+            this.id = Guid.NewGuid().ToString();
+        }
+
         [Key]
-        [Required]
         public string id { get; set; }
         [Required]
         public string name { get; set; }

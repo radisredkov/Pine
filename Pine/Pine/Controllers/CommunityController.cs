@@ -6,21 +6,29 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Pine.Data;
 using Pine.Data.Entities;
 using Pine.Models.Entities;
 using Pine.Services;
+using Pine.Services.Interfaces;
 
 namespace Pine.Controllers
 {
     public class CommunityController : Controller
     {
+        
         private readonly IPostServices postServices;
         private readonly IUserServices userServices;
+        private readonly ICommunityServices communityService;
 
-        public CommunityController(IPostServices postServices, IUserServices userServices)
+
+        public CommunityController(IPostServices postServices, IUserServices userServices, ICommunityServices communityService)
         {
+
             this.postServices = postServices;
             this.userServices = userServices;
+            this.communityService = communityService;
+          
         }
 
         public IActionResult AllPosts()
@@ -42,6 +50,7 @@ namespace Pine.Controllers
 
             return View("AllPosts", model);
         }
+        
 
         [HttpGet("/Posts/AllPosts/orderbydateascending")]
         public IActionResult AllPostsSortByDateAscending()
@@ -134,8 +143,31 @@ namespace Pine.Controllers
                 return this.Redirect("/");
            
         }
+       
+        [HttpGet("/communities/create")]
+        public IActionResult CreateCommunity()
+        {
+            return this.View();
+        }
 
-            [HttpPost]
+        [HttpPost("/communities/create")]
+        public IActionResult CreateCommunity(CommunityViewModel com)
+        {
+            if (!this.ModelState.IsValid)
+            {
+                return this.View();
+
+            }
+
+            var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            this.communityService.CreateCommunity(com, userId);
+
+            return this.Redirect("/");
+
+        }
+
+        [HttpPost]
             public IActionResult DeletePost(OutputPostViewModel post)
             {
                 if (!this.User.Identity.IsAuthenticated)
