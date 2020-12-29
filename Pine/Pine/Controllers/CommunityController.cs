@@ -50,7 +50,23 @@ namespace Pine.Controllers
 
             return View("AllPosts", model);
         }
-        
+
+        public IActionResult Communities()
+        {
+            ICollection<Community> communities = communityService.getAllcommunities();
+            CommunitiesViewModel model = new CommunitiesViewModel()
+            {
+                communities = communities.Select(p => new OutputCommunityViewModel
+                {
+                    id = p.id,                  
+                    name = p.name,
+                    description = p.description
+                }).ToList()
+            };
+
+            return View("Communities", model);
+        }
+
 
         [HttpGet("/Posts/AllPosts/orderbydateascending")]
         public IActionResult AllPostsSortByDateAscending()
@@ -195,9 +211,6 @@ namespace Pine.Controllers
                 return this.Redirect("/");
             }
 
-            public IActionResult Communities()
-            {
-                return View();
-            }
+           
         }
     }

@@ -614,3 +614,4 @@ D:\It-kariera\Project\Pine\Pine\obj\Debug\netcoreapp3.1\Razor\Views\Community\Cr
 D:\It-kariera\Project\Pine\Pine\obj\Debug\netcoreapp3.1\Razor\Views\Community\EditPost.cshtml.g.cs
 D:\It-kariera\Project\Pine\Pine\obj\Debug\netcoreapp3.1\Razor\Views\Community\PostCard.cshtml.g.cs
 D:\It-kariera\Project\Pine\Pine\obj\Debug\netcoreapp3.1\Razor\Views\Community\CreateCommunity.cshtml.g.cs
+D:\It-kariera\Project\Pine\Pine\obj\Debug\netcoreapp3.1\Razor\Views\Community\Community.cshtml.g.cs

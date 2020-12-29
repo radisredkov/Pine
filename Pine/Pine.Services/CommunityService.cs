@@ -37,8 +37,7 @@ namespace Pine.Services
 
         public ICollection<Community> getAllcommunities()
         {
-            
-            
+             
                return db.communities.ToList();
             
         }

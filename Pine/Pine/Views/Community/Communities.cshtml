@@ -3,10 +3,20 @@
     ViewData["Title"] = "Communities";
 }
 
-<a class="CreateButton"asp-controller="Community" asp-action="CreateCommunity">+ Create Community</a>
+<a class="CreateButton" asp-controller="Community" asp-action="CreateCommunity">+ Create Community</a>
 
-<h1 style="color: aqua;">All communities:</h1>
-<hr />
-Computers- PC MASTER RACE!
-<br />
-Cars- vroom vroom!
+<div>
+    @if (Model.communities.Count == 0)
+    {
+        <div>There are currently no posts. Make one and start a discussion!</div>
+    }
+    else
+    {
+        <div class="transbox">
+            @foreach (var community in Model.communities)
+             {
+                <p>@community.name</p>
+             }
+        </div>
+    }
+</div>

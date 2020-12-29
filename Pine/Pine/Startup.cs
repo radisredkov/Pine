@@ -11,7 +11,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Pine.Data;
-using Pine.Data;
 using Pine.Data.Identity;
 using Pine.Services;
 using Pine.Services.Interfaces;
@@ -78,6 +77,9 @@ namespace Pine
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Community}/{action=AllPosts}/{id?}");
+                endpoints.MapControllerRoute(
+                    name: "default",
+                    pattern: "{controller=Community}/{action=Communities}/{id?}");
             });
         }
     }

@@ -6,6 +6,6 @@ namespace Pine.Models.Entities
 {
    public class CommunitiesViewModel
    {
-        public ICollection<OutputPostViewModel> posts { get; set; }
+        public ICollection<OutputCommunityViewModel> communities { get; set; }
     }
 }
