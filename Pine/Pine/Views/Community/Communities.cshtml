@@ -8,14 +8,14 @@
 <div>
     @if (Model.communities.Count == 0)
     {
-        <div>There are currently no posts. Make one and start a discussion!</div>
+        <div>There are currently no Communities yet. Make one and invite your friends!</div>
     }
     else
     {
         <div class="transbox">
             @foreach (var community in Model.communities)
              {
-                <p>@community.name</p>
+            <partial name="./CommunityCard.cshtml" model=@community />
              }
         </div>
     }

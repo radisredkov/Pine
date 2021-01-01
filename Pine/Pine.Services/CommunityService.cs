@@ -18,6 +18,10 @@ namespace Pine.Services
             this.db = db;
         }
         
+        public void JoinCommunity(string userId,string communityId)
+        {
+            //db.communities.Find(communityId).
+        }
         public void CreateCommunity(CommunityViewModel model, string userId)
         {
             Community community = new Community
