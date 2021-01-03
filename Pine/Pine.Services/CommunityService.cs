@@ -1,5 +1,6 @@
 ﻿using Pine.Data;
 using Pine.Data.Entities;
+using Pine.Data.Identity;
 using Pine.Models.Entities;
 using Pine.Services.Interfaces;
 using System;
@@ -18,9 +19,11 @@ namespace Pine.Services
             this.db = db;
         }
         
-        public void JoinCommunity(string userId,string communityId)
+        public void JoinCommunity(User user,string communityId)
         {
-            //db.communities.Find(communityId).
+          
+            db.communities.Find(communityId).communityMembers.Add(user);
+            db.SaveChanges();
         }
         public void CreateCommunity(CommunityViewModel model, string userId)
         {

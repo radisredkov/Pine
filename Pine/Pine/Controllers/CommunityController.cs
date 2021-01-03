@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Pine.Data;
 using Pine.Data.Entities;
+using Pine.Data.Identity;
 using Pine.Models.Entities;
 using Pine.Services;
 using Pine.Services.Interfaces;
@@ -182,7 +183,19 @@ namespace Pine.Controllers
             return this.Redirect("/");
 
         }
-
+        [HttpGet]
+        public IActionResult JoinCommunity()
+        {
+            return this.Redirect("/");
+        }
+        [HttpPost]
+        public IActionResult JoinCommunity(CommunityViewModel model)
+        {
+            string userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+            User user = userServices.getUserById(userId);
+            communityService.JoinCommunity(user, model.id);
+            return this.Redirect("/");
+        }
         [HttpPost]
             public IActionResult DeletePost(OutputPostViewModel post)
             {
