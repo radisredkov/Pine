@@ -16,6 +16,7 @@ namespace Pine.Data.Entities
         }
 
         [Key]
+        [ForeignKey("CommunityId")]
         public string id { get; set; }
         [Required]
         public string name { get; set; }
@@ -24,13 +25,18 @@ namespace Pine.Data.Entities
         public string description { get; set; }
 
         public string tags { get; set; }
-
-        [ForeignKey("UserID")]
+       
         public string ownerId { get; set; }
 
-        [ForeignKey("UserID")]
-        public List<User> communityMembers { get; set; }
-        [ForeignKey("PostId")]
-        public List<Post> posts { get; set; }
+        [ForeignKey("ownerId")]
+        public virtual User Owner { get; set; }
+
+        public ICollection<Post> communityPosts { get; set; }
+            = new List<Post>();
+
+        public ICollection<User> communityMembers { get; set; }
+           = new List<User>();
+
+
     }
 }

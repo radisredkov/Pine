@@ -18,6 +18,8 @@ namespace Pine.Data.Entities
         [Key]
         [ForeignKey("PostId")]
         public string id { get; set; }
+
+        public string communityId { get; set; }
         [Required]
         public string title { get; set; }
 
@@ -32,7 +34,7 @@ namespace Pine.Data.Entities
 
         public string creatorId { get; set; }
 
-        [ForeignKey("UserId")]
+        [ForeignKey("creatorId")]
         public virtual User creator { get; set; }
         public byte[] Img { get; set; }
 

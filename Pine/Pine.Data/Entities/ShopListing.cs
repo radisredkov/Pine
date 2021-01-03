@@ -34,7 +34,7 @@ namespace Pine.Data.Entities
 
         public string creatorId { get; set; }
 
-        [ForeignKey("UserId")]
+        [ForeignKey("creatorId")]
         public virtual User creator { get; set; }
 
         //public string picture { get; set; }

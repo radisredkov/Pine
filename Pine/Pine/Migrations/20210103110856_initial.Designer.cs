@@ -10,7 +10,7 @@ using Pine.Data;
 namespace Pine.Migrations
 {
     [DbContext(typeof(PineContext))]
-    [Migration("20201227115748_initial")]
+    [Migration("20210103110856_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -188,12 +188,14 @@ namespace Pine.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ownerId")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("tags")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("id");
+
+                    b.HasIndex("ownerId");
 
                     b.ToTable("communities");
                 });
@@ -203,14 +205,17 @@ namespace Pine.Migrations
                     b.Property<string>("id")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("PostId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<byte[]>("Img")
+                        .HasColumnType("varbinary(max)");
 
-                    b.Property<string>("UserId")
+                    b.Property<string>("PostId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("communityId")
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("creatorId")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("description")
                         .IsRequired()
@@ -228,9 +233,9 @@ namespace Pine.Migrations
 
                     b.HasKey("id");
 
-                    b.HasIndex("PostId");
+                    b.HasIndex("communityId");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex("creatorId");
 
                     b.ToTable("posts");
                 });
@@ -243,11 +248,8 @@ namespace Pine.Migrations
                     b.Property<string>("ListingId")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
-
                     b.Property<string>("creatorId")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("description")
                         .IsRequired()
@@ -265,7 +267,7 @@ namespace Pine.Migrations
 
                     b.HasKey("id");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex("creatorId");
 
                     b.ToTable("listings");
                 });
@@ -277,6 +279,9 @@ namespace Pine.Migrations
 
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("int");
+
+                    b.Property<string>("Communityid")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
@@ -318,14 +323,13 @@ namespace Pine.Migrations
                     b.Property<bool>("TwoFactorEnabled")
                         .HasColumnType("bit");
 
-                    b.Property<string>("UserID")
-                        .HasColumnType("nvarchar(450)");
-
                     b.Property<string>("UserName")
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("Communityid");
 
                     b.HasIndex("NormalizedEmail")
                         .HasDatabaseName("EmailIndex");
@@ -334,8 +338,6 @@ namespace Pine.Migrations
                         .IsUnique()
                         .HasDatabaseName("UserNameIndex")
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
-
-                    b.HasIndex("UserID");
 
                     b.ToTable("AspNetUsers");
                 });
@@ -400,15 +402,24 @@ namespace Pine.Migrations
                     b.Navigation("post");
                 });
 
+            modelBuilder.Entity("Pine.Data.Entities.Community", b =>
+                {
+                    b.HasOne("Pine.Data.Identity.User", "Owner")
+                        .WithMany()
+                        .HasForeignKey("ownerId");
+
+                    b.Navigation("Owner");
+                });
+
             modelBuilder.Entity("Pine.Data.Entities.Post", b =>
                 {
                     b.HasOne("Pine.Data.Entities.Community", null)
-                        .WithMany("posts")
-                        .HasForeignKey("PostId");
+                        .WithMany("communityPosts")
+                        .HasForeignKey("communityId");
 
                     b.HasOne("Pine.Data.Identity.User", "creator")
                         .WithMany("posts")
-                        .HasForeignKey("UserId");
+                        .HasForeignKey("creatorId");
 
                     b.Navigation("creator");
                 });
@@ -417,7 +428,7 @@ namespace Pine.Migrations
                 {
                     b.HasOne("Pine.Data.Identity.User", "creator")
                         .WithMany("listings")
-                        .HasForeignKey("UserId");
+                        .HasForeignKey("creatorId");
 
                     b.Navigation("creator");
                 });
@@ -426,14 +437,14 @@ namespace Pine.Migrations
                 {
                     b.HasOne("Pine.Data.Entities.Community", null)
                         .WithMany("communityMembers")
-                        .HasForeignKey("UserID");
+                        .HasForeignKey("Communityid");
                 });
 
             modelBuilder.Entity("Pine.Data.Entities.Community", b =>
                 {
                     b.Navigation("communityMembers");
 
-                    b.Navigation("posts");
+                    b.Navigation("communityPosts");
                 });
 
             modelBuilder.Entity("Pine.Data.Entities.Post", b =>

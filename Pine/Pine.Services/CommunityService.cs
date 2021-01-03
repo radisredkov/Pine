@@ -31,7 +31,7 @@ namespace Pine.Services
                 description = model.description,
                 //tags = model.tags,
                 ownerId = userId,
-                posts = new List<Post>()
+                //posts = new List<Post>()
 
             };
 

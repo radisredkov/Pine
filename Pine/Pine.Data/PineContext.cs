@@ -23,6 +23,8 @@ namespace Pine.Data
         public DbSet<Comment> comments { get; set; }
         public DbSet<ShopListing> listings { get; set; }
 
+
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder.Entity<User>().HasMany(u => u.posts).WithOne(p => p.creator);
