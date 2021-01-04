@@ -81,15 +81,17 @@ body {
 }
 
 div.transbox {
-    margin: 30px;
+    margin-top: 30px;
+    margin-left: auto;
+    margin-right: auto;
     background-color: rgba(255, 255, 255, 0.4);
     border: 2px rgba(255, 255, 255, 0.4);
-    color: #;
-    border-radius: 25px;
+    border-radius: 5px;
     padding-top: 1px;
     padding-bottom: 1px;
-    padding-left: 2%;
-    padding-right: 2%;
+    padding-left: 1%;
+    padding-right: 1%;
+    margin-left: 0px;
 }
 
     div.transbox p {
@@ -140,7 +142,7 @@ img {
 
 .CreateButton {
     fill-opacity: 0.5;
-    background-color: #00e018;
+    background-color: #0fd441;
     border: solid 2px;
     border-color: darkgreen;
     border-radius: 2px;
@@ -152,8 +154,7 @@ img {
     padding-left: 5px;
     padding-right: 5px;
     text-decoration: inherit !important;
-    opacity: 0.9 !important;
-    margin-right: 7.5%;
+    margin-right: 4%;
 }
 .CreateButton:hover{
     background-color: #0ea100
@@ -232,25 +233,28 @@ img {
 
 .SortByButton {
     fill-opacity: 0.5;
-    background-color: aqua;
-    border: solid 2px;
-    border-color: darkblue;
-    border-radius: 2px;
+    background-color: #0acf01;
+    border: solid rgba(0, 0, 0, 0.6);
+    border-radius: 5px;
     color: black !important;
     float: left;
-    margin-left: 2.5%;
     padding-top: 2px;
     padding-bottom: 2px;
     padding-left: 5px;
     padding-right: 5px;
     text-decoration: inherit !important;
-    opacity: 0.9 !important;
     min-height: 35px;
+    margin-right: 0.5%;
 }
 
     .SortByButton:hover {
         background-color: #1b6ec2;
     }
+
+.containerMain{
+    margin-left: 3.4%;
+    margin-right: 3.4%;
+}
 
 @-webkit-keyframes mover {
     0% {

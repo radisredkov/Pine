@@ -6,6 +6,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Pine.Data;
 using Pine.Data.Entities;
 using Pine.Data.Identity;
@@ -17,19 +18,17 @@ namespace Pine.Controllers
 {
     public class CommunityController : Controller
     {
-        
         private readonly IPostServices postServices;
         private readonly IUserServices userServices;
         private readonly ICommunityServices communityService;
+        private readonly PineContext db;
 
-
-        public CommunityController(IPostServices postServices, IUserServices userServices, ICommunityServices communityService)
+        public CommunityController(IPostServices postServices, IUserServices userServices, ICommunityServices communityService, PineContext context)
         {
-
             this.postServices = postServices;
             this.userServices = userServices;
             this.communityService = communityService;
-          
+            this.db = context;
         }
 
         public IActionResult AllPosts()
@@ -57,12 +56,12 @@ namespace Pine.Controllers
             ICollection<Community> communities = communityService.getAllcommunities();
             CommunitiesViewModel model = new CommunitiesViewModel()
             {
-                communities = communities.Select(p => new OutputCommunityViewModel
+                communities = communities.Select(c => new OutputCommunityViewModel
                 {
-                    id = p.id,                  
-                    name = p.name,
-                    description = p.description
-                }).ToList()
+                    id = c.id,
+                    name = c.name,
+                    description = c.description
+                }).OrderByDescending(c => c.name).ToList()
             };
 
             return View("Communities", model);
@@ -153,14 +152,14 @@ namespace Pine.Controllers
             }
 
 
-                var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
 
-                this.postServices.createPost(post, userId, img);
+            this.postServices.createPost(post, userId, img);
 
-                return this.Redirect("/");
-           
+            return this.Redirect("/");
+
         }
-       
+
         [HttpGet("/communities/create")]
         public IActionResult CreateCommunity()
         {
@@ -173,16 +172,29 @@ namespace Pine.Controllers
             if (!this.ModelState.IsValid)
             {
                 return this.View();
-
             }
 
             var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
-
             this.communityService.CreateCommunity(com, userId);
-
-            return this.Redirect("/");
-
+            return this.RedirectToAction("Communities", "Community");
         }
+
+        public async Task<IActionResult> ViewCommunity(string communityName)
+        {
+            if (communityName == null)
+            {
+                return NotFound();
+            }
+
+            var community = await db.communities.FirstOrDefaultAsync(c => c.name == communityName);
+            if (community == null)
+            {
+                return NotFound();
+            }
+
+            return View(community);
+        }
+
         [HttpGet]
         public IActionResult JoinCommunity()
         {
@@ -197,33 +209,31 @@ namespace Pine.Controllers
             return this.Redirect("/");
         }
         [HttpPost]
-            public IActionResult DeletePost(OutputPostViewModel post)
+        public IActionResult DeletePost(OutputPostViewModel post)
+        {
+            if (!this.User.Identity.IsAuthenticated)
             {
-                if (!this.User.Identity.IsAuthenticated)
-                {
-                    return this.Redirect("/");
-                }
-
-                if (!this.ModelState.IsValid)
-                {
-                    return this.Redirect("/");
-                }
-
-                var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
-                var userName = this.userServices.getUserNameById(userId);
-
-                Console.WriteLine(userName, post.userName, User.Identity.Name);
-
-                if (userName != post.userName)
-                {
-                    return this.Redirect("/");
-                }
-
-                this.postServices.deletePost(post.id);
-
                 return this.Redirect("/");
             }
 
-           
+            if (!this.ModelState.IsValid)
+            {
+                return this.Redirect("/");
+            }
+
+            var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var userName = this.userServices.getUserNameById(userId);
+
+            Console.WriteLine(userName, post.userName, User.Identity.Name);
+
+            if (userName != post.userName)
+            {
+                return this.Redirect("/");
+            }
+
+            this.postServices.deletePost(post.id);
+
+            return this.Redirect("/");
         }
     }
+}

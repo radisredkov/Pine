@@ -616,3 +616,6 @@ D:\It-kariera\Project\Pine\Pine\obj\Debug\netcoreapp3.1\Razor\Views\Community\Po
 D:\It-kariera\Project\Pine\Pine\obj\Debug\netcoreapp3.1\Razor\Views\Community\CreateCommunity.cshtml.g.cs
 D:\It-kariera\Project\Pine\Pine\obj\Debug\netcoreapp3.1\Razor\Views\Community\Community.cshtml.g.cs
 D:\It-kariera\Project\Pine\Pine\obj\Debug\netcoreapp3.1\Razor\Views\Community\CommunityCard.cshtml.g.cs
+D:\Radi's Folder\Pine\Pine\Pine\obj\Debug\netcoreapp3.1\Razor\Views\Community\Community.cshtml.g.cs
+D:\Radi's Folder\Pine\Pine\Pine\obj\Debug\netcoreapp3.1\Razor\Views\Community\CommunityCard.cshtml.g.cs
+D:\Radi's Folder\Pine\Pine\Pine\obj\Debug\netcoreapp3.1\Razor\Views\Community\CreateCommunity.cshtml.g.cs

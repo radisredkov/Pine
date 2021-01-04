@@ -1,11 +1,10 @@
 ﻿@model Pine.Models.Entities.OutputCommunityViewModel
 
 <div>
-        <div class="card-body">
-            <h4 class="card-title">@Html.DisplayFor(model => model.name)</h4>
-            <p class="card-text" style="white-space: pre-line;">@Html.DisplayFor(model => model.description)</p>
+    <div>
+        <a asp-area="" asp-controller="Community" asp-action="ViewCommunity" asp-route-name="@Model.name" style="font-size: 32px;">@Html.DisplayFor(model => model.name) -</a> <p style="font-size: 24px; display: inline;">@Html.DisplayFor(model => model.description)</p>
             @if (User.Identity.Name == Model.OwnerName && User.Identity.Name != null)
-            {               
+            {
                 <form method="get" asp-controller="Community" asp-action="EditPostView">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                     <div class="form-group">
@@ -14,14 +13,14 @@
                     <div class="form-group">
                         <input type="hidden" asp-for="description" class="form-control" />
                     </div>
-                   
+
                     <div class="form-group">
                         <input type="hidden" asp-for="id" class="form-control" />
                     </div>
                     <div class="form-group">
                         <input type="hidden" asp-for="OwnerName" class="form-control" />
                     </div>
-                   
+
                     <div class="moderationButtons">
                         <button type="submit" class="btn btn-info">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-fill" viewBox="0 0 16 16">
@@ -30,8 +29,8 @@
                         </button>
                     </div>
                 </form>
-             }
-        </div>
+            }
+</div>
     </div>
 </div>
 <div>

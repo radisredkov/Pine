@@ -4559,17 +4559,17 @@ input[type="button"].btn-block {
 }
 
 .card {
-  position: relative;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  min-width: 0;
-  word-wrap: break-word;
-  background-color: #fff;
-  background-clip: border-box;
-  border-radius: 25px !important;
-  opacity: 0.9;
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border-radius: 5px !important;
+    margin-top: 15px !important;
 }
 
 .card > hr {
@@ -4591,15 +4591,15 @@ input[type="button"].btn-block {
     -ms-flex: 1 1 auto;
     flex: 1 1 auto;
     padding: 1.25rem;
-    background-color: #61eb69;
-    border-bottom-left-radius: 25px !important;
-    border-bottom-right-radius: 25px !important;
+    background-color: #2f9262;
+    border-bottom-left-radius: 5px !important;
+    border-bottom-right-radius: 5px !important;
 }
 
 .card-title {
     margin-bottom: 0.75rem;
     font-size: 50px;
-    color: #005f16;
+    color: #f8f9fa;
 }
 
 .card-subtitle {
@@ -4610,8 +4610,9 @@ input[type="button"].btn-block {
 .card-text:last-child {
   margin-bottom: 0;
 }
-.card-text{
+.card-text {
     font-size: 20px;
+    color: aliceblue !important;
 }
 
 .card-link:hover {
@@ -4625,12 +4626,12 @@ input[type="button"].btn-block {
 .card-header {
     padding: 0.75rem 1.25rem;
     margin-bottom: 0;
-    background-color: #009133;
+    background-color: #00322a;
     border-bottom: 1px solid rgba(0, 0, 0, 0.125);
     width: 100% !important;
     color: white;
-    border-top-left-radius: 25px !important;
-    border-top-right-radius: 25px !important;
+    border-top-left-radius: 5px !important;
+    border-top-right-radius: 5px !important;
 }
 
 .card-header:first-child {

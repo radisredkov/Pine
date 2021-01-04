@@ -3,21 +3,23 @@
     ViewData["Title"] = "Shop";
 }
 <a class="CreateButton" asp-area="" asp-controller="Shop" asp-action="CreateListing">+ Create Listing</a>
-<a class="SortByButton" asp-area="" asp-controller="Shop" asp-action="ShopLowToHigh"><b>Price:</b> Low to High ↑</a>
-<a class="SortByButton" asp-area="" asp-controller="Shop" asp-action="ShopHighToLow"><b>Price:</b> High to Low ↓</a>
 <br />
 <div>
     @if (Model.listings.Count == 0)
     {
+        <br />
         <div>Nothing is up for sale at the moment. Want to trade? Click the green button in the top-right corner.</div>
     }
     else
     {
-        <div class="transbox">
-            @foreach (var listing in Model.listings)
-            {
-                <partial name="./ListingCard.cshtml" model=@listing />
-            }
-        </div>
+<div class="transbox">
+    <a class="SortByButton" asp-area="" asp-controller="Shop" asp-action="ShopLowToHigh"><b>Price:</b> Low to High ↑</a>
+    <a class="SortByButton" asp-area="" asp-controller="Shop" asp-action="ShopHighToLow"><b>Price:</b> High to Low ↓</a>
+    <br />
+    @foreach (var listing in Model.listings)
+    {
+        <partial name="./ListingCard.cshtml" model=@listing />
+    }
+</div>
     }
 </div>

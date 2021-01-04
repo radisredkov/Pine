@@ -36,7 +36,7 @@
     <div class="card border-secondary mb-3" style="margin-top: 2.5%; color: black;">
         <div class="card-header">Listed by <a type="submit" asp-controller="Account" asp-action="UserPanel" asp-route-userName="@Model.userName">@Html.DisplayFor(model => model.userName)</a> <div style="float: right;">@Html.DisplayFor(model => model.uploadDate)</div></div>
         <div class="card-body">
-            <h4 class="card-title">@Html.DisplayFor(model => model.name) - @Html.DisplayFor(model => model.price)лв.</h4>
+            <h4 class="card-title" style="display:inline">@Html.DisplayFor(model => model.name)</h4><h4 class="card-title" style="display:inline;float:right;color:#00ff21;">@Html.DisplayFor(model => model.price)лв.</h4>
             <p class="card-text" style="white-space: pre-line;">@Html.DisplayFor(model => model.description)</p>
             @if (User.Identity.Name == Model.userName)
             {

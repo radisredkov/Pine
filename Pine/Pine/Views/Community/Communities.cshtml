@@ -4,7 +4,7 @@
 }
 
 <a class="CreateButton" asp-controller="Community" asp-action="CreateCommunity">+ Create Community</a>
-
+<br />
 <div>
     @if (Model.communities.Count == 0)
     {
@@ -12,11 +12,9 @@
     }
     else
     {
-        <div class="transbox">
             @foreach (var community in Model.communities)
              {
             <partial name="./CommunityCard.cshtml" model=@community />
              }
-        </div>
     }
 </div>

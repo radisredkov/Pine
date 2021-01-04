@@ -1,4 +1,5 @@
 ﻿using Pine.Data;
+using Pine.Data.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +14,11 @@ namespace Pine.Services
         public UserServices(PineContext db)
         {
             this.db = db;
+        }
+
+        public User getUserById(string id)
+        {
+            throw new NotImplementedException();
         }
 
         public string getUserNameById(string id)

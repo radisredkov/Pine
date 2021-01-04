@@ -1,4 +1,5 @@
 ﻿using Pine.Data.Entities;
+using Pine.Data.Identity;
 using Pine.Models.Entities;
 using System;
 using System.Collections.Generic;
@@ -10,5 +11,6 @@ namespace Pine.Services.Interfaces
     {
         public void CreateCommunity(CommunityViewModel model, string userId);
         public ICollection<Community> getAllcommunities();
+        void JoinCommunity(User user, string id);
     }
 }

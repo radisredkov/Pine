@@ -3,25 +3,22 @@
     ViewData["Title"] = "All Posts";
 }
 <a class="CreateButton" asp-area="" asp-controller="Community" asp-action="CreatePost">+ Create Post</a>
-<a class="SortByButton" asp-area="" asp-controller="Community" asp-action="AllPosts">Recent posts</a>
-<a class="SortByButton" asp-area="" asp-controller="Community" asp-action="AllPostsSortByDateAscending">Oldest posts</a>
 <br />
 <div>
     @if (Model.posts.Count == 0)
     {
+        <br />
         <div>There are currently no posts. Make one and start a discussion!</div>
     }
     else
     {
 <div class="transbox">
+    <a class="SortByButton" asp-area="" asp-controller="Community" asp-action="AllPosts">Recent posts</a>
+    <a class="SortByButton" asp-area="" asp-controller="Community" asp-action="AllPostsSortByDateAscending">Oldest posts</a>
+    <br />
     @foreach (var post in Model.posts)
     {
         <partial name="./PostCard.cshtml" model=@post />
-        if (post.img != null)
-        {
-            <img class="img-responsive" width="300"  height="300" src="data:image/jpeg;base64,@Convert.ToBase64String(post.img)" />
-
-        }
     }
 </div>
     }
