@@ -5,7 +5,6 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Pine.Data;
-using Pine.Data;
 
 [assembly: HostingStartup(typeof(Pine.Data.IdentityHostingStartup))]
 namespace Pine.Data
