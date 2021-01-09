@@ -11,6 +11,11 @@ namespace Pine.Data.Identity
 {
     public class User : IdentityUser
     {
+        public User()
+        {
+            this.CommunitiesJoined = new HashSet<Community>();
+        }
+
         [Key]
         [ForeignKey("UserId")]
         public override string Id { get => base.Id; set => base.Id = value; }
@@ -18,7 +23,7 @@ namespace Pine.Data.Identity
         [ForeignKey("PostId")]
         public List<Post> posts { get; set; }
 
-        public string communityName { get; set; }
+        public virtual ICollection<Community> CommunitiesJoined { get; set; }
 
         [ForeignKey("ListingId")]
         public List<ShopListing> listings { get; set; }

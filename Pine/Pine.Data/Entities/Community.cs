@@ -13,6 +13,7 @@ namespace Pine.Data.Entities
         public Community()
         {
             this.id = Guid.NewGuid().ToString();
+            this.communityMembers = new HashSet<User>();
         }
 
         [Key]
@@ -34,8 +35,8 @@ namespace Pine.Data.Entities
         public ICollection<Post> communityPosts { get; set; }
             = new List<Post>();
 
-        public ICollection<User> communityMembers { get; set; }
-           = new List<User>();
+        public virtual ICollection<User> communityMembers { get; set; }
+          
 
 
     }

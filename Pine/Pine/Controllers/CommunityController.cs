@@ -21,7 +21,9 @@ namespace Pine.Controllers
         private readonly IPostServices postServices;
         private readonly IUserServices userServices;
         private readonly ICommunityServices communityService;
-        private readonly PineContext db;
+        private readonly PineContext db; 
+
+        
 
         public CommunityController(IPostServices postServices, IUserServices userServices, ICommunityServices communityService, PineContext context)
         {
@@ -205,7 +207,7 @@ namespace Pine.Controllers
         {
             string userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
             User user = userServices.getUserById(userId);
-            communityService.JoinCommunity(user, model.id);
+            //communityService.JoinCommunity(user, model.id);
             return this.Redirect("/");
         }
         [HttpPost]

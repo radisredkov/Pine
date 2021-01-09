@@ -20,7 +20,7 @@ namespace Pine.Data
         public DbSet<User> users { get; set; }
         public DbSet<Post> posts { get; set; }
         public DbSet<Community> communities { get; set; }
-        public DbSet<CommunityUser> communityUser { get; set; }
+       
         public DbSet<Comment> comments { get; set; }
         public DbSet<ShopListing> listings { get; set; }
 
@@ -30,7 +30,8 @@ namespace Pine.Data
         {
             builder.Entity<User>().HasMany(u => u.posts).WithOne(p => p.creator);
             builder.Entity<User>().HasMany(u => u.listings).WithOne(l => l.creator);
-           // builder.Entity<Community>().HasMany(c => c.communityMembers).WithOne(u => u.UserName);
+            builder.Entity<User>().HasMany(u => u.CommunitiesJoined).WithMany(c => c.communityMembers);
+            builder.Entity<Community>().HasOne(c => c.Owner);
            // builder.Entity<Community>().HasMany(c => c.communityPosts).WithOne(p => p.communityId);
             builder.Entity<Post>().HasMany(p => p.comments).WithOne(c => c.post);
             base.OnModelCreating(builder);

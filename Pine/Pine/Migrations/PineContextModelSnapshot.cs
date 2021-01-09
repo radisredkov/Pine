@@ -19,6 +19,21 @@ namespace Pine.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("ProductVersion", "5.0.1");
 
+            modelBuilder.Entity("CommunityUser", b =>
+                {
+                    b.Property<string>("CommunitiesJoinedid")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("communityMembersId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("CommunitiesJoinedid", "communityMembersId");
+
+                    b.HasIndex("communityMembersId");
+
+                    b.ToTable("CommunityUser");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
                 {
                     b.Property<string>("Id")
@@ -278,9 +293,6 @@ namespace Pine.Migrations
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("int");
 
-                    b.Property<string>("Communityid")
-                        .HasColumnType("nvarchar(450)");
-
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
                         .HasColumnType("nvarchar(max)");
@@ -327,8 +339,6 @@ namespace Pine.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("Communityid");
-
                     b.HasIndex("NormalizedEmail")
                         .HasDatabaseName("EmailIndex");
 
@@ -338,6 +348,21 @@ namespace Pine.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers");
+                });
+
+            modelBuilder.Entity("CommunityUser", b =>
+                {
+                    b.HasOne("Pine.Data.Entities.Community", null)
+                        .WithMany()
+                        .HasForeignKey("CommunitiesJoinedid")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Pine.Data.Identity.User", null)
+                        .WithMany()
+                        .HasForeignKey("communityMembersId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -431,17 +456,8 @@ namespace Pine.Migrations
                     b.Navigation("creator");
                 });
 
-            modelBuilder.Entity("Pine.Data.Identity.User", b =>
-                {
-                    b.HasOne("Pine.Data.Entities.Community", null)
-                        .WithMany("communityMembers")
-                        .HasForeignKey("Communityid");
-                });
-
             modelBuilder.Entity("Pine.Data.Entities.Community", b =>
                 {
-                    b.Navigation("communityMembers");
-
                     b.Navigation("communityPosts");
                 });
 

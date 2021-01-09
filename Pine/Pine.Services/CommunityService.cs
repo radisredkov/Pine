@@ -19,12 +19,12 @@ namespace Pine.Services
             this.db = db;
         }
         
-        public void JoinCommunity(User user,string communityId)
-        {
+        //public void JoinCommunity(User user,string communityId)
+        //{
           
-            db.communities.Find(communityId).communityMembers.Add(user);
-            db.SaveChanges();
-        }
+        //    db.communities.Find(communityId).communityMembers.Add(user);
+        //    db.SaveChanges();
+        //}
         public void CreateCommunity(CommunityViewModel model, string userId)
         {
             Community community = new Community
