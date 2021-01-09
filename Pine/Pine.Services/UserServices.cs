@@ -18,7 +18,7 @@ namespace Pine.Services
 
         public User getUserById(string id)
         {
-            throw new NotImplementedException();
+            return db.users.Find(id);
         }
 
         public string getUserNameById(string id)
