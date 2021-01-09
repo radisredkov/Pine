@@ -589,7 +589,6 @@ D:\It-kariera\Project\Pine\Pine\obj\Debug\netcoreapp3.1\Pine.TagHelpers.output.c
 D:\It-kariera\Project\Pine\Pine\obj\Debug\netcoreapp3.1\Pine.RazorCoreGenerate.cache
 D:\It-kariera\Project\Pine\Pine\obj\Debug\netcoreapp3.1\Razor\Views\Account\Login.cshtml.g.cs
 D:\It-kariera\Project\Pine\Pine\obj\Debug\netcoreapp3.1\Razor\Views\Account\Register.cshtml.g.cs
-D:\It-kariera\Project\Pine\Pine\obj\Debug\netcoreapp3.1\Razor\Views\Account\UserPanel.cshtml.g.cs
 D:\It-kariera\Project\Pine\Pine\obj\Debug\netcoreapp3.1\Razor\Views\Community\Communities.cshtml.g.cs
 D:\It-kariera\Project\Pine\Pine\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Error.cshtml.g.cs
 D:\It-kariera\Project\Pine\Pine\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_Layout.cshtml.g.cs
@@ -619,3 +618,5 @@ D:\It-kariera\Project\Pine\Pine\obj\Debug\netcoreapp3.1\Razor\Views\Community\Co
 D:\Radi's Folder\Pine\Pine\Pine\obj\Debug\netcoreapp3.1\Razor\Views\Community\Community.cshtml.g.cs
 D:\Radi's Folder\Pine\Pine\Pine\obj\Debug\netcoreapp3.1\Razor\Views\Community\CommunityCard.cshtml.g.cs
 D:\Radi's Folder\Pine\Pine\Pine\obj\Debug\netcoreapp3.1\Razor\Views\Community\CreateCommunity.cshtml.g.cs
+D:\It-kariera\Project\Pine\Pine\obj\Debug\netcoreapp3.1\Razor\Views\Account\UserModelPostCard.cshtml.g.cs
+D:\It-kariera\Project\Pine\Pine\obj\Debug\netcoreapp3.1\Razor\Views\Account\UserPanel.cshtml.g.cs

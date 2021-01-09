@@ -1,13 +1,40 @@
-﻿@model Pine.Data.Identity.User
+﻿@*@model Pine.Data.Entit*@
 
+@*@{
+        ViewData["Title"] = Model.creator;
+    }
+
+    <h1 style="color:aqua">@Html.DisplayFor(model => model.creator.NormalizedUserName)</h1>
+
+    <h2 style="color:aqua">Posts:</h2>
+    @Html.DisplayFor(Model => Model.)
+
+    <h2 style="color:aqua">Listings:</h2>
+    @Html.DisplayFor(model => model.listings)
+
+
+    <h3 style="color:aqua">@Html.DisplayFor(model => model.postId)</h3>*@
+
+@model Pine.Models.Entities.PostsViewModel
 @{
-    ViewData["Title"] = Model.UserName;
+    ViewData["Title"] = "User posts";
 }
 
-<h1 style="color:aqua">@Html.DisplayFor(model => model.UserName)</h1>
+<h1>@User.Identity.Name's pofile</h1>
 
-<h2 style="color:aqua">Posts:</h2>
-@Html.DisplayFor(Model => Model.posts)
+<br />
+<br />
+<br />
+<div>      
+    <div class="transbox">
+      
+        <br />
+        @foreach (var post in Model.posts.Where(p => p.userName == User.Identity.Name))
+         {
+            <partial name="./UserModelPostCard.cshtml" model=@post />
+         }
+    </div>
+    
+</div>
 
-<h2 style="color:aqua">Listings:</h2>
-@Html.DisplayFor(model => model.listings)
+

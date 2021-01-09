@@ -84,6 +84,7 @@ namespace Pine.Controllers
                     tags = p.tags,
                     img = p.Img,
                     userName = userServices.getUserNameById(p.creatorId),
+                    creatorId = p.creatorId,
                     uploadDate = p.timeOfCreation
                 }).OrderBy(p => p.uploadDate).ToList()
             };

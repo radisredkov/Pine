@@ -13,6 +13,7 @@ namespace Pine.Models.Entities
         public string tags { get; set; }
 
         public string description { get; set; }
+        public string creatorId { get; set; }
 
         public string userName { get; set; }
 
