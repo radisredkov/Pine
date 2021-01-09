@@ -32,6 +32,9 @@ namespace Pine.Services
                 comments = new List<Comment>()
             };
 
+            var user = db.Users.FirstOrDefault(u => u.Id == userId);
+            user.posts.Add(post);
+            db.users.Update(user);                    
             db.posts.Add(post);
             db.SaveChanges();
         }
