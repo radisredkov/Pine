@@ -19,8 +19,7 @@ namespace Pine.Data
 
         public DbSet<User> users { get; set; }
         public DbSet<Post> posts { get; set; }
-        public DbSet<Community> communities { get; set; }
-       
+        public DbSet<Community> communities { get; set; }      
         public DbSet<Comment> comments { get; set; }
         public DbSet<ShopListing> listings { get; set; }
 
@@ -32,7 +31,7 @@ namespace Pine.Data
             builder.Entity<User>().HasMany(u => u.listings).WithOne(l => l.creator);
             builder.Entity<User>().HasMany(u => u.CommunitiesJoined).WithMany(c => c.communityMembers);
             builder.Entity<Community>().HasOne(c => c.Owner);
-           // builder.Entity<Community>().HasMany(c => c.communityPosts).WithOne(p => p.communityId);
+            builder.Entity<Community>().HasMany(c => c.communityPosts);
             builder.Entity<Post>().HasMany(p => p.comments).WithOne(c => c.post);
             base.OnModelCreating(builder);
             // Customize the ASP.NET Identity model and override the defaults if needed.

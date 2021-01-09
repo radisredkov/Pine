@@ -32,8 +32,8 @@ namespace Pine.Data.Entities
         [ForeignKey("ownerId")]
         public virtual User Owner { get; set; }
 
-        public ICollection<Post> communityPosts { get; set; }
-            = new List<Post>();
+        public virtual ICollection<Post> communityPosts { get; set; }
+
 
         public virtual ICollection<User> communityMembers { get; set; }
           

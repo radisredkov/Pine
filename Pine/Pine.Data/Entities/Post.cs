@@ -19,7 +19,6 @@ namespace Pine.Data.Entities
         [ForeignKey("PostId")]
         public string id { get; set; }
 
-        public string communityId { get; set; }
         [Required]
         public string title { get; set; }
 
