@@ -1280,7 +1280,8 @@
           "Microsoft.AspNetCore.Identity.UI": "5.0.1",
           "Microsoft.AspNetCore.Session": "2.2.0",
           "Microsoft.EntityFrameworkCore": "5.0.1",
-          "Microsoft.EntityFrameworkCore.SqlServer": "5.0.1"
+          "Microsoft.EntityFrameworkCore.SqlServer": "5.0.1",
+          "Pine.Data": "1.0.0"
         },
         "runtime": {
           "Pine.Models.dll": {}

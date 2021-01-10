@@ -54,3 +54,6 @@ D:\It-kariera\Project\Pine\Pine.Models\obj\Debug\netcoreapp3.1\Pine.Models.cspro
 D:\It-kariera\Project\Pine\Pine.Models\obj\Debug\netcoreapp3.1\Pine.Models.dll
 D:\It-kariera\Project\Pine\Pine.Models\obj\Debug\netcoreapp3.1\Pine.Models.pdb
 D:\It-kariera\Project\Pine\Pine.Models\obj\Debug\netcoreapp3.1\Pine.Models.genruntimeconfig.cache
+D:\Radi's Folder\Pine\Pine\Pine.Models\bin\Debug\netcoreapp3.1\Pine.Data.dll
+D:\Radi's Folder\Pine\Pine\Pine.Models\bin\Debug\netcoreapp3.1\Pine.Data.pdb
+D:\Radi's Folder\Pine\Pine\Pine.Models\obj\Debug\netcoreapp3.1\Pine.Models.csproj.CopyComplete

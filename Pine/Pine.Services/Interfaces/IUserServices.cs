@@ -9,5 +9,6 @@ namespace Pine.Services
     {
         public string getUserNameById(string id);
         public User getUserById(string id);
+        public User getUserByUserName(string name);
     }
 }

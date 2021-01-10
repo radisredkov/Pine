@@ -10,8 +10,8 @@ using Pine.Data;
 namespace Pine.Migrations
 {
     [DbContext(typeof(PineContext))]
-    [Migration("20210109092446_update")]
-    partial class update
+    [Migration("20210110092429_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -226,14 +226,14 @@ namespace Pine.Migrations
                     b.Property<byte[]>("Img")
                         .HasColumnType("varbinary(max)");
 
-                    b.Property<string>("PostId")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("creatorId")
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("description")
                         .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("postId")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("tags")
@@ -338,6 +338,9 @@ namespace Pine.Migrations
                     b.Property<string>("UserName")
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
+
+                    b.Property<string>("postId")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 

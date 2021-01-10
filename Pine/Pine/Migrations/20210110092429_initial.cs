@@ -26,6 +26,7 @@ namespace Pine.Migrations
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    postId = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     Email = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
@@ -225,14 +226,14 @@ namespace Pine.Migrations
                 columns: table => new
                 {
                     id = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    communityId = table.Column<string>(type: "nvarchar(450)", nullable: true),
                     title = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     description = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     tags = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     timeOfCreation = table.Column<DateTime>(type: "datetime2", nullable: false),
                     creatorId = table.Column<string>(type: "nvarchar(450)", nullable: true),
                     Img = table.Column<byte[]>(type: "varbinary(max)", nullable: true),
-                    PostId = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    Communityid = table.Column<string>(type: "nvarchar(450)", nullable: true),
+                    postId = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -244,8 +245,8 @@ namespace Pine.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_posts_communities_communityId",
-                        column: x => x.communityId,
+                        name: "FK_posts_communities_Communityid",
+                        column: x => x.Communityid,
                         principalTable: "communities",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Restrict);
@@ -331,9 +332,9 @@ namespace Pine.Migrations
                 column: "creatorId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_posts_communityId",
+                name: "IX_posts_Communityid",
                 table: "posts",
-                column: "communityId");
+                column: "Communityid");
 
             migrationBuilder.CreateIndex(
                 name: "IX_posts_creatorId",

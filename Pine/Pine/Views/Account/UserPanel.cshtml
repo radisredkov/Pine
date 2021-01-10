@@ -1,40 +1,42 @@
-﻿@*@model Pine.Data.Entit*@
+﻿@using Pine.Data.Identity;
+@using Pine.Models.Entities;
+@model Tuple<PostsViewModel, User, ShopListingsViewModel>
 
-@*@{
-        ViewData["Title"] = Model.creator;
-    }
-
-    <h1 style="color:aqua">@Html.DisplayFor(model => model.creator.NormalizedUserName)</h1>
-
-    <h2 style="color:aqua">Posts:</h2>
-    @Html.DisplayFor(Model => Model.)
-
-    <h2 style="color:aqua">Listings:</h2>
-    @Html.DisplayFor(model => model.listings)
-
-
-    <h3 style="color:aqua">@Html.DisplayFor(model => model.postId)</h3>*@
-
-@model Pine.Models.Entities.PostsViewModel
 @{
-    ViewData["Title"] = "User posts";
+    ViewData["Title"] = Model.Item2.UserName;
 }
 
-<h1>@User.Identity.Name's pofile</h1>
-
-<br />
-<br />
-<br />
-<div>      
-    <div class="transbox">
-      
-        <br />
-        @foreach (var post in Model.posts.Where(p => p.userName == User.Identity.Name))
-         {
-            <partial name="./UserModelPostCard.cshtml" model=@post />
-         }
+<center><h1 style="color:#00ff21">@Html.DisplayFor(model => model.Item2.UserName)</h1></center>
+<h2 style="color:aqua">Posts:</h2>
+@if (Model.Item1.posts.Count == 0)
+{
+    <p style="color: #00ff21; display: inline">@Html.DisplayFor(model => model.Item2.UserName)  </p><p style="display: inline">has no posts.</p>
+}
+else
+{
+    <div>
+        <div class="transbox">
+            @foreach (var post in Model.Item1.posts.Where(p => p.userName == Model.Item2.UserName))
+            {
+                <partial name="../Community/PostCard.cshtml" model=@post />
+            }
+        </div>
     </div>
-    
-</div>
+}
 
-
+<h2 style="color:aqua">Listings:</h2>
+@if (Model.Item3.listings.Count == 0)
+{
+    <p style="color: #00ff21; display: inline">@Html.DisplayFor(model => model.Item2.UserName) </p><p style="display: inline">has no active listings at the moment.</p>
+}
+else
+{
+    <div>
+        <div class="transbox">
+            @foreach (var listing in Model.Item3.listings.Where(l => l.userName == Model.Item2.UserName))
+            {
+                <partial name="../Shop/ListingCard.cshtml" model=@listing />
+            }
+        </div>
+    </div>
+}

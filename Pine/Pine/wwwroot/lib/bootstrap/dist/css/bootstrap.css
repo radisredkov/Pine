@@ -4632,6 +4632,7 @@ input[type="button"].btn-block {
     color: white;
     border-top-left-radius: 5px !important;
     border-top-right-radius: 5px !important;
+    height: 38px;
 }
 
 .card-header:first-child {

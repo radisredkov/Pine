@@ -75,7 +75,7 @@ body {
     /* Margin bottom by footer height */
     margin-bottom: 60px;
     background-color: #000;
-    color: #d5d5d5;
+    color: #d5d5d5 !important;
     overflow-x: hidden;
     background-image: url(https://i.imgur.com/RAOKd7p.png);
 }
@@ -84,6 +84,7 @@ div.transbox {
     margin-top: 30px;
     margin-left: auto;
     margin-right: auto;
+    margin-bottom: 30px;
     background-color: rgba(255, 255, 255, 0.4);
     border: 2px rgba(255, 255, 255, 0.4);
     border-radius: 5px;
@@ -248,7 +249,8 @@ img {
 }
 
     .SortByButton:hover {
-        background-color: #1b6ec2;
+        background-color: #a0ff00;
+        color: black !important;
     }
 
 .containerMain{

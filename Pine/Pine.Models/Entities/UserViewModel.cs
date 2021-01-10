@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Pine.Models.Entities
 {
-    class UserViewModel
+    public class UserViewModel
     {
     }
 }

@@ -2,7 +2,7 @@
 
 <div>
     <div>
-        <a asp-area="" asp-controller="Community" asp-action="ViewCommunity" asp-route-name="@Model.name" style="font-size: 32px;">@Html.DisplayFor(model => model.name) -</a> <p style="font-size: 24px; display: inline;">@Html.DisplayFor(model => model.description)</p>
+        <a type="submit" asp-area="" asp-controller="Community" asp-action="Community" asp-route-communityName="@Model.name" style="font-size: 32px;">@Html.DisplayFor(model => model.name) -</a> <p style="font-size: 24px; display: inline;">@Html.DisplayFor(model => model.description)</p>
             @if (User.Identity.Name == Model.OwnerName && User.Identity.Name != null)
             {
                 <form method="get" asp-controller="Community" asp-action="EditPostView">

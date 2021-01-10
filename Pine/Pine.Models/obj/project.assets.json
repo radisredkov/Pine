@@ -856,7 +856,7 @@
           "System.Runtime": "4.3.0"
         },
         "compile": {
-          "ref/netstandard1.0/_._": {}
+          "ref/netstandard1.0/System.Diagnostics.Tools.dll": {}
         }
       },
       "System.Diagnostics.Tracing/4.3.0": {
@@ -1757,6 +1757,24 @@
         },
         "runtime": {
           "lib/netstandard1.3/System.Xml.XmlSerializer.dll": {}
+        }
+      },
+      "Pine.Data/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "dependencies": {
+          "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "5.0.1",
+          "Microsoft.AspNetCore.Identity.UI": "5.0.1",
+          "Microsoft.AspNetCore.Session": "2.2.0",
+          "Microsoft.EntityFrameworkCore": "5.0.1",
+          "Microsoft.EntityFrameworkCore.SqlServer": "5.0.1",
+          "System.Diagnostics.Tools": "4.3.0"
+        },
+        "compile": {
+          "bin/placeholder/Pine.Data.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Pine.Data.dll": {}
         }
       }
     }
@@ -6367,6 +6385,11 @@
         "system.xml.xmlserializer.4.3.0.nupkg.sha512",
         "system.xml.xmlserializer.nuspec"
       ]
+    },
+    "Pine.Data/1.0.0": {
+      "type": "project",
+      "path": "../Pine.Data/Pine.Data.csproj",
+      "msbuildProject": "../Pine.Data/Pine.Data.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -6376,23 +6399,24 @@
       "Microsoft.AspNetCore.Session >= 2.2.0",
       "Microsoft.EntityFrameworkCore >= 5.0.1",
       "Microsoft.EntityFrameworkCore.SqlServer >= 5.0.1",
-      "Microsoft.EntityFrameworkCore.Tools >= 5.0.1"
+      "Microsoft.EntityFrameworkCore.Tools >= 5.0.1",
+      "Pine.Data >= 1.0.0"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\mario\\.nuget\\packages\\": {}
+    "C:\\Users\\RADI\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\It-kariera\\Project\\Pine\\Pine.Models\\Pine.Models.csproj",
+      "projectUniqueName": "D:\\Radi's Folder\\Pine\\Pine\\Pine.Models\\Pine.Models.csproj",
       "projectName": "Pine.Models",
-      "projectPath": "D:\\It-kariera\\Project\\Pine\\Pine.Models\\Pine.Models.csproj",
-      "packagesPath": "C:\\Users\\mario\\.nuget\\packages\\",
-      "outputPath": "D:\\It-kariera\\Project\\Pine\\Pine.Models\\obj\\",
+      "projectPath": "D:\\Radi's Folder\\Pine\\Pine\\Pine.Models\\Pine.Models.csproj",
+      "packagesPath": "C:\\Users\\RADI\\.nuget\\packages\\",
+      "outputPath": "D:\\Radi's Folder\\Pine\\Pine\\Pine.Models\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\mario\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\RADI\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -6404,8 +6428,11 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
-          "targetAlias": "netcoreapp3.1",
-          "projectReferences": {}
+          "projectReferences": {
+            "D:\\Radi's Folder\\Pine\\Pine\\Pine.Data\\Pine.Data.csproj": {
+              "projectPath": "D:\\Radi's Folder\\Pine\\Pine\\Pine.Data\\Pine.Data.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
@@ -6416,7 +6443,6 @@
     },
     "frameworks": {
       "netcoreapp3.1": {
-        "targetAlias": "netcoreapp3.1",
         "dependencies": {
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
             "target": "Package",
@@ -6460,7 +6486,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.302\\RuntimeIdentifierGraph.json"
       }
     }
   }

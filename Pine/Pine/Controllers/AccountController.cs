@@ -24,10 +24,11 @@ namespace Pine.Controllers
         private readonly IPostServices postServices;
         private readonly IUserServices userServices;
         private readonly ICommunityServices communityService;
+        private readonly IShopListingService shopListingService;
         private readonly PineContext db;
 
         public AccountController(UserManager<User> userManager,
-            SignInManager<User> signInManager, IPostServices postServices, IUserServices userServices, ICommunityServices communityService,
+            SignInManager<User> signInManager, IPostServices postServices, IUserServices userServices, ICommunityServices communityService, IShopListingService shopListingService,
             PineContext Db)
         {
             this.userManager = userManager;
@@ -35,8 +36,8 @@ namespace Pine.Controllers
             this.postServices = postServices;
             this.userServices = userServices;
             this.communityService = communityService;
-            this.db = Db;
-            
+            this.shopListingService = shopListingService;
+            this.db = Db;   
         }
 
         [HttpGet]
@@ -67,7 +68,6 @@ namespace Pine.Controllers
                     ModelState.AddModelError("", error.Description);
 
                 }
-
             }
             return View(registration);
         }
@@ -98,24 +98,11 @@ namespace Pine.Controllers
             return View(login);
         }
 
-        public async Task<IActionResult> UserPanel(string name)
+        public async Task<IActionResult> UserPanel(string userName)
         {
-            //if (userName == null)
-            //{
-            //    return NotFound();
-            //}
-
-            //var user = await db.users.FirstOrDefaultAsync(u => u.UserName == userName);
-            //if (user == null)
-            //{
-            //    return NotFound();
-            //}
-
-            //return View(user);
-
-             var userName =  userServices.getUserById(name).UserName;
-             ICollection <Post> posts =  postServices.getAllPosts().Where(p => p.creator.UserName == name).ToList();
-            PostsViewModel model = new PostsViewModel()
+            var user = userServices.getUserByUserName(userName);
+            ICollection<Post> posts =  postServices.getAllPosts().Where(p => p.creatorId == user.Id).ToList();
+            PostsViewModel postsModel = new PostsViewModel()
             {
                 posts = posts.Select(p => new OutputPostViewModel
                 {
@@ -129,16 +116,21 @@ namespace Pine.Controllers
                     uploadDate = p.timeOfCreation
                 }).OrderByDescending(p => p.uploadDate).ToList()
             };
-
-            return View(model);
-
-
-
-
-
-
-
-
+            ICollection<ShopListing> listings = shopListingService.getAllListings().Where(l => l.creatorId == user.Id).ToList();
+            ShopListingsViewModel listingsModel = new ShopListingsViewModel()
+            {
+                listings = listings.Select(l => new OutputShopListingViewModel
+                {
+                    id = l.id,
+                    name = l.name,
+                    description = l.description,
+                    price = l.price,
+                    userName = l.creator.UserName,
+                    uploadDate = l.timeOfCreation
+                }).OrderByDescending(l => l.uploadDate).ToList()
+            };
+            var tuple = new Tuple<PostsViewModel, User, ShopListingsViewModel>(postsModel, user, listingsModel);
+            return View(tuple);
         }
 
         public ActionResult Logout()

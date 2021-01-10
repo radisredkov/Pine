@@ -21,6 +21,11 @@ namespace Pine.Services
             return db.users.Find(id);
         }
 
+        public User getUserByUserName(string userName)
+        {
+            return db.users.FirstOrDefault(u => u.UserName == userName);
+        }
+
         public string getUserNameById(string id)
         {
             if (id == null)

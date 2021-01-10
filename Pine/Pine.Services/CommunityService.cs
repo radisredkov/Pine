@@ -28,25 +28,26 @@ namespace Pine.Services
         public void CreateCommunity(CommunityViewModel model, string userId)
         {
             Community community = new Community
-            {
-               
+            { 
                 name = model.name,
                 description = model.description,
                 //tags = model.tags,
                 ownerId = userId,
                 //posts = new List<Post>()
-
             };
 
             db.communities.Add(community);
             db.SaveChanges();
         }
 
-        public ICollection<Community> getAllcommunities()
+        public Community getCommunityByName(string communityName)
         {
-             
-               return db.communities.ToList();
-            
+            return db.communities.FirstOrDefault(c => c.name == communityName);
+        }
+
+        public ICollection<Community> getAllcommunities()
+        {    
+               return db.communities.ToList();           
         }
     }
 }

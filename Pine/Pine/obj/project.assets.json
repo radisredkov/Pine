@@ -2864,7 +2864,8 @@
           "Microsoft.AspNetCore.Identity.UI": "5.0.1",
           "Microsoft.AspNetCore.Session": "2.2.0",
           "Microsoft.EntityFrameworkCore": "5.0.1",
-          "Microsoft.EntityFrameworkCore.SqlServer": "5.0.1"
+          "Microsoft.EntityFrameworkCore.SqlServer": "5.0.1",
+          "Pine.Data": "1.0.0"
         },
         "compile": {
           "bin/placeholder/Pine.Models.dll": {}
@@ -9221,19 +9222,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\mario\\.nuget\\packages\\": {}
+    "C:\\Users\\RADI\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\It-kariera\\Project\\Pine\\Pine\\Pine.csproj",
+      "projectUniqueName": "D:\\Radi's Folder\\Pine\\Pine\\Pine\\Pine.csproj",
       "projectName": "Pine",
-      "projectPath": "D:\\It-kariera\\Project\\Pine\\Pine\\Pine.csproj",
-      "packagesPath": "C:\\Users\\mario\\.nuget\\packages\\",
-      "outputPath": "D:\\It-kariera\\Project\\Pine\\Pine\\obj\\",
+      "projectPath": "D:\\Radi's Folder\\Pine\\Pine\\Pine\\Pine.csproj",
+      "packagesPath": "C:\\Users\\RADI\\.nuget\\packages\\",
+      "outputPath": "D:\\Radi's Folder\\Pine\\Pine\\Pine\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\mario\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\RADI\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -9245,16 +9246,15 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
-          "targetAlias": "netcoreapp3.1",
           "projectReferences": {
-            "D:\\It-kariera\\Project\\Pine\\Pine.Data\\Pine.Data.csproj": {
-              "projectPath": "D:\\It-kariera\\Project\\Pine\\Pine.Data\\Pine.Data.csproj"
+            "D:\\Radi's Folder\\Pine\\Pine\\Pine.Data\\Pine.Data.csproj": {
+              "projectPath": "D:\\Radi's Folder\\Pine\\Pine\\Pine.Data\\Pine.Data.csproj"
             },
-            "D:\\It-kariera\\Project\\Pine\\Pine.Models\\Pine.Models.csproj": {
-              "projectPath": "D:\\It-kariera\\Project\\Pine\\Pine.Models\\Pine.Models.csproj"
+            "D:\\Radi's Folder\\Pine\\Pine\\Pine.Models\\Pine.Models.csproj": {
+              "projectPath": "D:\\Radi's Folder\\Pine\\Pine\\Pine.Models\\Pine.Models.csproj"
             },
-            "D:\\It-kariera\\Project\\Pine\\Pine.Services\\Pine.Services.csproj": {
-              "projectPath": "D:\\It-kariera\\Project\\Pine\\Pine.Services\\Pine.Services.csproj"
+            "D:\\Radi's Folder\\Pine\\Pine\\Pine.Services\\Pine.Services.csproj": {
+              "projectPath": "D:\\Radi's Folder\\Pine\\Pine\\Pine.Services\\Pine.Services.csproj"
             }
           }
         }
@@ -9267,7 +9267,6 @@
     },
     "frameworks": {
       "netcoreapp3.1": {
-        "targetAlias": "netcoreapp3.1",
         "dependencies": {
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
             "target": "Package",
@@ -9318,7 +9317,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.302\\RuntimeIdentifierGraph.json"
       }
     }
   }

@@ -23,8 +23,6 @@ namespace Pine.Controllers
         private readonly ICommunityServices communityService;
         private readonly PineContext db; 
 
-        
-
         public CommunityController(IPostServices postServices, IUserServices userServices, ICommunityServices communityService, PineContext context)
         {
             this.postServices = postServices;
@@ -63,12 +61,11 @@ namespace Pine.Controllers
                     id = c.id,
                     name = c.name,
                     description = c.description
-                }).OrderByDescending(c => c.name).ToList()
+                }).OrderBy(c => c.name).ToList()
             };
 
             return View("Communities", model);
         }
-
 
         [HttpGet("/Posts/AllPosts/orderbydateascending")]
         public IActionResult AllPostsSortByDateAscending()
@@ -133,7 +130,6 @@ namespace Pine.Controllers
             if (!this.ModelState.IsValid)
             {
                 return this.View();
-
             }
 
             byte[] img = new byte[0];
@@ -154,13 +150,11 @@ namespace Pine.Controllers
                 }
             }
 
-
             var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
 
             this.postServices.createPost(post, userId, img);
 
             return this.Redirect("/");
-
         }
 
         [HttpGet("/communities/create")]
@@ -182,18 +176,9 @@ namespace Pine.Controllers
             return this.RedirectToAction("Communities", "Community");
         }
 
-        public async Task<IActionResult> ViewCommunity(string communityName)
+        public async Task<IActionResult> Community(string communityName)
         {
-            if (communityName == null)
-            {
-                return NotFound();
-            }
-
-            var community = await db.communities.FirstOrDefaultAsync(c => c.name == communityName);
-            if (community == null)
-            {
-                return NotFound();
-            }
+            var community = communityService.getCommunityByName(communityName);
 
             return View(community);
         }
