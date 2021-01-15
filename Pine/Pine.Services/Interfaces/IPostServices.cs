@@ -8,12 +8,14 @@ namespace Pine.Services
 {
     public interface IPostServices
     {
-        void createPost(PostViewModel model, string userId, byte[] img);
+        void createPost(PostViewModel model, string userId, byte[] img, string comId = null);
 
         void editPost(OutputPostViewModel model);
 
         void deletePost(string postId);
 
-        ICollection<Post> getAllPosts(); 
+        ICollection<Post> getAllPosts();
+        
+
     }
 }

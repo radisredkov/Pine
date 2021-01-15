@@ -118,15 +118,18 @@ namespace Pine.Controllers
             return this.Redirect("/");
         }
 
-        [HttpGet("/posts/create")]
-        public IActionResult CreatePost()
+        [HttpGet("/posts/communityId/create")]
+        public IActionResult CreatePost(string communityId)
         {
-            return this.View();
+            //I recieve the id here
+            return View("CreatePost", communityId);
         }
 
-        [HttpPost("/posts/create")]
-        public IActionResult CreatePost(PostViewModel post)
+        [HttpPost("/posts/communityId/create")]
+        public IActionResult CreatePost(string communityId,PostViewModel post)
         {
+            //But i want it here
+
             if (!this.ModelState.IsValid)
             {
                 return this.View();
@@ -152,7 +155,7 @@ namespace Pine.Controllers
 
             var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
 
-            this.postServices.createPost(post, userId, img);
+            this.postServices.createPost(post, userId, img, communityId);
 
             return this.Redirect("/");
         }
@@ -176,24 +179,26 @@ namespace Pine.Controllers
             return this.RedirectToAction("Communities", "Community");
         }
 
+       
+
+           
         public async Task<IActionResult> Community(string communityName)
         {
             var community = communityService.getCommunityByName(communityName);
+            
+            //community.communityPosts = communityService.GetPostsFromCommunity("");
 
             return View(community);
         }
 
-        [HttpGet]
-        public IActionResult JoinCommunity()
-        {
-            return this.Redirect("/");
-        }
-        [HttpPost]
-        public IActionResult JoinCommunity(CommunityViewModel model)
+        
+      
+     
+        public IActionResult JoinCommunity(Community model)
         {
             string userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
             User user = userServices.getUserById(userId);
-            //communityService.JoinCommunity(user, model.id);
+            communityService.JoinCommunity(user, model.id);
             return this.Redirect("/");
         }
         [HttpPost]

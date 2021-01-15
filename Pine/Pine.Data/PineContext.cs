@@ -33,6 +33,9 @@ namespace Pine.Data
             builder.Entity<Community>().HasOne(c => c.Owner);
             builder.Entity<Community>().HasMany(c => c.communityPosts);
             builder.Entity<Post>().HasMany(p => p.comments).WithOne(c => c.post);
+            
+                //builder.Entity<CommunityUser>()
+                //      .HasKey(cs => new { cs.CharacterId, cs.SkillId }); ;
             base.OnModelCreating(builder);
             // Customize the ASP.NET Identity model and override the defaults if needed.
             // For example, you can rename the ASP.NET Identity table names and more.

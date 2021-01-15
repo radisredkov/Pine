@@ -13,6 +13,7 @@ namespace Pine.Models.Entities
 
         [Required]
         public string description { get; set; }
+        public string communityId { get; set; }
 
         public string tags { get; set; }
 

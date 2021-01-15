@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Pine.Data;
 
 namespace Pine.Migrations
 {
     [DbContext(typeof(PineContext))]
-    partial class PineContextModelSnapshot : ModelSnapshot
+    [Migration("20210113065954_initial")]
+    partial class initial
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -218,11 +220,11 @@ namespace Pine.Migrations
                     b.Property<string>("id")
                         .HasColumnType("nvarchar(450)");
 
+                    b.Property<string>("Communityid")
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<byte[]>("Img")
                         .HasColumnType("varbinary(max)");
-
-                    b.Property<string>("communityId")
-                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("creatorId")
                         .HasColumnType("nvarchar(450)");
@@ -246,7 +248,7 @@ namespace Pine.Migrations
 
                     b.HasKey("id");
 
-                    b.HasIndex("communityId");
+                    b.HasIndex("Communityid");
 
                     b.HasIndex("creatorId");
 
@@ -441,7 +443,7 @@ namespace Pine.Migrations
                 {
                     b.HasOne("Pine.Data.Entities.Community", null)
                         .WithMany("communityPosts")
-                        .HasForeignKey("communityId");
+                        .HasForeignKey("Communityid");
 
                     b.HasOne("Pine.Data.Identity.User", "creator")
                         .WithMany("posts")

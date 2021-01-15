@@ -26,6 +26,7 @@ namespace Pine.Data.Entities
         public string description { get; set; }
 
         public string tags { get; set; }
+        public string communityId { get; set; }
 
         [Required]
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]

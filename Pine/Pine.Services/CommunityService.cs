@@ -10,7 +10,7 @@ using System.Text;
 
 namespace Pine.Services
 {
-    public class CommunityServices:ICommunityServices
+    public class CommunityServices : ICommunityServices
     {
         private PineContext db;
 
@@ -18,22 +18,23 @@ namespace Pine.Services
         {
             this.db = db;
         }
-        
-        //public void JoinCommunity(User user,string communityId)
-        //{
-          
-        //    db.communities.Find(communityId).communityMembers.Add(user);
-        //    db.SaveChanges();
-        //}
+
+        public void JoinCommunity(User user, string communityId)
+        {
+
+            db.communities.Find(communityId).communityMembers.Add(user);
+           
+            db.SaveChanges();
+        }
         public void CreateCommunity(CommunityViewModel model, string userId)
         {
             Community community = new Community
-            { 
+            {
                 name = model.name,
                 description = model.description,
-                //tags = model.tags,
+                //tags = model.tags,\
                 ownerId = userId,
-                //posts = new List<Post>()
+                communityPosts = db.posts.ToList()
             };
 
             db.communities.Add(community);
@@ -45,9 +46,17 @@ namespace Pine.Services
             return db.communities.FirstOrDefault(c => c.name == communityName);
         }
 
+        public ICollection<Post> GetPostsFromCommunity(string id)
+        {
+            return db.posts.Where(p => p.id == id).ToList();
+        }
+
+
         public ICollection<Community> getAllcommunities()
         {    
                return db.communities.ToList();           
         }
+
+      
     }
 }

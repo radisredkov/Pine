@@ -18,7 +18,7 @@ namespace Pine.Services
             this.db = db;
         }
 
-        public void createPost(PostViewModel model, string userId, byte[] img)
+        public void createPost(PostViewModel model, string userId, byte[] img, string comId = null)
         {
             Post post = new Post
             {
@@ -27,6 +27,7 @@ namespace Pine.Services
                 tags = model.tags,
                 timeOfCreation = DateTime.Now,
                 Img = img,                   
+                communityId = comId,
                 creatorId = userId,
                 creator = db.Users.FirstOrDefault(u => u.Id == userId),
                 comments = new List<Comment>()

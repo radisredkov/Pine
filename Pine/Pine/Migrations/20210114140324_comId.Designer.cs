@@ -10,8 +10,8 @@ using Pine.Data;
 namespace Pine.Migrations
 {
     [DbContext(typeof(PineContext))]
-    [Migration("20210110092429_initial")]
-    partial class initial
+    [Migration("20210114140324_comId")]
+    partial class comId
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -220,11 +220,11 @@ namespace Pine.Migrations
                     b.Property<string>("id")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("Communityid")
-                        .HasColumnType("nvarchar(450)");
-
                     b.Property<byte[]>("Img")
                         .HasColumnType("varbinary(max)");
+
+                    b.Property<string>("communityId")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("creatorId")
                         .HasColumnType("nvarchar(450)");
@@ -248,7 +248,7 @@ namespace Pine.Migrations
 
                     b.HasKey("id");
 
-                    b.HasIndex("Communityid");
+                    b.HasIndex("communityId");
 
                     b.HasIndex("creatorId");
 
@@ -443,7 +443,7 @@ namespace Pine.Migrations
                 {
                     b.HasOne("Pine.Data.Entities.Community", null)
                         .WithMany("communityPosts")
-                        .HasForeignKey("Communityid");
+                        .HasForeignKey("communityId");
 
                     b.HasOne("Pine.Data.Identity.User", "creator")
                         .WithMany("posts")
