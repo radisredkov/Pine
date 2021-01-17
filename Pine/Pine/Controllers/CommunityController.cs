@@ -194,11 +194,12 @@ namespace Pine.Controllers
         
       
      
-        public IActionResult JoinCommunity(Community model)
+        public IActionResult JoinCommunity(string communityName)
         {
             string userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
             User user = userServices.getUserById(userId);
-            communityService.JoinCommunity(user, model.id);
+            Community com = communityService.getCommunityByName(communityName);
+            communityService.JoinCommunity(user, com);
             return this.Redirect("/");
         }
         [HttpPost]

@@ -19,11 +19,21 @@ namespace Pine.Services
             this.db = db;
         }
 
-        public void JoinCommunity(User user, string communityId)
+        public void JoinCommunity(User user, Community com)
         {
 
-            db.communities.Find(communityId).communityMembers.Add(user);
-           
+
+            if (db.communities.FirstOrDefault(x => x.id == com.id).communityMembers.Contains(user))
+            {
+                return;
+            }
+            else
+            {
+                db.communities.FirstOrDefault(x => x.id == com.id).communityMembers.Add(user);
+
+            }
+
+
             db.SaveChanges();
         }
         public void CreateCommunity(CommunityViewModel model, string userId)
@@ -36,8 +46,9 @@ namespace Pine.Services
                 ownerId = userId,
                 communityPosts = db.posts.ToList()
             };
-
+            User user = new User { Id = userId };
             db.communities.Add(community);
+            db.communities.Find(community).communityMembers.Add(user);
             db.SaveChanges();
         }
 
