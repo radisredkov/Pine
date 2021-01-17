@@ -3,36 +3,38 @@
 @{
     ViewData["Title"] = "Edit your listing";
 }
-
-<h1 style="color: #00ff21;">Edit your listing</h1>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-controller="Shop" asp-action="EditListing" method="post">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <input asp-for="id" type="hidden" />
-                <label asp-for="name" class="control-label">Name</label>
-                <input asp-for="name" class="form-control" />
-                <span asp-validation-for="name" class="text-danger"></span>
+<div class="transbox">
+    <div style="transform: translateX(-5.5%)">
+        <h1 style="color: #00ff21;">Edit your listing</h1>
+        <hr />
+        <div class="row">
+            <div class="col-md-4">
+                <form asp-controller="Shop" asp-action="EditListing" method="post">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <input asp-for="id" type="hidden" />
+                        <label asp-for="name" class="control-label">Name</label>
+                        <input asp-for="name" class="form-control" />
+                        <span asp-validation-for="name" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="description" class="control-label">Description</label>
+                        <textarea asp-for="description" class="post-comm-description"></textarea>
+                        <span asp-validation-for="description" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="price" class="control-label">Price</label>
+                        <input asp-for="price" class="form-control" />
+                        <span asp-validation-for="price" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Save" class="btn btn-primary" />
+                    </div>
+                </form>
             </div>
-            <div class="form-group">
-                <label asp-for="description" class="control-label">Description</label>
-                <textarea asp-for="description" class="post-comm-description"></textarea>
-                <span asp-validation-for="description" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="price" class="control-label">Price</label>
-                <input asp-for="price" class="form-control" />
-                <span asp-validation-for="price" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
-        </form>
+        </div>
+        </div>
     </div>
-</div>
-
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
+        @section Scripts {
+            @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+        }

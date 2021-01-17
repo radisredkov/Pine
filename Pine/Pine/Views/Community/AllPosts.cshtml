@@ -4,15 +4,14 @@
 }
 <a class="CreateButton" asp-area="" asp-controller="Community" asp-action="CreatePost">+ Create Post</a>
 <br />
-<div>
+<div class="transbox">
     @if (Model.posts.Count == 0)
     {
-        <br />
         <div>There are currently no posts. Make one and start a discussion!</div>
     }
     else
     {
-<div class="transbox">
+
     <a class="SortByButton" asp-area="" asp-controller="Community" asp-action="AllPosts">Recent posts</a>
     <a class="SortByButton" asp-area="" asp-controller="Community" asp-action="AllPostsSortByDateAscending">Oldest posts</a>
     <br />
@@ -20,6 +19,5 @@
     {
         <partial name="./PostCard.cshtml" model=@post />
     }
-</div>
     }
 </div>

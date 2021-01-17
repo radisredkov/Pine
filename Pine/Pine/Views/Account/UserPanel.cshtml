@@ -6,37 +6,35 @@
     ViewData["Title"] = Model.Item2.UserName;
 }
 
-<center><h1 style="color:#00ff21">@Html.DisplayFor(model => model.Item2.UserName)</h1></center>
-<h2 style="color:aqua">Posts:</h2>
-@if (Model.Item1.posts.Count == 0)
-{
-    <p style="color: #00ff21; display: inline">@Html.DisplayFor(model => model.Item2.UserName)  </p><p style="display: inline">has no posts.</p>
-}
-else
-{
-    <div>
-        <div class="transbox">
+<center><h1 style="color:#00ff21; margin-top: 50px;">@Html.DisplayFor(model => model.Item2.UserName)</h1></center>
+<div class="transbox">
+    <h2 style="color:aqua">Posts:</h2>
+    @if (Model.Item1.posts.Count == 0)
+    {
+        <p style="color: #00ff21; display: inline; margin: 0px !important;">@Html.DisplayFor(model => model.Item2.UserName)  </p><p style="display: inline;color:#fff; margin: 0px !important;";>has no posts.</p>
+    }
+    else
+    {
+        <div>
             @foreach (var post in Model.Item1.posts.Where(p => p.userName == Model.Item2.UserName))
             {
                 <partial name="../Community/PostCard.cshtml" model=@post />
             }
         </div>
-    </div>
-}
+    }
 
-<h2 style="color:aqua">Listings:</h2>
-@if (Model.Item3.listings.Count == 0)
-{
-    <p style="color: #00ff21; display: inline">@Html.DisplayFor(model => model.Item2.UserName) </p><p style="display: inline">has no active listings at the moment.</p>
-}
-else
-{
-    <div>
-        <div class="transbox">
+    <h2 style="color:aqua">Listings:</h2>
+    @if (Model.Item3.listings.Count == 0)
+    {
+        <p style="color: #00ff21; display: inline; margin: 0px !important;">@Html.DisplayFor(model => model.Item2.UserName) </p><p style="display: inline;color:#fff; margin: 0px !important;">has no active listings at the moment.</p>
+    }
+    else
+    {
+        <div>
             @foreach (var listing in Model.Item3.listings.Where(l => l.userName == Model.Item2.UserName))
             {
                 <partial name="../Shop/ListingCard.cshtml" model=@listing />
             }
         </div>
-    </div>
-}
+    }
+</div>

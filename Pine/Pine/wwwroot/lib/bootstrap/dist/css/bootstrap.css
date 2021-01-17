@@ -4153,7 +4153,10 @@ input[type="button"].btn-block {
 }
 
 .navbar {
-    position: relative;
+    position: fixed !important;
+    top: 0px !important;
+    max-height: 50px;
+    z-index: 3;
     display: -ms-flexbox;
     display: flex;
     -ms-flex-wrap: wrap;
@@ -4163,7 +4166,7 @@ input[type="button"].btn-block {
     -ms-flex-pack: justify;
     justify-content: space-between;
     padding: 0.5rem 1rem;
-    text-shadow: 2px 2px 4px #000;
+    text-shadow: 2px 2px 10px #28a745;
 }
 
 .navbar > .container,
@@ -4560,6 +4563,7 @@ input[type="button"].btn-block {
 
 .card {
     position: relative;
+    width: 90%;
     display: -ms-flexbox;
     display: flex;
     -ms-flex-direction: column;
@@ -4591,7 +4595,7 @@ input[type="button"].btn-block {
     -ms-flex: 1 1 auto;
     flex: 1 1 auto;
     padding: 1.25rem;
-    background-color: #2f9262;
+    background-color: rgb(3, 164, 94);
     border-bottom-left-radius: 5px !important;
     border-bottom-right-radius: 5px !important;
 }
@@ -4626,7 +4630,7 @@ input[type="button"].btn-block {
 .card-header {
     padding: 0.75rem 1.25rem;
     margin-bottom: 0;
-    background-color: #00322a;
+    background-color: rgb(56, 66, 65);
     border-bottom: 1px solid rgba(0, 0, 0, 0.125);
     width: 100% !important;
     color: white;
@@ -6611,11 +6615,12 @@ button.bg-dark:focus {
 }
 
 .bg-white {
-    background-color: rgba(255, 255, 255, 0.4) !important;
+    background-color: rgba(14, 14, 16, 0.90) !important;
     left: 0;
     right: 0;
     top: 0;
     bottom: 0;
+    position: fixed !important;
     /*background: linear-gradient(124deg, #ff2400, #e81d1d, #e8b71d, #e3e81d, #1de840, #1ddde8, #2b1de8, #dd00f3, #dd00f3);
     background-size: 1800% 1800%;
     -webkit-animation: rainbow 18s ease infinite;
@@ -6641,7 +6646,7 @@ button.bg-dark:focus {
 }
 
 .border-bottom {
-  border-bottom: 1px solid #dee2e6 !important;
+  border-bottom: solid rgba(3, 145, 41, 1) !important;
 }
 
 .border-left {
@@ -9938,7 +9943,9 @@ a.text-light:hover, a.text-light:focus {
 }
 
 .text-dark {
-  color: #fff !important;
+  color: white !important;
+  font-family: fantasy;
+  font-size: 20px;
 }
 
 a.text-dark:hover, a.text-dark:focus {
@@ -10039,6 +10046,8 @@ a.text-dark:hover, a.text-dark:focus {
   }
   .navbar {
     display: none;
+    position: fixed !important;    
+    top: 0 !important;
   }
   .badge {
     border: 1px solid #000;

@@ -20,10 +20,10 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
                     <ul class="navbar-nav flex-grow-1">
                         <li>
-                            <button onclick="addStyles" style="position:absolute;left:20px;width:40px;height:40px;" class="RGBButton"><img src="https://i.imgur.com/YWguqKO.png" width="50" height="45" style="border-radius: 25px;"></button>
+                            <button onclick="addStyles" style="position:absolute;left:10px;width:40px;height:40px;" class="RGBButton"><img src="https://i.imgur.com/YWguqKO.png" width="50" height="45" style="border-radius: 25px;"></button>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Community" asp-action="AllPosts">Posts</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Community" asp-action="AllPosts" style="margin-left:50px !important">Posts</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Community" asp-action="Communities">Communities</a>
@@ -34,7 +34,7 @@
                         @if (@User.Identity.Name == null)
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Login" style="position:absolute;right:80px;">Login</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Login" style="position:absolute;right:90px;">Login</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Register" style="position:absolute;right:10px;">Register</a>
@@ -43,10 +43,10 @@
                         else
                         {
                             <li>
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="UserPanel" asp-route-userName="@User.Identity.Name" style="position:absolute;margin-right: 4%; right:0px;">@User.Identity.Name</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="UserPanel" asp-route-userName="@User.Identity.Name" style="position:absolute;margin-right: 4.5%; right:0px;">@User.Identity.Name</a>
                             </li>
                             <li>
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Logout" style="color:#ff0000 !important;font-weight: bold;position:absolute;right:0px;">Logout</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Logout" style="color:#ff0000 !important;position:absolute;right:0px; text-shadow: none !important;">Logout</a>
                             </li>
                         }
                     </ul>

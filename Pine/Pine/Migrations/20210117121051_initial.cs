@@ -229,10 +229,10 @@ namespace Pine.Migrations
                     title = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     description = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     tags = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    communityId = table.Column<string>(type: "nvarchar(450)", nullable: true),
                     timeOfCreation = table.Column<DateTime>(type: "datetime2", nullable: false),
                     creatorId = table.Column<string>(type: "nvarchar(450)", nullable: true),
                     Img = table.Column<byte[]>(type: "varbinary(max)", nullable: true),
-                    Communityid = table.Column<string>(type: "nvarchar(450)", nullable: true),
                     postId = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
@@ -245,8 +245,8 @@ namespace Pine.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_posts_communities_Communityid",
-                        column: x => x.Communityid,
+                        name: "FK_posts_communities_communityId",
+                        column: x => x.communityId,
                         principalTable: "communities",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Restrict);
@@ -332,9 +332,9 @@ namespace Pine.Migrations
                 column: "creatorId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_posts_Communityid",
+                name: "IX_posts_communityId",
                 table: "posts",
-                column: "Communityid");
+                column: "communityId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_posts_creatorId",

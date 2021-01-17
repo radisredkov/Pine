@@ -6404,19 +6404,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\mario\\.nuget\\packages\\": {}
+    "C:\\Users\\RADI\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\It-kariera\\Project\\Pine\\Pine.Models\\Pine.Models.csproj",
+      "projectUniqueName": "D:\\Radi's Folder\\Pine\\Pine\\Pine.Models\\Pine.Models.csproj",
       "projectName": "Pine.Models",
-      "projectPath": "D:\\It-kariera\\Project\\Pine\\Pine.Models\\Pine.Models.csproj",
-      "packagesPath": "C:\\Users\\mario\\.nuget\\packages\\",
-      "outputPath": "D:\\It-kariera\\Project\\Pine\\Pine.Models\\obj\\",
+      "projectPath": "D:\\Radi's Folder\\Pine\\Pine\\Pine.Models\\Pine.Models.csproj",
+      "packagesPath": "C:\\Users\\RADI\\.nuget\\packages\\",
+      "outputPath": "D:\\Radi's Folder\\Pine\\Pine\\Pine.Models\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\mario\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\RADI\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -6430,8 +6430,8 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "projectReferences": {
-            "D:\\It-kariera\\Project\\Pine\\Pine.Data\\Pine.Data.csproj": {
-              "projectPath": "D:\\It-kariera\\Project\\Pine\\Pine.Data\\Pine.Data.csproj"
+            "D:\\Radi's Folder\\Pine\\Pine\\Pine.Data\\Pine.Data.csproj": {
+              "projectPath": "D:\\Radi's Folder\\Pine\\Pine\\Pine.Data\\Pine.Data.csproj"
             }
           }
         }
@@ -6488,7 +6488,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.102\\RuntimeIdentifierGraph.json"
       }
     }
   }
