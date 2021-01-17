@@ -68,6 +68,9 @@ namespace Pine.Services
                return db.communities.ToList();           
         }
 
-      
+        public ICollection<Post> getAllPostsFromCommunity(string comName)
+        {
+            return db.communities.FirstOrDefault(c => c.name == comName).communityPosts;
+        }
     }
 }

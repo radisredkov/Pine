@@ -11,14 +11,14 @@
    
 <center>
     <h1 style="color:#00ff21">@Model.name</h1>
-    @if (Model.communityPosts != null)
-    {
+   
+    
         @foreach (var p in Model.communityPosts)
         {
 
-            <p> @p.title</p>
+          <p><b>Community Title:</b> @p.title</p>
         }
-    }
+    
 
 
 </center>

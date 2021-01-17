@@ -119,24 +119,30 @@ namespace Pine.Controllers
         }
 
         [HttpGet("/posts/communityId/create")]
-        public IActionResult CreatePost(string communityId)
+        public IActionResult CreatePost(string communityId) 
         {
-            //I recieve the id here
-            return View("CreatePost", communityId);
+            if (communityId != null)
+            {
+                TempData["CommunityId"] = communityId;
+            }
+            else
+            {
+                //i had to :/
+                TempData["CommunityId"] = "empty";
+            }
+            return View();
         }
 
         [HttpPost("/posts/communityId/create")]
-        public IActionResult CreatePost(string communityId,PostViewModel post)
+        public IActionResult CreatePost(PostViewModel post)
         {
-            //But i want it here
-
+        
             if (!this.ModelState.IsValid)
             {
                 return this.View();
             }
 
             byte[] img = new byte[0];
-
             if (post.Img != null)
             {
                 if (post.Img.Length > 0)
@@ -153,10 +159,17 @@ namespace Pine.Controllers
                 }
             }
 
-            var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+           var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+            string commId = TempData["CommunityId"].ToString();
+            if (commId == "empty")
+            {
+                this.postServices.createPost(post, userId, img);
 
-            this.postServices.createPost(post, userId, img, communityId);
-
+            }
+            else
+            {
+                this.postServices.createPost(post, userId, img, TempData["CommunityId"].ToString());
+            }
             return this.Redirect("/");
         }
 
@@ -185,8 +198,8 @@ namespace Pine.Controllers
         public async Task<IActionResult> Community(string communityName)
         {
             var community = communityService.getCommunityByName(communityName);
-            
-            //community.communityPosts = communityService.GetPostsFromCommunity("");
+
+            community.communityPosts = db.posts.Where(p => p.communityId == community.id).ToList();
 
             return View(community);
         }
