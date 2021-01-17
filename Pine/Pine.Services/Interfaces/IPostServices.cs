@@ -1,4 +1,5 @@
-﻿using Pine.Data.Entities;
+﻿using Microsoft.AspNetCore.Http;
+using Pine.Data.Entities;
 using Pine.Models.Entities;
 using System;
 using System.Collections.Generic;
@@ -10,7 +11,7 @@ namespace Pine.Services
     {
         void createPost(PostViewModel model, string userId, byte[] img, string comId = null);
 
-        void editPost(OutputPostViewModel model);
+        void editPost(OutputPostViewModel model, byte[] img = null );
 
         void deletePost(string postId);
 

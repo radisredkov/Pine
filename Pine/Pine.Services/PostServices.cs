@@ -1,4 +1,5 @@
-﻿using Pine.Data;
+﻿using Microsoft.AspNetCore.Http;
+using Pine.Data;
 using Pine.Data.Entities;
 using Pine.Models.Entities;
 using System;
@@ -43,12 +44,13 @@ namespace Pine.Services
             db.SaveChanges();
         }
 
-        public void editPost(OutputPostViewModel model)
+        public void editPost(OutputPostViewModel model, byte[] img = null)
         {
             var oldPost = db.posts.FirstOrDefault(p => p.id == model.id);
 
             oldPost.title = model.title;
             oldPost.tags = model.tags;
+            oldPost.Img = img;
             oldPost.description = model.description;
             oldPost.timeOfCreation = DateTime.Now;
 
