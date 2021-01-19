@@ -3,42 +3,38 @@
 @{
     ViewData["Title"] = "Editing post";
 }
-<div class="transbox">
-    <div style="transform: translateX(-5.5%)">
-        <h1 style="color: #00ff21;">Edit your post</h1>
-        <hr />
-        <div class="row">
-            <div class="col-md-4">
-                <form asp-controller="Community" asp-action="EditPost" method="post">
-                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                    <div class="form-group">
-                        <input asp-for="id" type="hidden" />
-                        <label asp-for="title" class="control-label">Title</label>
-                        <input asp-for="title" class="titleInput" />
-                        <span asp-validation-for="title" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="description" class="control-label">Description</label>
-                        <textarea asp-for="description" class="post-comm-description"> </textarea>
-                        <span asp-validation-for="description" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="tags" class="control-label">Tags</label>
-                        <div class="tooltip">
-                            What's this?
-                            <span class="tooltiptext">Tags help people search for topics they're interested in. For example, you may tag your post as "Support", "Graphics card", "Engine", "Fun" etc.</span>
-                        </div>
-                        <input asp-for="tags" class="form-control" />
-                        <span asp-validation-for="tags" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <input type="submit" value="Save" class="btn btn-primary" />
-                    </div>
-                </form>
+<h1 style="color: #00ff21;">Edit your post</h1>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-controller="Community" asp-action="EditPost" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <input asp-for="id" type="hidden" />
+                <label asp-for="title" class="control-label">Title</label>
+                <input asp-for="title" class="titleInput" />
+                <span asp-validation-for="title" class="text-danger"></span>
             </div>
-        </div>
-        </div>
+            <div class="form-group">
+                <label asp-for="description" class="control-label">Description</label>
+                <textarea asp-for="description" class="post-comm-description"> </textarea>
+                <span asp-validation-for="description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="tags" class="control-label">Tags</label>
+                <div class="tooltip">
+                    What's this?
+                    <span class="tooltiptext">Tags help people search for topics they're interested in. For example, you may tag your post as "Support", "Graphics card", "Engine", "Fun" etc.</span>
+                </div>
+                <input asp-for="tags" class="form-control" />
+                <span asp-validation-for="tags" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
     </div>
-        @section Scripts {
-            @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-        }
+</div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

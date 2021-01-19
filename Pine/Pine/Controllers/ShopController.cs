@@ -114,7 +114,7 @@ namespace Pine.Controllers
         {
             if (!this.User.Identity.IsAuthenticated)
             {
-                return this.Redirect("/");
+                return Content("You must be logged in in order to do this.");
             }
 
             return this.View();
@@ -123,10 +123,9 @@ namespace Pine.Controllers
         [HttpPost("/listings/create")]
         public IActionResult CreateListing(ShopListingViewModel listing)
         {
-
             if (!this.User.Identity.IsAuthenticated)
             {
-                return this.Redirect("/");
+                return Content("You must be logged in in order to do this.");
             }
 
             if (!this.ModelState.IsValid)

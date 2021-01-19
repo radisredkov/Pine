@@ -2,29 +2,32 @@
 for details on configuring this project to bundle and minify static web assets. */
 
 a.navbar-brand {
-  white-space: normal;
-  text-align: center;
-  word-break: break-all;
+    white-space: normal;
+    text-align: center;
+    word-break: break-all;
 }
 
 /* Provide sufficient contrast against white background */
 a {
-  color: aqua !important;
-}
-a:hover{
-  color:aqua !important;
+    color: aqua !important;
 }
 
+    a:hover {
+        color: aqua !important;
+    }
+
 .btn-primary {
-  color: #fff;
-  background-color: #00e9ff;
-  border-color: #1861ac;
+    color: #fff;
+    background-color: #00e9ff;
+    border-color: #1861ac;
 }
+
 .btn-green {
     color: #fff;
     background-color: #0ea100;
     border-color: #0ea100;
 }
+
 .btn-purple {
     color: #fff;
     background-color: #9a00ff;
@@ -32,43 +35,45 @@ a:hover{
 }
 
 .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+    color: #fff;
+    background-color: #1b6ec2;
+    border-color: #1861ac;
 }
 
 /* Sticky footer styles
 -------------------------------------------------- */
 html {
-  font-size: 14px;
+    font-size: 14px;
 }
+
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+    html {
+        font-size: 16px;
+    }
 }
 
 .border-top {
-  border-top: 1px solid #e5e5e5;
+    border-top: 1px solid #e5e5e5;
 }
+
 .border-bottom {
-  border-bottom: 1px solid #e5e5e5;
+    border-bottom: 1px solid #e5e5e5;
 }
 
 .box-shadow {
-  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+    box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
 }
 
 button.accept-policy {
-  font-size: 1rem;
-  line-height: inherit;
+    font-size: 1rem;
+    line-height: inherit;
 }
 
 /* Sticky footer styles
 -------------------------------------------------- */
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
 }
 
 body {
@@ -77,20 +82,22 @@ body {
     background-color: #000;
     color: #d5d5d5 !important;
     overflow-x: hidden;
-    background-image: url(https://i.imgur.com/RAOKd7p.png);
+    background-image: url(main-background.png);
+    display: flex !important;
+    height: 100vh;
+    flex-direction: column;
 }
 
 div.transbox {
-    position: absolute;
-    width:100%;
+    flex-grow: 4;
+    width: 100%;
+    height: calc(100vh - 10px);
     margin-top: 10%;
     margin-left: auto;
     margin-right: auto;
-    margin-bottom: 30px;
     background-color: rgba(14, 14, 16, 0.85);
-    border: 2px rgba(255, 255, 255, 0.4);
+    border-top: rgba(0, 0, 0, 0.35);
     padding-top: 10px;
-    padding-bottom: 1px;
     padding-left: 9%;
     padding-right: 1%;
     margin-left: 0px;
@@ -103,6 +110,7 @@ div.transbox {
 
 img {
     border: hidden;
+    border-radius: 5px;
     user-select: none !important;
     -moz-user-select: none !important;
     -webkit-user-drag: none !important;
@@ -138,21 +146,17 @@ img {
     margin: 0;
     border: 0;
 }
-.RGBButton:focus {
-    outline: 0;
-}
+
+    .RGBButton:focus {
+        outline: 0;
+    }
 
 .CreateButton {
-    vertical-align:middle !important;
-    float: left;
-    margin-top: 90px;
-    margin-left: 650px;
-    transform:scale(2);
-    max-height: 50px;
-    max-width: 250px;
-    font-size: 24px;
+    float: right;
+    font-size: 36px;
+    height:60px;
     fill-opacity: 0.5;
-    background-color: #0fd441;
+    background-color: #00bc0f;
     border: solid 2px;
     border-color: darkgreen;
     border-radius: 2px;
@@ -162,11 +166,11 @@ img {
     padding-left: 5px;
     padding-right: 5px;
     text-decoration: inherit !important;
-    margin-bottom: 0.5%;
 }
-.CreateButton:hover{
-    background-color: #0ea100
-}
+
+    .CreateButton:hover {
+        background-color: #0a7600
+    }
 
 .post-comm-description {
     min-width: 30px;
@@ -177,24 +181,24 @@ img {
     white-space: pre-line;
 }
 
-.titleInput{
-    min-width:30px;
-    max-width:1000px;
+.titleInput {
+    min-width: 30px;
+    max-width: 1000px;
     width: 1000px;
     border-radius: 5px;
 }
 
-.moderationButtons{
+.moderationButtons {
     margin-bottom: 0px;
     float: right;
     margin-left: 1%;
 }
 
-.buyButton{
+.buyButton {
     min-width: 50px;
     min-height: 40px;
     background-color: #00ff34;
-    border: 2px solid #0ea100 ;
+    border: 2px solid #0ea100;
     color: black;
 }
 
@@ -256,14 +260,33 @@ img {
 }
 
     .SortByButton:hover {
-        background-color: #a0ff00;
+        background-color: rgb(52, 230, 89);
         color: black !important;
     }
+
+.containerMain{
+    margin-left: 7.5%;
+    margin-right: 7.5%;
+    margin-top: 5%;
+}
+
+.logoutButton {
+    font-family: fantasy;
+    font-size: 20px;
+    color: #ff0000 !important;
+    position: absolute;
+    right: 0px;
+    text-shadow: 2px 2px 10px #000;
+}
+.logoutButton:hover{
+    color: #8a0000 !important;
+}
 
 @-webkit-keyframes mover {
     0% {
         transform: translateY(0);
     }
+
     100% {
         transform: translateY(-100px);
     }
@@ -273,6 +296,7 @@ img {
     0% {
         transform: translateY(0);
     }
+
     100% {
         transform: translateY(-100px);
     }

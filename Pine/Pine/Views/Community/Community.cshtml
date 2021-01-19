@@ -1,24 +1,15 @@
 ﻿@model Pine.Data.Entities.Community
 
 @{
-    ViewData["Title"] = "Community";
+    ViewData["Title"] = @Model.name;
 }
-<div class="form-group">
-    <a type="submit" asp-controller="Community" asp-action="CreatePost" asp-route-communityId="@Model.id">Create post</a>
-    <a type="submit" asp-controller="Community" asp-action="JoinCommunity" asp-route-communityName="@Model.name">Join community</a>
+<a type="submit" asp-controller="Community" asp-action="CreatePost" asp-route-communityId="@Model.id" class="CreateButton">+ Create post</a>
+<a type="submit" asp-controller="Community" asp-action="JoinCommunity" asp-route-communityName="@Model.name">Join community</a>
 
-</div>
-   
 <center>
     <h1 style="color:#00ff21">@Model.name</h1>
-   
-    
-        @foreach (var p in Model.communityPosts)
-        {
-
-          <p><b>Community Title:</b> @p.title</p>
-        }
-    
-
-
 </center>
+@foreach (var post in Model.communityPosts)
+{
+<partial name="./PostCard.cshtml" model=@post />
+}

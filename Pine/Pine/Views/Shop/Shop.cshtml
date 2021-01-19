@@ -4,13 +4,12 @@
 }
 <a class="CreateButton" asp-area="" asp-controller="Shop" asp-action="CreateListing">+ Create Listing</a>
 <br />
-<div class="transbox">
-    @if (Model.listings.Count == 0)
-    {
-        <div>Nothing is up for sale at the moment. Want to trade? Click the green button in the top-right corner.</div>
-    }
-    else
-    {
+@if (Model.listings.Count == 0)
+{
+    <div>Nothing is up for sale at the moment. Want to trade? Click the 'Create listing' button.</div>
+}
+else
+{
     <a class="SortByButton" asp-area="" asp-controller="Shop" asp-action="ShopLowToHigh"><b>Price:</b> Low to High ↑</a>
     <a class="SortByButton" asp-area="" asp-controller="Shop" asp-action="ShopHighToLow"><b>Price:</b> High to Low ↓</a>
     <br />
@@ -18,5 +17,4 @@
     {
         <partial name="./ListingCard.cshtml" model=@listing />
     }
-    }
-</div>
+}

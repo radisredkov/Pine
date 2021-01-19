@@ -5,18 +5,14 @@
 
 <a class="CreateButton" asp-area="" asp-controller="Community" asp-action="CreateCommunity">+ Create Community</a>
 <br />
-<div>
     @if (Model.communities.Count == 0)
     {
-        <div>There are currently no Communities yet. Make one and invite your friends!</div>
+        <p>There are currently no Communities yet. Make one and invite your friends!</p>
     }
     else
     {
-<div class="transbox">
-    @foreach (var community in Model.communities)
-    {
-        <partial name="./CommunityCard.cshtml" model=@community />
+        @foreach (var community in Model.communities)
+        {
+            <partial name="./CommunityCard.cshtml" model=@community />
+        }
     }
-</div>
-    }
-</div>

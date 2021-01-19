@@ -4563,7 +4563,7 @@ input[type="button"].btn-block {
 
 .card {
     position: relative;
-    width: 90%;
+    width: 100%;
     display: -ms-flexbox;
     display: flex;
     -ms-flex-direction: column;
@@ -4572,7 +4572,7 @@ input[type="button"].btn-block {
     word-wrap: break-word;
     background-color: #fff;
     background-clip: border-box;
-    border-radius: 5px !important;
+    border-radius: 6px !important;
     margin-top: 15px !important;
 }
 
@@ -4629,6 +4629,7 @@ input[type="button"].btn-block {
 
 .card-header {
     padding: 0.75rem 1.25rem;
+    padding-top: 0.4rem;
     margin-bottom: 0;
     background-color: rgb(56, 66, 65);
     border-bottom: 1px solid rgba(0, 0, 0, 0.125);

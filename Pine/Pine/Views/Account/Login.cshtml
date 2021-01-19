@@ -11,33 +11,29 @@
 </style>
 <body>
     <center>
-        <div class="transbox">
-            <div style="transform: translateX(-5.5%)">
-                <h1 style="color: #00ff21;">Login</h1>
-                <hr />
-                <div class="row">
-                    <div class="col-md-12" style="color:aqua;">
-                        <form asp-action="Login">
+        <h1 style="color: #00ff21;">Login</h1>
+        <hr />
+        <div class="row">
+            <div class="col-md-12" style="color:aqua;">
+                <form asp-action="Login">
 
-                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                            <div class="form-group">
-                                <label asp-for="userName" class="control-label"></label>
-                                <input asp-for="userName" class="form-control" />
-                                <span asp-validation-for="userName" class="text-danger"></span>
-                            </div>
-                            <div class="form-group">
-                                <label asp-for="Password" class="control-label"></label>
-                                <input asp-for="Password" class="form-control" />
-                                <span asp-validation-for="Password" class="text-danger"></span>
-                            </div>
-                            <div class="form-group">
-                                <input type="submit" value="Login" class="btn btn-primary" />
-                                <input type="button" value="Register" class="btn btn-green" onclick="location.href='@Url.Action("Register", "Account")'" />
-                            </div>
-
-                        </form>
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="userName" class="control-label"></label>
+                        <input asp-for="userName" class="form-control" />
+                        <span asp-validation-for="userName" class="text-danger"></span>
                     </div>
-                </div>
+                    <div class="form-group">
+                        <label asp-for="Password" class="control-label"></label>
+                        <input asp-for="Password" class="form-control" />
+                        <span asp-validation-for="Password" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Login" class="btn btn-primary" />
+                        <input type="button" value="Register" class="btn btn-green" onclick="location.href='@Url.Action("Register", "Account")'" />
+                    </div>
+
+                </form>
             </div>
         </div>
     </center>

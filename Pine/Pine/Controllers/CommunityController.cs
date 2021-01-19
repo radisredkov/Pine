@@ -34,9 +34,6 @@ namespace Pine.Controllers
             this.fileService = fileService;
             this.db = context;
         }
-
-        
-
         public IActionResult Communities()
         {
             ICollection<Community> communities = communityService.getAllcommunities();
@@ -130,7 +127,7 @@ namespace Pine.Controllers
         }
 
 
-        //This Should be in PostController class
+        //This should be in PostController class
 
 
         [HttpPost]
@@ -229,6 +226,5 @@ namespace Pine.Controllers
 
             return View("AllPosts", model);
         }
-
     }
 }
