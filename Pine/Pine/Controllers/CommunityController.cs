@@ -115,7 +115,23 @@ namespace Pine.Controllers
 
             community.communityPosts = db.posts.Where(p => p.communityId == community.id).ToList();
 
-            return View(community);
+            ICollection<Post> posts = community.communityPosts;
+            PostsViewModel model = new PostsViewModel()
+            {
+                posts = posts.Select(p => new OutputPostViewModel
+                {
+                    id = p.id,
+                    title = p.title,
+                    description = p.description,
+                    img = p.Img,
+                    tags = p.tags,
+                    userName = userServices.getUserNameById(p.creatorId),
+                    uploadDate = p.timeOfCreation
+                }).OrderByDescending(p => p.uploadDate).ToList()
+            };
+
+            var tuple = new Tuple<Community, PostsViewModel>(community, model);
+            return View(tuple);
         }
         public IActionResult JoinCommunity(string communityName)
         {
@@ -123,7 +139,7 @@ namespace Pine.Controllers
             User user = userServices.getUserById(userId);
             Community com = communityService.getCommunityByName(communityName);
             communityService.JoinCommunity(user, com);
-            return this.Redirect("/");
+            return RedirectToAction("Communities","Community");
         }
 
 
