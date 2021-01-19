@@ -619,3 +619,4 @@ D:\Radi's Folder\Pine\Pine\Pine\obj\Debug\netcoreapp3.1\Razor\Views\Community\Co
 D:\Radi's Folder\Pine\Pine\Pine\obj\Debug\netcoreapp3.1\Razor\Views\Community\CreateCommunity.cshtml.g.cs
 D:\It-kariera\Project\Pine\Pine\obj\Debug\netcoreapp3.1\Razor\Views\Account\UserPanel.cshtml.g.cs
 D:\Radi's Folder\Pine\Pine\Pine\obj\Debug\netcoreapp3.1\scopedcss\bundle\Pine.styles.css
+D:\Radi's Folder\Pine\Pine\Pine\obj\Debug\netcoreapp3.1\Razor\Views\Shared\404NotFound.cshtml.g.cs

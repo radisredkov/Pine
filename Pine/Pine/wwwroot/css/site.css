@@ -82,9 +82,8 @@ body {
     background-color: #000;
     color: #d5d5d5 !important;
     overflow-x: hidden;
-    background-image: url(main-background.png);
+    background-image: url(/css/Images//main-background.png);
     display: flex !important;
-    height: 100vh;
     flex-direction: column;
 }
 
@@ -280,6 +279,14 @@ img {
 }
 .logoutButton:hover{
     color: #8a0000 !important;
+}
+
+.body404 {
+    background-image: url(Images/404-background.png) !important;
+    background-position-y: 100%;
+    background-position-x: -10%;
+    background-repeat: no-repeat;
+    background-color: white;
 }
 
 @-webkit-keyframes mover {
