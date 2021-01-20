@@ -41,7 +41,7 @@ namespace Pine.Services
                 description = model.description,
                 //tags = model.tags,\
                 ownerId = userId,
-                communityPosts = db.posts.ToList()
+                //communityPosts = db.posts.ToList()
             };
             User user = new User { Id = userId };
             db.communities.Add(community);
