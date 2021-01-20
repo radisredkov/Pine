@@ -7,6 +7,8 @@ namespace Pine.Models.Entities
 {
     public class OutputPostViewModel
     {
+        public string communityId;
+
         public string id { get; set; }
 
         public string title { get; set; }

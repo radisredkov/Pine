@@ -28,7 +28,6 @@ namespace Pine.Services
             else
             {
                 db.communities.FirstOrDefault(x => x.id == com.id).communityMembers.Add(user);
-
             }
 
             db.SaveChanges();

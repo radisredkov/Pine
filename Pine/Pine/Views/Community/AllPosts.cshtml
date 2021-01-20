@@ -15,6 +15,9 @@ else
     <br />
     @foreach (var post in Model.posts)
     {
-        <partial name="./PostCard.cshtml" model=@post />
+        if (post.communityId == null)
+        {
+            <partial name="./PostCard.cshtml" model=@post />
+        }
     }
 }

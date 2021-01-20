@@ -115,6 +115,7 @@ namespace Pine.Controllers
             var community = communityService.getCommunityByName(communityName);
 
             community.communityPosts = db.posts.Where(p => p.communityId == community.id).ToList();
+            community.communityMembers = db.communities.FirstOrDefault(c => c.id == community.id).communityMembers;
 
             ICollection<Post> posts = community.communityPosts;
             PostsViewModel model = new PostsViewModel()
@@ -218,7 +219,8 @@ namespace Pine.Controllers
                     img = p.Img,
                     userName = userServices.getUserNameById(p.creatorId),
                     creatorId = p.creatorId,
-                    uploadDate = p.timeOfCreation
+                    uploadDate = p.timeOfCreation,
+                    communityId = p.communityId
                 }).OrderBy(p => p.uploadDate).ToList()
             };
 
@@ -237,7 +239,8 @@ namespace Pine.Controllers
                     img = p.Img,
                     tags = p.tags,
                     userName = userServices.getUserNameById(p.creatorId),
-                    uploadDate = p.timeOfCreation
+                    uploadDate = p.timeOfCreation,
+                    communityId = p.communityId
                 }).OrderByDescending(p => p.uploadDate).ToList()
             };
 

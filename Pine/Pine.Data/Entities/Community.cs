@@ -13,7 +13,6 @@ namespace Pine.Data.Entities
         public Community()
         {
             this.id = Guid.NewGuid().ToString();
-           
         }
 
         [Key]
@@ -34,9 +33,6 @@ namespace Pine.Data.Entities
 
         public virtual ICollection<Post> communityPosts { get; set; } = new List<Post>();
 
-
         public virtual ICollection<User> communityMembers { get; set; } = new List<User>();
-
-
     }
 }
