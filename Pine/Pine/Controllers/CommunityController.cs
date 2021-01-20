@@ -77,6 +77,7 @@ namespace Pine.Controllers
            byte[] img = fileService.ConvertToByte(post.Img);
            var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
            string commId = TempData["CommunityId"].ToString();
+       
 
            switch (commId)
            {
@@ -87,8 +88,8 @@ namespace Pine.Controllers
                    this.postServices.createPost(post, userId, img, TempData["CommunityId"].ToString());
                    break;
            }
-
-           return this.Redirect("/");
+            TempData.Clear();
+            return this.Redirect("/");
         }
 
         [HttpGet("/communities/create")]
