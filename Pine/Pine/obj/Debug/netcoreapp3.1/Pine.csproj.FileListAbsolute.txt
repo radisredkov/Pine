@@ -799,3 +799,12 @@ D:\It-kariera\Emoty\Pine\Pine\Pine\obj\Debug\netcoreapp3.1\Pine.csproj.CopyCompl
 D:\It-kariera\Emoty\Pine\Pine\Pine\obj\Debug\netcoreapp3.1\Pine.dll
 D:\It-kariera\Emoty\Pine\Pine\Pine\obj\Debug\netcoreapp3.1\Pine.pdb
 D:\It-kariera\Emoty\Pine\Pine\Pine\obj\Debug\netcoreapp3.1\Pine.genruntimeconfig.cache
+C:\Users\user\Source\Repos\radisredkov\Pine\Pine\Pine\obj\Debug\netcoreapp3.1\Razor\Views\Community\Community.cshtml.g.cs
+C:\Users\user\Source\Repos\radisredkov\Pine\Pine\Pine\obj\Debug\netcoreapp3.1\Razor\Views\Community\CommunityCard.cshtml.g.cs
+C:\Users\user\Source\Repos\radisredkov\Pine\Pine\Pine\obj\Debug\netcoreapp3.1\Razor\Views\Community\CreateCommunity.cshtml.g.cs
+C:\Users\user\Source\Repos\radisredkov\Pine\Pine\Pine\obj\Debug\netcoreapp3.1\Razor\Views\Shared\404NotFound.cshtml.g.cs
+C:\Users\user\Source\Repos\radisredkov\Pine\Pine\Pine\obj\Debug\netcoreapp3.1\Razor\Views\Shop\BuyListing.cshtml.g.cs
+C:\Users\user\Source\Repos\radisredkov\Pine\Pine\Pine\obj\Debug\netcoreapp3.1\Razor\Views\Shop\CreateListing.cshtml.g.cs
+C:\Users\user\Source\Repos\radisredkov\Pine\Pine\Pine\obj\Debug\netcoreapp3.1\Razor\Views\Shop\EditListing.cshtml.g.cs
+C:\Users\user\Source\Repos\radisredkov\Pine\Pine\Pine\obj\Debug\netcoreapp3.1\Razor\Views\Shop\ListingCard.cshtml.g.cs
+C:\Users\user\Source\Repos\radisredkov\Pine\Pine\Pine\obj\Debug\netcoreapp3.1\Razor\Views\Community\InputCommentView.cshtml.g.cs

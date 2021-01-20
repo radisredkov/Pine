@@ -1,5 +1,7 @@
 ﻿@model Pine.Models.Entities.OutputPostViewModel
 
+@using Pine.Models.Entities;
+
 <div>
     <!--dl class="row">
         <dt class="col-sm-2">
@@ -100,7 +102,9 @@
                         </button>
                     </div>
                 </form>
+
             }
+            <partial name="./InputCommentView.cshtml" model=@(new InputComment { postId=Model.id, content="" }) />
         </div>
     </div>
 <script>

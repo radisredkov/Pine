@@ -75,3 +75,6 @@ D:\It-kariera\Emoty\Pine\Pine\Pine.Models\obj\Debug\netcoreapp3.1\Pine.Models.cs
 D:\It-kariera\Emoty\Pine\Pine\Pine.Models\obj\Debug\netcoreapp3.1\Pine.Models.dll
 D:\It-kariera\Emoty\Pine\Pine\Pine.Models\obj\Debug\netcoreapp3.1\Pine.Models.pdb
 D:\It-kariera\Emoty\Pine\Pine\Pine.Models\obj\Debug\netcoreapp3.1\Pine.Models.genruntimeconfig.cache
+C:\Users\user\Source\Repos\radisredkov\Pine\Pine\Pine.Models\bin\Debug\netcoreapp3.1\Pine.Data.dll
+C:\Users\user\Source\Repos\radisredkov\Pine\Pine\Pine.Models\bin\Debug\netcoreapp3.1\Pine.Data.pdb
+C:\Users\user\Source\Repos\radisredkov\Pine\Pine\Pine.Models\obj\Debug\netcoreapp3.1\Pine.Models.csproj.CopyComplete

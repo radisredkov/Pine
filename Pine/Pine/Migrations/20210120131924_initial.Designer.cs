@@ -10,8 +10,8 @@ using Pine.Data;
 namespace Pine.Migrations
 {
     [DbContext(typeof(PineContext))]
-    [Migration("20210120082004_aa")]
-    partial class aa
+    [Migration("20210120131924_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -172,6 +172,9 @@ namespace Pine.Migrations
                     b.Property<string>("id")
                         .HasColumnType("nvarchar(450)");
 
+                    b.Property<string>("commentaorId")
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<string>("content")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -183,6 +186,8 @@ namespace Pine.Migrations
                         .HasColumnType("datetime2");
 
                     b.HasKey("id");
+
+                    b.HasIndex("commentaorId");
 
                     b.HasIndex("postId");
 
@@ -423,9 +428,15 @@ namespace Pine.Migrations
 
             modelBuilder.Entity("Pine.Data.Entities.Comment", b =>
                 {
+                    b.HasOne("Pine.Data.Identity.User", "commentaor")
+                        .WithMany()
+                        .HasForeignKey("commentaorId");
+
                     b.HasOne("Pine.Data.Entities.Post", "post")
                         .WithMany("comments")
                         .HasForeignKey("postId");
+
+                    b.Navigation("commentaor");
 
                     b.Navigation("post");
                 });

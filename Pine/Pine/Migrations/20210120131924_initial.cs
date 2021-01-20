@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Pine.Migrations
 {
-    public partial class aa : Migration
+    public partial class initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -259,11 +259,18 @@ namespace Pine.Migrations
                     id = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     content = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     timeOfCreation = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    commentaorId = table.Column<string>(type: "nvarchar(450)", nullable: true),
                     postId = table.Column<string>(type: "nvarchar(450)", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_comments", x => x.id);
+                    table.ForeignKey(
+                        name: "FK_comments_AspNetUsers_commentaorId",
+                        column: x => x.commentaorId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_comments_posts_postId",
                         column: x => x.postId,
@@ -310,6 +317,11 @@ namespace Pine.Migrations
                 column: "NormalizedUserName",
                 unique: true,
                 filter: "[NormalizedUserName] IS NOT NULL");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_comments_commentaorId",
+                table: "comments",
+                column: "commentaorId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_comments_postId",

@@ -22,16 +22,18 @@ namespace Pine.Controllers
         private readonly IUserServices userServices;
         private readonly ICommunityServices communityService;
         private readonly IFileService fileService;
+        private readonly ICommentServices commentServices;
 
         private readonly PineContext db; 
 
         public CommunityController(IPostServices postServices, IUserServices userServices, 
-            ICommunityServices communityService, IFileService fileService, PineContext context)
+            ICommunityServices communityService, IFileService fileService, ICommentServices commentServices, PineContext context)
         {
             this.postServices = postServices;
             this.userServices = userServices;
             this.communityService = communityService;
             this.fileService = fileService;
+            this.commentServices = commentServices;
             this.db = context;
         }
         public IActionResult Communities()
@@ -225,6 +227,20 @@ namespace Pine.Controllers
             };
 
             return View("AllPosts", model);
+        }
+
+        public IActionResult CreateComment(InputComment comment)
+        {
+            if (!this.ModelState.IsValid)
+            {
+                return this.Redirect("/");
+            }
+
+            string userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            this.commentServices.createComment(comment, userId);
+
+            return this.Redirect("/");
         }
         public IActionResult AllPosts()
         {
