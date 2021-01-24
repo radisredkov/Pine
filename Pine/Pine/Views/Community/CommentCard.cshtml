@@ -1,0 +1,15 @@
+﻿@model Pine.Data.Entities.Comment
+
+<div class="commentCard">
+    Comment by
+    @if (Model.commentaor.UserName == null)
+    {
+        Html.Display("Anonymous");
+    }
+    else
+    {
+        <a type="submit" asp-controller="Account" asp-action="UserPanel" asp-route-userName="@Html.DisplayFor(c => c.commentaor.UserName).ToString()">@Html.DisplayFor(c => c.commentaor.UserName)</a>
+    }
+    @Html.DisplayFor(c => c.timeOfCreation);
+    @Html.DisplayFor(c => c.content);
+</div>

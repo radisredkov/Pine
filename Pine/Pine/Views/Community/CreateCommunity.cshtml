@@ -19,9 +19,11 @@
                 <textarea asp-for="description" class="post-comm-description"> </textarea>
                 <span asp-validation-for="description" class="text-danger"></span>
             </div>
-            @*<div class="form-group">
-                <input asp-for="backgroundImg" type="file" name="backgroundImg">
-            </div>*@
+            <div class="form-group">
+                <label asp-for="isPrivate" class="control-label">Private?</label>
+                <input asp-for="isPrivate" class="control-label">
+                <span asp-validation-for="isPrivate" class="text-danger"></span>
+            </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>

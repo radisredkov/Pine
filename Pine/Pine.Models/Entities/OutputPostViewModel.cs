@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Http;
+using Pine.Data.Entities;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -24,5 +25,7 @@ namespace Pine.Models.Entities
         public IFormFile  imgRecived { get; set; }
 
         public DateTime uploadDate { get; set; }
+
+        public ICollection<Comment> comments { get; set; }
     }
 }

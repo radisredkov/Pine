@@ -14,7 +14,6 @@ namespace Pine.Services
             byte[] result = new byte[0];
             if (img != null)
             {
-
                 if (img.Length > 0)
                 {
                     byte[] p1 = null;
@@ -28,7 +27,6 @@ namespace Pine.Services
                 }
             }
             return result;
-
         }
     }
 }

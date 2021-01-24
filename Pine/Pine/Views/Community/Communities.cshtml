@@ -5,14 +5,21 @@
 
 <a class="CreateButton" asp-area="" asp-controller="Community" asp-action="CreateCommunity">+ Create Community</a>
 <br />
-    @if (Model.communities.Count == 0)
+@if (Model.communities.Count == 0)
+{
+    <p>There are no Communities yet. Make one and invite your friends!</p>
+}
+else
+{
+    @foreach (var community in Model.communities)
     {
-        <p>There are currently no Communities yet. Make one and invite your friends!</p>
-    }
-    else
-    {
-        @foreach (var community in Model.communities)
+        if (!community.isPrivate)
+        {
+            <partial name="./CommunityCard.cshtml" model=@community />
+        }
+        if (community.OwnerName == User.Identity.Name && User.Identity.Name != null)
         {
             <partial name="./CommunityCard.cshtml" model=@community />
         }
     }
+}

@@ -16,7 +16,5 @@ namespace Pine.Services
         void deletePost(string postId);
 
         ICollection<Post> getAllPosts();
-        
-
     }
 }

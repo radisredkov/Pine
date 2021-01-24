@@ -38,7 +38,7 @@ namespace Pine.Data.Entities
         public virtual User creator { get; set; }
         public byte[] Img { get; set; }
 
-        public List<Comment> comments { get; set; }
+        public virtual ICollection<Comment> comments { get; set; } = new List<Comment>();
 
         //public int likes { get; set; }
         //public string file { get; set; }

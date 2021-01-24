@@ -15,8 +15,6 @@ namespace Pine.Services.Interfaces
         public ICollection<Community> getAllcommunities();
         public ICollection<Post> getAllPostsFromCommunity(string comName);
 
-
-
         void JoinCommunity(User user, Community com);
     }
 }

@@ -10,8 +10,8 @@ using Pine.Data;
 namespace Pine.Migrations
 {
     [DbContext(typeof(PineContext))]
-    [Migration("20210120131924_initial")]
-    partial class initial
+    [Migration("20210124093727_aa")]
+    partial class aa
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -202,6 +202,9 @@ namespace Pine.Migrations
                     b.Property<string>("description")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("isPrivate")
+                        .HasColumnType("bit");
 
                     b.Property<string>("name")
                         .IsRequired()

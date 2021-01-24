@@ -105,6 +105,10 @@
 
             }
             <partial name="./InputCommentView.cshtml" model=@(new InputComment { postId=Model.id, content="" }) />
+            @foreach (var comment in Model.comments)
+            {
+                <partial name="./CommentCard.cshtml" model="@comment"/>
+            }
         </div>
     </div>
 <script>

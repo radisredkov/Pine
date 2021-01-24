@@ -40,6 +40,7 @@ namespace Pine.Services
                 description = model.description,
                 //tags = model.tags,\
                 ownerId = userId,
+                isPrivate = model.isPrivate
                 //communityPosts = db.posts.ToList()
             };
             User user = new User { Id = userId };
@@ -58,7 +59,6 @@ namespace Pine.Services
         {
             return db.posts.Where(p => p.id == id).ToList();
         }
-
 
         public ICollection<Community> getAllcommunities()
         {    

@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Pine.Migrations
 {
-    public partial class initial : Migration
+    public partial class aa : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -161,7 +161,8 @@ namespace Pine.Migrations
                     name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     description = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     tags = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    ownerId = table.Column<string>(type: "nvarchar(450)", nullable: true)
+                    ownerId = table.Column<string>(type: "nvarchar(450)", nullable: true),
+                    isPrivate = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {

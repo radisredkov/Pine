@@ -178,6 +178,12 @@ img {
     height: 250px;
     border-radius: 15px;
     white-space: pre-line;
+    resize: both;
+}
+
+.commentInput{
+    max-width: 1000px;
+    resize: both;
 }
 
 .titleInput {

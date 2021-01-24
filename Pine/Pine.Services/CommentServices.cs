@@ -19,14 +19,16 @@ namespace Pine.Services
         }
         public void createComment(InputComment commentModel, string userId)
         {
+            var postToComment = db.posts.FirstOrDefault(p => p.id == commentModel.postId);
             Comment comment = new Comment
             {
                 content = commentModel.content,
-                post = db.posts.FirstOrDefault(p => p.id == commentModel.postId),
+                post = postToComment,
                 timeOfCreation = DateTime.Now,
                 commentaor = db.Users.FirstOrDefault(u => u.Id == userId)
             };
 
+            postToComment.comments.Add(comment);
             db.comments.Add(comment);
             db.SaveChanges();
         }
@@ -39,11 +41,9 @@ namespace Pine.Services
             db.SaveChanges();
         }
 
-
-
         public ICollection<Comment> getAllComments(string postId)
         {
-            return db.posts.FirstOrDefault(p => p.id == postId).comments;
+            return db.comments.Where(c => c.post.id == postId).ToList();
         }
     }
 }

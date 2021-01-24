@@ -808,3 +808,5 @@ C:\Users\user\Source\Repos\radisredkov\Pine\Pine\Pine\obj\Debug\netcoreapp3.1\Ra
 C:\Users\user\Source\Repos\radisredkov\Pine\Pine\Pine\obj\Debug\netcoreapp3.1\Razor\Views\Shop\EditListing.cshtml.g.cs
 C:\Users\user\Source\Repos\radisredkov\Pine\Pine\Pine\obj\Debug\netcoreapp3.1\Razor\Views\Shop\ListingCard.cshtml.g.cs
 C:\Users\user\Source\Repos\radisredkov\Pine\Pine\Pine\obj\Debug\netcoreapp3.1\Razor\Views\Community\InputCommentView.cshtml.g.cs
+D:\Radi's Folder\Pine\Pine\Pine\obj\Debug\netcoreapp3.1\Razor\Views\Community\InputCommentView.cshtml.g.cs
+D:\Radi's Folder\Pine\Pine\Pine\obj\Debug\netcoreapp3.1\Razor\Views\Community\CommentCard.cshtml.g.cs
