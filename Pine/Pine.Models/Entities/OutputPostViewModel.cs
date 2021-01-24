@@ -26,6 +26,6 @@ namespace Pine.Models.Entities
 
         public DateTime uploadDate { get; set; }
 
-        public ICollection<Comment> comments { get; set; }
+        public ICollection<OutputCommentViewModel> comments { get; set; }
     }
 }

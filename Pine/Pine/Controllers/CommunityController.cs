@@ -220,7 +220,7 @@ namespace Pine.Controllers
                     creatorId = p.creatorId,
                     uploadDate = p.timeOfCreation,
                     communityId = p.communityId,
-                    comments = commentServices.getAllComments(p.id).OrderBy(c => c.timeOfCreation).ToList()
+                   // comments = commentServices.getAllComments(p.id).OrderBy(c => c.timeOfCreation)
                 }).OrderBy(p => p.uploadDate).ToList()
             };
 
@@ -243,8 +243,8 @@ namespace Pine.Controllers
         public IActionResult AllPosts()
         {
             ICollection<Post> posts = postServices.getAllPosts();
-            var postComments = new CommentsViewModel();
-            
+          
+
             PostsViewModel model = new PostsViewModel()
             {
                 posts = posts.Select(p => new OutputPostViewModel
@@ -257,20 +257,14 @@ namespace Pine.Controllers
                     userName = userServices.getUserNameById(p.creatorId),
                     uploadDate = p.timeOfCreation,
                     communityId = p.communityId,
-            //        foreach(var comment in commentServices.getAllComments(p.id))
-            //{
+                    comments = commentServices.getAllComments(p.id).Select(c => new OutputCommentViewModel
+                    {
+                        id = c.id,
+                        commentaor = c.commentaor,
+                        content = c.content,
+                    }).ToList()
 
-            //}
-
-                    //{
-                    //      comments = commentServices.getAllComments(p.id).Select(c => new OutputCommentViewModel
-                    //      {
-                    //        id = c.id,
-                    //        commentaor = c.commentaor,
-                    //        content = c.content,
-                    //        timeOfCreation = c.timeOfCreation
-                    //      }).ToList()
-                    //}
+                    
                 }).OrderByDescending(p => p.uploadDate).ToList()
             };
 
