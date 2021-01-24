@@ -102,12 +102,14 @@
                         </button>
                     </div>
                 </form>
-
             }
-            <partial name="./InputCommentView.cshtml" model=@(new InputComment { postId=Model.id, content="" }) />
+            <button class="btn btn-primary" data-toggle="collapse" data-target="#commentContainer">Comment</button>
+            <div id="commentContainer" class="collapse">
+                <partial name="./InputCommentView.cshtml" model=@(new InputComment { postId=Model.id, content="" }) />
+            </div>
             @foreach (var comment in Model.comments)
             {
-                <partial name="./CommentCard.cshtml" model="@comment"/>
+                <partial name="./CommentCard.cshtml" model="@comment" />
             }
         </div>
     </div>

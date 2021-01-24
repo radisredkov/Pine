@@ -28,6 +28,8 @@ namespace Pine.Data.Entities
         [ForeignKey("postId")]
         public Post post { get; set; }
 
+        public byte[] Img { get; set; }
+
         // public int likes { get; set; }
         // public string file { get; set; }
     }

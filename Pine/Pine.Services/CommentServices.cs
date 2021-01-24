@@ -17,7 +17,7 @@ namespace Pine.Services
         {
             this.db = db;
         }
-        public void createComment(InputComment commentModel, string userId)
+        public void createComment(InputComment commentModel, string userId, byte[] img)
         {
             var postToComment = db.posts.FirstOrDefault(p => p.id == commentModel.postId);
             Comment comment = new Comment
@@ -25,7 +25,8 @@ namespace Pine.Services
                 content = commentModel.content,
                 post = postToComment,
                 timeOfCreation = DateTime.Now,
-                commentaor = db.Users.FirstOrDefault(u => u.Id == userId)
+                commentaor = db.Users.FirstOrDefault(u => u.Id == userId),
+                Img = img
             };
 
             postToComment.comments.Add(comment);

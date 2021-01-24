@@ -1,15 +1,32 @@
-﻿@model Pine.Data.Entities.Comment
+﻿@model Pine.Models.Entities.OutputCommentViewModel
 
 <div class="commentCard">
-    Comment by
-    @if (Model.commentaor.UserName == null)
-    {
-        Html.Display("Anonymous");
-    }
-    else
-    {
-        <a type="submit" asp-controller="Account" asp-action="UserPanel" asp-route-userName="@Html.DisplayFor(c => c.commentaor.UserName).ToString()">@Html.DisplayFor(c => c.commentaor.UserName)</a>
-    }
-    @Html.DisplayFor(c => c.timeOfCreation);
-    @Html.DisplayFor(c => c.content);
+    <div class="commentHeader">
+        Comment by
+        @if (Model.commentaor == null)
+        {
+            Html.DisplayName("Anonymous");
+        }
+        else
+        {
+            <a type="submit" asp-controller="Account" asp-action="UserPanel" asp-route-userName="@Model.commentaor.UserName">@Html.DisplayFor(c => c.userName)</a>
+        }
+    <p style="float:right">@Html.DisplayFor(c => c.timeOfCreation)</p>
+    </div>
+    <div class="commentBody">
+        <img id="commentImg" onclick="resizeImg()" onerror="this.style.display='none'" style="height:187px; width:280px; float:right;" frameborder="0" src="data:image/jpeg;base64,@Convert.ToBase64String(@Model.img)" />
+        @Html.DisplayFor(c => c.content)
+    </div>
 </div>
+
+<script>
+    function resizeImg() {
+        if ($('#commentImg').hasClass('enlarged')) {
+            $('#commentImg').removeClass('enlarged');
+            $("#commentImg").stop().animate({ width: 280, height: 187 }, 100);
+        } else {
+            $('#commentImg').addClass('enlarged')
+            $("#commentImg").stop().animate({ width: 1000, height: 700 }, 100);
+        }
+    }
+</script>

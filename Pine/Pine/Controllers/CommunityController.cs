@@ -71,7 +71,6 @@ namespace Pine.Controllers
         [HttpPost("/posts/communityId/create")]
         public IActionResult CreatePost(PostViewModel post)
         {
-        
             if (!this.ModelState.IsValid)
             {
                 return this.View();
@@ -220,13 +219,22 @@ namespace Pine.Controllers
                     creatorId = p.creatorId,
                     uploadDate = p.timeOfCreation,
                     communityId = p.communityId,
-                   // comments = commentServices.getAllComments(p.id).OrderBy(c => c.timeOfCreation)
+                    comments = commentServices.getAllComments(p.id).Select(c => new OutputCommentViewModel
+                   {
+                       id = c.id,
+                       commentaor = c.commentaor,
+                       content = c.content,
+                       timeOfCreation = c.timeOfCreation,
+                       img = c.Img,
+                       //userName = userServices.getUserNameById(c.commentaor.Id)
+                    }).OrderBy(c => c.timeOfCreation).ToList()
                 }).OrderBy(p => p.uploadDate).ToList()
             };
 
             return View("AllPosts", model);
         }
 
+        [HttpPost]
         public IActionResult CreateComment(InputComment comment)
         {
             if (!this.ModelState.IsValid)
@@ -234,9 +242,11 @@ namespace Pine.Controllers
                 return this.Redirect("/");
             }
 
-            string userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
 
-            this.commentServices.createComment(comment, userId);
+            byte[] img = fileService.ConvertToByte(comment.Img);
+
+            this.commentServices.createComment(comment, userId, img);
 
             return this.Redirect("/");
         }
@@ -244,7 +254,6 @@ namespace Pine.Controllers
         {
             ICollection<Post> posts = postServices.getAllPosts();
           
-
             PostsViewModel model = new PostsViewModel()
             {
                 posts = posts.Select(p => new OutputPostViewModel
@@ -262,9 +271,10 @@ namespace Pine.Controllers
                         id = c.id,
                         commentaor = c.commentaor,
                         content = c.content,
-                    }).ToList()
-
-                    
+                        timeOfCreation = c.timeOfCreation,
+                        img = c.Img,
+                        //userName = userServices.getUserNameById(c.commentaor.Id)
+                    }).OrderBy(c => c.timeOfCreation).ToList()  
                 }).OrderByDescending(p => p.uploadDate).ToList()
             };
 

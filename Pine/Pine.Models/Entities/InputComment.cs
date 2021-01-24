@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
@@ -12,5 +13,7 @@ namespace Pine.Models.Entities
         [Display(Name="Comment")]
         [Required]
         public string content { get; set; }
+
+        public IFormFile Img { get; set; }
     }
 }

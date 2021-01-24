@@ -25,10 +25,11 @@ namespace Pine.Controllers
         private readonly IUserServices userServices;
         private readonly ICommunityServices communityService;
         private readonly IShopListingService shopListingService;
+        private readonly ICommentServices commentServices;
         private readonly PineContext db;
 
         public AccountController(UserManager<User> userManager,
-            SignInManager<User> signInManager, IPostServices postServices, IUserServices userServices, ICommunityServices communityService, IShopListingService shopListingService,
+            SignInManager<User> signInManager, IPostServices postServices, IUserServices userServices, ICommunityServices communityService, IShopListingService shopListingService, ICommentServices commentServices,
             PineContext Db)
         {
             this.userManager = userManager;
@@ -37,6 +38,7 @@ namespace Pine.Controllers
             this.userServices = userServices;
             this.communityService = communityService;
             this.shopListingService = shopListingService;
+            this.commentServices = commentServices;
             this.db = Db;   
         }
 
@@ -113,7 +115,16 @@ namespace Pine.Controllers
                     tags = p.tags,
                     userName = userName,
                     creatorId = p.creatorId,
-                    uploadDate = p.timeOfCreation
+                    uploadDate = p.timeOfCreation,
+                    comments = commentServices.getAllComments(p.id).Select(c => new OutputCommentViewModel
+                    {
+                        id = c.id,
+                        commentaor = c.commentaor,
+                        content = c.content,
+                        timeOfCreation = c.timeOfCreation,
+                        img = c.Img,
+                        //userName = userServices.getUserNameById(c.commentaor.Id)
+                    }).OrderBy(c => c.timeOfCreation).ToList()
                 }).OrderByDescending(p => p.uploadDate).ToList()
             };
             ICollection<ShopListing> listings = shopListingService.getAllListings().Where(l => l.creatorId == user.Id).ToList();

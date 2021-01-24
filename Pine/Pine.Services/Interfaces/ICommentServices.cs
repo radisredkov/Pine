@@ -8,7 +8,7 @@ namespace Pine.Services
 {
     public interface ICommentServices
     {
-        public void createComment(InputComment commentModel, string userId);
+        public void createComment(InputComment commentModel, string userId, byte[] img);
 
         //public void editComment(string commentId, string userId);
 

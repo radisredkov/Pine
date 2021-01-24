@@ -10,7 +10,7 @@ using Pine.Data;
 namespace Pine.Migrations
 {
     [DbContext(typeof(PineContext))]
-    [Migration("20210124093727_aa")]
+    [Migration("20210124154941_aa")]
     partial class aa
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -171,6 +171,9 @@ namespace Pine.Migrations
                 {
                     b.Property<string>("id")
                         .HasColumnType("nvarchar(450)");
+
+                    b.Property<byte[]>("Img")
+                        .HasColumnType("varbinary(max)");
 
                     b.Property<string>("commentaorId")
                         .HasColumnType("nvarchar(450)");
