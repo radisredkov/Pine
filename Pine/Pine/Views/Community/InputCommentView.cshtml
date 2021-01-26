@@ -2,7 +2,7 @@
 
 <div class="row">
     <div class="col-md-4">
-        <form method="post" asp-controller="Community" asp-action="CreateComment">
+        <form method="post" asp-controller="Community" asp-action="CreateComment" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <input type="hidden" asp-for="postId" class="form-control" />

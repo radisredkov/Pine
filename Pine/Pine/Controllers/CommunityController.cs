@@ -129,7 +129,16 @@ namespace Pine.Controllers
                     img = p.Img,
                     tags = p.tags,
                     userName = userServices.getUserNameById(p.creatorId),
-                    uploadDate = p.timeOfCreation
+                    uploadDate = p.timeOfCreation,
+                    comments = commentServices.getAllComments(p.id).Select(c => new OutputCommentViewModel
+                    {
+                        id = c.id,
+                        commentaor = c.commentaor,
+                        content = c.content,
+                        timeOfCreation = c.timeOfCreation,
+                        img = c.Img,
+                        //userName = userServices.getUserNameById(c.commentaor.Id)
+                    }).OrderBy(c => c.timeOfCreation).ToList()
                 }).OrderByDescending(p => p.uploadDate).ToList()
             };
 
