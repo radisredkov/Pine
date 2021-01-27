@@ -6,12 +6,12 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="userDescription" class="control-label">My Info</label>
-                <textarea asp-for="userDescription" /> </textarea>
+                <textarea asp-for="userDescription" style="font-size: 16px; width: 500px;" class="post-comm-description" /> </textarea>
                 <span asp-validation-for="userDescription" class="text-danger"></span>
             </div>
             <div class="uploadImg">
-                <input asp-for="profilePicture" type="file" name="profilePicture" style="position: relative; width: 100%; height: 100%; display:inline-block;">
-                <p style="font-size: 18px; display:inline-block">Drag your profile picture here or click this area.</p>
+                <p style="display:inline-block; font-size: 16px;">Drag your profile picture here or click this area.</p>
+                <input asp-for="profilePicture" type="file" name="profilePicture" style="position: relative; width: 100%; height: 100%; display:inline-block; top: -110%">
             </div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
