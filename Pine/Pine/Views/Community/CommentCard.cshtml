@@ -9,7 +9,7 @@
         }
         else
         {
-            <a type="submit" asp-controller="Account" asp-action="UserPanel" asp-route-userName="@Model.commentaor.UserName">@Html.DisplayFor(c => c.userName)</a>
+            <a type="submit" asp-controller="Account" asp-action="UserPanel" asp-route-userName="@Model.commentaor.UserName">@Html.DisplayFor(c => c.commentaor.UserName)</a>
         }
     <p style="float:right">@Html.DisplayFor(c => c.timeOfCreation)</p>
     </div>

@@ -278,7 +278,7 @@ namespace Pine.Controllers
                     comments = commentServices.getAllComments(p.id).Select(c => new OutputCommentViewModel
                     {
                         id = c.id,
-                        commentaor = c.commentaor,
+                        commentaor = userServices.getUserById(c.commentatorId),
                         content = c.content,
                         timeOfCreation = c.timeOfCreation,
                         img = c.Img,

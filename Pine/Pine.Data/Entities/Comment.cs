@@ -23,6 +23,7 @@ namespace Pine.Data.Entities
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public DateTime timeOfCreation { get; set; }
 
+        public string commentatorId { get; set; }
         public virtual User commentaor { get; set; }
 
         [ForeignKey("postId")]

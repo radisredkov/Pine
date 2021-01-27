@@ -12,7 +12,7 @@ namespace Pine.Models.Entities
         public string id { get; set; }
         public string content { get; set; }
         public DateTime timeOfCreation { get; set; }
-        public virtual User commentaor { get; set; }
+        public User commentaor { get; set; }
         public string userName { get; set; }
         public Post post { get; set; }
         public byte[] img { get; set; }

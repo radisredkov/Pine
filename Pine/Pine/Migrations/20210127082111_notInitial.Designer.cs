@@ -10,8 +10,8 @@ using Pine.Data;
 namespace Pine.Migrations
 {
     [DbContext(typeof(PineContext))]
-    [Migration("20210124154941_aa")]
-    partial class aa
+    [Migration("20210127082111_notInitial")]
+    partial class notInitial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -177,6 +177,9 @@ namespace Pine.Migrations
 
                     b.Property<string>("commentaorId")
                         .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("commentatorId")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("content")
                         .IsRequired()

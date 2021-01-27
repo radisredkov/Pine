@@ -26,6 +26,7 @@ namespace Pine.Services
                 post = postToComment,
                 timeOfCreation = DateTime.Now,
                 commentaor = db.Users.FirstOrDefault(u => u.Id == userId),
+                commentatorId = userId,
                 Img = img
             };
 
