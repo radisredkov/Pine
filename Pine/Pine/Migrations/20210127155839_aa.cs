@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Pine.Migrations
 {
-    public partial class initial : Migration
+    public partial class aa : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -27,6 +27,8 @@ namespace Pine.Migrations
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     postId = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    profilePicture = table.Column<byte[]>(type: "varbinary(max)", nullable: true),
+                    userDescription = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     Email = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
@@ -260,6 +262,7 @@ namespace Pine.Migrations
                     id = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     content = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     timeOfCreation = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    commentatorId = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     commentaorId = table.Column<string>(type: "nvarchar(450)", nullable: true),
                     postId = table.Column<string>(type: "nvarchar(450)", nullable: true),
                     Img = table.Column<byte[]>(type: "varbinary(max)", nullable: true)

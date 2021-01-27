@@ -6,11 +6,18 @@
     ViewData["Title"] = Model.Item2.UserName;
 }
 
-<center><h1 style="color:#00ff21;">@Html.DisplayFor(model => model.Item2.UserName)</h1></center>
+<center><h1 style="color:#00ff21;">@Html.DisplayFor(model => model.Item2.UserName) @if(Model.Item2.UserName == User.Identity.Name)
+	    {
+            <button class="btn btn-primary" data-toggle="collapse" data-target="#editUserContainer">Edit</button>
+            <div id="editUserContainer"class="collapse">
+                <partial name="./EditUser.cshtml" model=@(new UserPanelInputModel { })/>
+            </div>
+	    } <img id="userProfilePicture" onerror="this.style.display='none'" style="height:110px; width:110px; float:right;" frameborder="0" src="data:image/jpeg;base64,@Convert.ToBase64String(@Model.Item2.profilePicture)" /></h1>
+    <p>@Html.DisplayFor(model => Model.Item2.userDescription)</p></center>
 <h2 style="color:aqua">Posts:</h2>
 @if (Model.Item1.posts.Count == 0)
 {
-    <p style="color: #00ff21; display: inline; margin: 0px !important;">@Html.DisplayFor(model => model.Item2.UserName)  </p><p style="display: inline;color:#fff; margin: 0px !important;" ;>has no posts.</p>
+    <p style="color: #00ff21; display: inline; margin: 0px !important;">@Html.DisplayFor(model => model.Item2.UserName)  </p><p style="display: inline;color:#fff; margin: 0px !important;">has no posts.</p>
 }
 else
 {
@@ -36,3 +43,10 @@ else
         }
     </div>
 }
+<script>
+    $(document).ready(function () {
+        $('form input').change(function () {
+            $('form p').text(this.files.length + " file(s) selected");
+        });
+    });
+</script>

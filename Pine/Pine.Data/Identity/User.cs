@@ -31,6 +31,9 @@ namespace Pine.Data.Identity
         [ForeignKey("ListingId")]
         public List<ShopListing> listings { get; set; }
 
+        public byte[] profilePicture { get; set; }
+        public string userDescription { get; set; }
+
         //   public List<Community> communitiesOwned { get; set; }
     }
 }

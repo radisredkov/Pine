@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
@@ -25,5 +26,11 @@ namespace Pine.Models.Account
         [Compare("Password",
             ErrorMessage = "Confirm Password does not match Password")]
         public string ConfirmPassword { get; set; }
+
+        [Display(Name = "Profile Picture(optional)")]
+        public IFormFile profilePicture { get; set; }
+
+        [Display(Name = "Tell us about yourself!(optional)")]
+        public string userDescription { get; set; }
     }
 }

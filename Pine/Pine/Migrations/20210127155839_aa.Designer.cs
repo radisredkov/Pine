@@ -10,8 +10,8 @@ using Pine.Data;
 namespace Pine.Migrations
 {
     [DbContext(typeof(PineContext))]
-    [Migration("20210127082111_notInitial")]
-    partial class notInitial
+    [Migration("20210127155839_aa")]
+    partial class aa
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -354,6 +354,12 @@ namespace Pine.Migrations
                         .HasColumnType("nvarchar(256)");
 
                     b.Property<string>("postId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<byte[]>("profilePicture")
+                        .HasColumnType("varbinary(max)");
+
+                    b.Property<string>("userDescription")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");

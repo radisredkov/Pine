@@ -354,6 +354,12 @@ namespace Pine.Migrations
                     b.Property<string>("postId")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<byte[]>("profilePicture")
+                        .HasColumnType("varbinary(max)");
+
+                    b.Property<string>("userDescription")
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("Id");
 
                     b.HasIndex("NormalizedEmail")

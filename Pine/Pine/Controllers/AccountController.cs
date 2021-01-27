@@ -26,10 +26,11 @@ namespace Pine.Controllers
         private readonly ICommunityServices communityService;
         private readonly IShopListingService shopListingService;
         private readonly ICommentServices commentServices;
+        private readonly IFileService fileService;
         private readonly PineContext db;
 
         public AccountController(UserManager<User> userManager,
-            SignInManager<User> signInManager, IPostServices postServices, IUserServices userServices, ICommunityServices communityService, IShopListingService shopListingService, ICommentServices commentServices,
+            SignInManager<User> signInManager, IPostServices postServices, IUserServices userServices, ICommunityServices communityService, IShopListingService shopListingService, ICommentServices commentServices, IFileService fileService,
             PineContext Db)
         {
             this.userManager = userManager;
@@ -39,6 +40,7 @@ namespace Pine.Controllers
             this.communityService = communityService;
             this.shopListingService = shopListingService;
             this.commentServices = commentServices;
+            this.fileService = fileService;
             this.db = Db;   
         }
 
@@ -55,7 +57,9 @@ namespace Pine.Controllers
                 User user = new User()
                 {
                     UserName = registration.Username, //USERNAME =!= EMAIL
-                    Email = registration.Email
+                    Email = registration.Email,
+                    profilePicture = fileService.ConvertToByte(registration.profilePicture),
+                    userDescription = registration.userDescription
                 };
 
                 IdentityResult result = await this.userManager.CreateAsync(user, registration.Password);
@@ -142,6 +146,14 @@ namespace Pine.Controllers
             };
             var tuple = new Tuple<PostsViewModel, User, ShopListingsViewModel>(postsModel, user, listingsModel);
             return View(tuple);
+        }
+
+        [HttpPost]
+        public IActionResult EditUser(string userName, UserPanelInputModel model)
+        {
+            var user = userServices.getUserByUserName(userName);
+            userServices.editUser(user, model);
+            return RedirectToAction("UserPanel", "Account", new { userName = userName});
         }
 
         public ActionResult Logout()

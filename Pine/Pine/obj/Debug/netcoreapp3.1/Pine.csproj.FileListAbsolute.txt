@@ -360,3 +360,4 @@ C:\Users\user\Source\Repos\radisredkov\Pine\Pine\Pine\bin\Debug\netcoreapp3.1\Pi
 C:\Users\user\Source\Repos\radisredkov\Pine\Pine\Pine\obj\Debug\netcoreapp3.1\staticwebassets\Pine.StaticWebAssets.Manifest.cache
 C:\Users\user\Source\Repos\radisredkov\Pine\Pine\Pine\obj\Debug\netcoreapp3.1\staticwebassets\Pine.StaticWebAssets.xml
 C:\Users\user\Source\Repos\radisredkov\Pine\Pine\Pine\obj\Debug\netcoreapp3.1\Pine.genruntimeconfig.cache
+D:\Radi's Folder\Pine\Pine\Pine\obj\Debug\netcoreapp3.1\Razor\Views\Account\EditUser.cshtml.g.cs
