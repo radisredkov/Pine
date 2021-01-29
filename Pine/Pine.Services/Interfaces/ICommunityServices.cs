@@ -11,7 +11,7 @@ namespace Pine.Services.Interfaces
     {
         public void CreateCommunity(CommunityViewModel model, string userId);
         public Community getCommunityByName(string communityName);
- 
+        public Community getCommunityById(string communityId);
         public ICollection<Community> getAllcommunities();
         public ICollection<Post> getAllPostsFromCommunity(string comName);
 

@@ -54,6 +54,10 @@ namespace Pine.Services
         {
             return db.communities.FirstOrDefault(c => c.name == communityName);
         }
+        public Community getCommunityById(string communityId)
+        {
+            return db.communities.FirstOrDefault(c => c.id == communityId);
+        }
 
         public ICollection<Post> GetPostsFromCommunity(string id)
         {

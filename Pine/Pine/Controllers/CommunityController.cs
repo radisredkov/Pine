@@ -90,7 +90,14 @@ namespace Pine.Controllers
                    break;
            }
             TempData.Clear();
-            return this.Redirect("/");
+            if (commId == null)
+            {
+                return this.Redirect("/");
+            }
+            else
+            {
+                return this.RedirectToAction("Community", "Community", new {communityName = communityService.getCommunityById(commId).name});
+            }
         }
 
         [HttpGet("/communities/create")]
