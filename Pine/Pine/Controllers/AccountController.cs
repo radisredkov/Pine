@@ -156,6 +156,12 @@ namespace Pine.Controllers
             return RedirectToAction("UserPanel", "Account", new { userName = userName});
         }
 
+
+        public IActionResult MessageUser(string userid)
+        {
+            return Redirect("/");
+        }
+
         public ActionResult Logout()
         {
             signInManager.SignOutAsync();
