@@ -44,7 +44,7 @@
             <img id="postImg" onclick="resizeImg(this)" onerror="this.style.display='none'" style="height:187px; width:280px; float:right;" frameborder="0" src="data:image/jpeg;base64,@Convert.ToBase64String(@Model.img)" />
             <h4 class="card-title">@Html.DisplayFor(model => model.title)</h4>
             <p class="card-text" style="white-space: pre-line;">@Html.DisplayFor(model => model.description)</p>
-            @if (User.Identity.Name == Model.userName && User.Identity.Name != null)
+            @if (User.Identity.Name == Model.userName && User.Identity.Name != null || User.IsInRole("Administrator"))
             {
                 <form method="post" asp-controller="Community" asp-action="DeletePost">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>

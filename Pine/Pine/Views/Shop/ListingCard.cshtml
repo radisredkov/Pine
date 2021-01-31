@@ -97,7 +97,7 @@
                     </div>
                 </form>
             }
-            else if(User.Identity.Name != Model.userName && User.Identity.Name != null)
+            else if(User.Identity.Name != Model.userName && User.Identity.Name != null || User.IsInRole("Administrator"))
             {
                 <form method="post" asp-controller="Shop" asp-action="BuyListing">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>

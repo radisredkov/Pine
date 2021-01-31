@@ -25,11 +25,6 @@ namespace Pine.Data
         public DbSet<Chat> chats { get; set; }
         public DbSet<Message> messages { get; set; }
 
-
-
-
-
-
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);

@@ -1,0 +1,11 @@
+﻿@using Pine.Models.Entities
+@model Tuple<ChatsViewModel, MessagesViewModel>
+
+@foreach (var chat in Model.Item1.chats)
+{
+    foreach (var message in Model.Item2.messages)
+    {
+        @Html.Display(chat.name)
+        @Html.Display(message.text)
+    }
+}

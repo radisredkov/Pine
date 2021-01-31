@@ -20,6 +20,5 @@ namespace Pine.Data.Entities
         public string name { get; set; }
         public ICollection<User> usersInChat { get; set; }
         public ICollection<Message> messages { get; set; }
-
     }
 }
