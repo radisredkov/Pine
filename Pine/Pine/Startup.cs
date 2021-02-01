@@ -47,6 +47,7 @@ namespace Pine
             });
 
             services.AddTransient<IPostServices, PostServices>();
+            services.AddTransient<IChatService, ChatService>();
             services.AddTransient<IUserServices, UserServices>();
             services.AddTransient<IFileService, FileService>();
             services.AddTransient<ICommunityServices, CommunityServices>();

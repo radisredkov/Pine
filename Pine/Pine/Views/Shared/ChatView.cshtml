@@ -1,11 +1,16 @@
 ﻿@using Pine.Models.Entities
-@model Tuple<ChatsViewModel, MessagesViewModel>
+@model ChatsViewModel
 
-@foreach (var chat in Model.Item1.chats)
+
+
+@if (Model.chats != null)
 {
-    foreach (var message in Model.Item2.messages)
+    @foreach (var chat in Model.chats)
     {
-        @Html.Display(chat.name)
-        @Html.Display(message.text)
+      <p>@chat.name</p>
     }
+}
+else
+{
+<p>Threre are no chats at the moment</p>
 }
