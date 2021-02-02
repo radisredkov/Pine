@@ -1,0 +1,51 @@
+﻿@model Pine.Models.Entities.CommunityInputModel 
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-controller="Community" asp-action="EditCommunity" asp-route-communityName="@Model.communityName" method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="communityDescription" class="control-label" style="font-size:16px">Community Description</label>
+                <textarea asp-for="communityDescription" style="font-size: 16px; width: 500px;" class="post-comm-description" /> </textarea>
+                <span asp-validation-for="communityDescription" class="text-danger"></span>
+            </div>
+            <div class="uploadImg">
+                <p style="display:inline-block; font-size: 16px;">Drag your css file here or click this area.</p>
+                <input asp-for="communityCss" type="file" name="communityCss" style="position: relative; width: 100%; height: 100%; display:inline-block; top: -110%">
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+        <form method="post" asp-controller="Community" asp-action="AddModerator" asp-route-communityName="@Model.communityName">
+            <div class="form-group">
+                <label asp-for="moderatorName" class="control-label" style="font-size:16px">Moderator Name</label>
+                <input asp-for="moderatorName" style="font-size: 16px; width: 500px;" />
+                <span asp-validation-for="moderatorName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Add Moderator" class="btn btn-primary" />
+            </div>
+        </form>
+        <form method="post" asp-controller="Community" asp-action="RemoveModerator" asp-route-communityName="@Model.communityName">
+            <div class="form-group">
+                <label asp-for="moderatorName" class="control-label" style="font-size:16px">Moderator Name</label>
+                <input asp-for="moderatorName" style="font-size: 16px; width: 500px;" />
+                <span asp-validation-for="moderatorName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Remove Moderator" class="btn btn-danger"/>
+            </div>
+        </form>
+    </div>
+</div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+<script>
+    $(document).ready(function () {
+        $('form input').change(function () {
+            $('form p').text(this.files.length + " file(s) selected");
+        });
+    });
+</script>

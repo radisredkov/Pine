@@ -49,10 +49,15 @@ namespace Pine.Services
             {
 
             }
+            if (oldUser.userCss != null && model.userCss == null)
+            {
+
+            }
             else
             {
                 oldUser.profilePicture = fileService.ConvertToByte(model.profilePicture);
-            }   
+                oldUser.userCss = fileService.ConvertToByte(model.userCss);
+            }
 
             db.users.Update(oldUser);
             db.SaveChanges();

@@ -24,9 +24,9 @@ namespace Pine.Controllers
         private readonly IFileService fileService;
         private readonly ICommentServices commentServices;
 
-        private readonly PineContext db; 
+        private readonly PineContext db;
 
-        public CommunityController(IPostServices postServices, IUserServices userServices, 
+        public CommunityController(IPostServices postServices, IUserServices userServices,
             ICommunityServices communityService, IFileService fileService, ICommentServices commentServices, PineContext context)
         {
             this.postServices = postServices;
@@ -52,9 +52,9 @@ namespace Pine.Controllers
 
             return View("Communities", model);
         }
-      
+
         [HttpGet("/posts/communityId/create")]
-        public IActionResult CreatePost(string communityId) 
+        public IActionResult CreatePost(string communityId)
         {
             switch (communityId)
             {
@@ -64,7 +64,7 @@ namespace Pine.Controllers
                 default:
                     TempData["CommunityId"] = communityId;
                     break;
-            }          
+            }
             return View();
         }
 
@@ -76,19 +76,19 @@ namespace Pine.Controllers
                 return this.View();
             }
 
-           byte[] img = fileService.ConvertToByte(post.Img);
-           var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
-           string commId = TempData["CommunityId"].ToString();      
+            byte[] img = fileService.ConvertToByte(post.Img);
+            var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+            string commId = TempData["CommunityId"].ToString();
 
-           switch (commId)
-           {
-               case "empty":
-                   this.postServices.createPost(post, userId, img);
-                   break;
-               default:
-                   this.postServices.createPost(post, userId, img, TempData["CommunityId"].ToString());
-                   break;
-           }
+            switch (commId)
+            {
+                case "empty":
+                    this.postServices.createPost(post, userId, img);
+                    break;
+                default:
+                    this.postServices.createPost(post, userId, img, TempData["CommunityId"].ToString());
+                    break;
+            }
             TempData.Clear();
             return this.Redirect("/");
         }
@@ -110,13 +110,15 @@ namespace Pine.Controllers
             var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
             this.communityService.CreateCommunity(com, userId);
             return this.RedirectToAction("Communities", "Community");
-        }   
+        }
         public async Task<IActionResult> Community(string communityName)
         {
             var community = communityService.getCommunityByName(communityName);
 
             community.communityPosts = db.posts.Where(p => p.communityId == community.id).ToList();
             community.communityMembers = db.communities.FirstOrDefault(c => c.id == community.id).communityMembers;
+            community.communityModerators = db.communities.FirstOrDefault(c => c.id == community.id).communityModerators;
+            community.Owner = userServices.getUserById(community.ownerId);
 
             ICollection<Post> posts = community.communityPosts;
             PostsViewModel model = new PostsViewModel()
@@ -151,7 +153,29 @@ namespace Pine.Controllers
             User user = userServices.getUserById(userId);
             Community com = communityService.getCommunityByName(communityName);
             communityService.JoinCommunity(user, com);
-            return RedirectToAction("Communities","Community");
+            return RedirectToAction("Communities", "Community");
+        }
+
+        public IActionResult EditCommunity(CommunityInputModel community)
+        {
+            Community com = communityService.getCommunityByName(community.communityName);
+            communityService.EditCommunity(com, community);
+            return RedirectToAction("Community", "Community", new { communityName = community.communityName });
+        }
+
+        public IActionResult AddModerator(string communityName, CommunityInputModel model)
+        {
+            Community com = communityService.getCommunityByName(communityName);
+            User moderator = userServices.getUserByUserName(model.moderatorName);
+            communityService.AddModerator(com, moderator);
+            return RedirectToAction("Community", "Community", new { communityName = communityName });
+        }
+        public IActionResult RemoveModerator(string communityName, CommunityInputModel model)
+        {
+            Community com = communityService.getCommunityByName(communityName);
+            User moderator = userServices.getUserByUserName(model.moderatorName);
+            communityService.RemoveModerator(com, moderator);
+            return RedirectToAction("Community", "Community", new { communityName = communityName });
         }
 
         //This should be in PostController class
@@ -172,11 +196,6 @@ namespace Pine.Controllers
             var userName = this.userServices.getUserNameById(userId);
 
             Console.WriteLine(userName, post.userName, User.Identity.Name);
-
-            if (userName != post.userName)
-            {
-                return this.Redirect("/");
-            }
 
             this.postServices.deletePost(post.id);
 
@@ -229,13 +248,13 @@ namespace Pine.Controllers
                     uploadDate = p.timeOfCreation,
                     communityId = p.communityId,
                     comments = commentServices.getAllComments(p.id).Select(c => new OutputCommentViewModel
-                   {
-                       id = c.id,
-                       commentaor = c.commentaor,
-                       content = c.content,
-                       timeOfCreation = c.timeOfCreation,
-                       img = c.Img,
-                       //userName = userServices.getUserNameById(c.commentaor.Id)
+                    {
+                        id = c.id,
+                        commentaor = c.commentaor,
+                        content = c.content,
+                        timeOfCreation = c.timeOfCreation,
+                        img = c.Img,
+                        //userName = userServices.getUserNameById(c.commentaor.Id)
                     }).OrderBy(c => c.timeOfCreation).ToList()
                 }).OrderBy(p => p.uploadDate).ToList()
             };
@@ -262,7 +281,7 @@ namespace Pine.Controllers
         public IActionResult AllPosts()
         {
             ICollection<Post> posts = postServices.getAllPosts();
-          
+
             PostsViewModel model = new PostsViewModel()
             {
                 posts = posts.Select(p => new OutputPostViewModel
@@ -283,7 +302,7 @@ namespace Pine.Controllers
                         timeOfCreation = c.timeOfCreation,
                         img = c.Img,
                         //userName = userServices.getUserNameById(c.commentaor.Id)
-                    }).OrderBy(c => c.timeOfCreation).ToList()  
+                    }).OrderBy(c => c.timeOfCreation).ToList()
                 }).OrderByDescending(p => p.uploadDate).ToList()
             };
 

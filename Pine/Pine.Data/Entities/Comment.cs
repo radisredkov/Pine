@@ -31,7 +31,6 @@ namespace Pine.Data.Entities
 
         public byte[] Img { get; set; }
 
-        // public int likes { get; set; }
-        // public string file { get; set; }
+        public string moderatorName { get; set; }
     }
 }

@@ -27,7 +27,7 @@ namespace Pine.Services
                 description = model.description,
                 tags = model.tags,
                 timeOfCreation = DateTime.Now,
-                Img = img,                   
+                Img = img,
                 communityId = comId,
                 creatorId = userId,
                 creator = db.Users.FirstOrDefault(u => u.Id == userId),
@@ -39,7 +39,7 @@ namespace Pine.Services
             {
                 user.posts.Add(post);
                 db.users.Update(user);
-            }         
+            }
             db.posts.Add(post);
             db.SaveChanges();
         }
@@ -55,13 +55,14 @@ namespace Pine.Services
             oldPost.timeOfCreation = DateTime.Now;
 
             db.posts.Update(oldPost);
-            db.SaveChanges(); 
+            db.SaveChanges();
         }
 
         public void deletePost(string postId)
         {
             Post todeletePost = db.posts.FirstOrDefault(p => p.id == postId);
 
+            todeletePost.comments.Clear(); //TODO: delete post's comments before deleting the post
             db.posts.Remove(todeletePost);
             db.SaveChanges();
         }

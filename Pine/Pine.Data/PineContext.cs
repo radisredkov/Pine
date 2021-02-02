@@ -43,6 +43,7 @@ namespace Pine.Data
 
             builder.Entity<Community>().HasOne(c => c.Owner);
             builder.Entity<Community>().HasMany(c => c.communityPosts);
+            builder.Entity<Community>().HasMany(c => c.communityModerators);
             builder.Entity<Comment>().HasOne(c => c.commentaor);
 
         }

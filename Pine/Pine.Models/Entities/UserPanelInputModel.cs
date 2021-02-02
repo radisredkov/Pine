@@ -9,5 +9,6 @@ namespace Pine.Models.Entities
     {
         public string userDescription { get; set; }
         public IFormFile profilePicture { get; set; }
+        public IFormFile userCss { get; set; }
     }
 }

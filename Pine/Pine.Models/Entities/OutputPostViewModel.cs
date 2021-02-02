@@ -22,10 +22,12 @@ namespace Pine.Models.Entities
         public string userName { get; set; }
 
         public byte[] img { get; set; }
-        public IFormFile  imgRecived { get; set; }
+        public IFormFile imgRecived { get; set; }
 
         public DateTime uploadDate { get; set; }
 
         public ICollection<OutputCommentViewModel> comments { get; set; }
+
+        public string moderatorName { get; set; }
     }
 }

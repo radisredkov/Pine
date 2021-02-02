@@ -40,7 +40,6 @@ namespace Pine.Data.Entities
 
         public virtual ICollection<Comment> comments { get; set; } = new List<Comment>();
 
-        //public int likes { get; set; }
-        //public string file { get; set; }
+        public string moderatorName { get; set; }
     }
 }

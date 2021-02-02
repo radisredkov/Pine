@@ -25,7 +25,7 @@ namespace Pine.Data.Entities
         public string description { get; set; }
 
         public string tags { get; set; }
-       
+
         public string ownerId { get; set; }
 
         [ForeignKey("ownerId")]
@@ -35,6 +35,12 @@ namespace Pine.Data.Entities
 
         public virtual ICollection<User> communityMembers { get; set; } = new List<User>();
 
+        public string moderatorName { get; set; }
+        [ForeignKey("moderatorName")]
+        public virtual ICollection<User> communityModerators { get; set; } = new List<User>();
+
         public bool isPrivate { get; set; }
+
+        public byte[] communityCss { get; set; }
     }
 }
