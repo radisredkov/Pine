@@ -39,35 +39,65 @@ namespace Pine.Controllers
             string name = $"{currentUser.UserName} - {messagedUser.UserName}";
 
             chatService.CreateChat(users, name); 
-            return RedirectToAction("/");
+            return RedirectToAction("ChatsView", "Chat");
         }
 
-        public IActionResult ChatView()
+        public IActionResult ChatsView()
         {
             ChatsViewModel chatsModel = new ChatsViewModel();
 
             if (db.chats.Count() != 0)
             {
                 var user = userServices.getUserByUserName(User.Identity.Name);
-                var chats = db.chats.Where(ch => ch.usersInChat.Contains(user)).ToList();
+                var chats = new List<Chat>();
+                var AllChats = chatService.GetAllChats();
 
+                foreach (var chat in AllChats)
+                {
+                    if (chat.usersInChat.Contains(user))
+                    {
+                        chats.Add(chat);
+                    }
+                }
 
                  chatsModel = new ChatsViewModel()
-                {
+                 {
                     chats = chats.Select(c => new Chat
                     {
                         id = c.id,
                         messages = c.messages,
                         name = c.name,
                         usersInChat = c.usersInChat
-                    }).ToList()
-                };
+                     }).ToList()
+                 };
 
                 return View(chatsModel);
             }
 
             return View(chatsModel);
 
+        }
+
+        public async Task<IActionResult> Chat(string chatId)
+         {
+            var chat = chatService.GetChatById(chatId);
+
+
+            return View(chat);
+        }
+        [HttpGet]
+        public IActionResult SendMessage(string chatid)
+        {
+            TempData["chatId"] = chatid;
+            return View();
+        }
+        [HttpPost]
+        public IActionResult SendMessage(Message message)
+        {
+            string chatId = TempData["chatId"].ToString();
+            chatService.SendMessage(message.text, chatId, User.Identity.Name);
+            TempData.Clear();
+            return RedirectToAction("/");
         }
     }
 }

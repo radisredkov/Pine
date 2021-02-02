@@ -1,0 +1,17 @@
+﻿@model Pine.Data.Entities.Chat
+
+@{
+    ViewData["Title"] = Model.name;
+}
+
+<center>
+    <h1 style="color:#00ff21">@Model.name</h1>
+
+</center>
+@foreach (var message in Model.messages)
+{
+    <p><b>FROM: @message.senderName   </b>@message.text  @message.time </p>
+}
+
+
+<a class="CreateButton" asp-area="" asp-controller="Chat" asp-route-chatId="@Model.id" asp-action="SendMessage">Send message</a>

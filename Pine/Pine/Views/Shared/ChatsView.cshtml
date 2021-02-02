@@ -1,0 +1,19 @@
+﻿@using Pine.Models.Entities
+@model ChatsViewModel
+
+
+
+@if (Model.chats.Count == 0)
+{
+    <p>Threre are no chats at the moment</p>
+}
+else
+{
+    @foreach (var chat in Model.chats)
+    {
+
+        <partial name="./ChatCard.cshtml" model=@chat />
+        
+
+    }
+}

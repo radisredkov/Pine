@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace Pine.Data.Entities
@@ -11,14 +12,17 @@ namespace Pine.Data.Entities
         public Chat()
         {
             this.id = Guid.NewGuid().ToString();
-            usersInChat = new List<User>();
-            messages = new List<Message>();
+            usersInChat = new HashSet<User>();
+            messages = new HashSet<Message>();
 
         }
         [Key]
+        [ForeignKey("ChatId")]
         public string id { get; set; }
         public string name { get; set; }
+
         public ICollection<User> usersInChat { get; set; }
+
         public ICollection<Message> messages { get; set; }
     }
 }

@@ -15,18 +15,24 @@ namespace Pine.Data.Identity
         {
             this.CommunitiesJoined = new HashSet<Community>();
             this.posts = new HashSet<Post>();
+            this.chats = new HashSet<Chat>();
+
         }
 
         [Key]
         [ForeignKey("UserId")]
         public override string Id { get => base.Id; set => base.Id = value; }
+
+        public string chatId { get; set; }
       
-       
+
+        public virtual ICollection<Chat> chats { get; set; }
         public string postId { get; set; }
         [ForeignKey("postId")]
         public ICollection<Post> posts { get; set; }
 
         public virtual ICollection<Community> CommunitiesJoined { get; set; }
+
 
         [ForeignKey("ListingId")]
         public List<ShopListing> listings { get; set; }

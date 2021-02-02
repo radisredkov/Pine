@@ -10,8 +10,8 @@ using Pine.Data;
 namespace Pine.Migrations
 {
     [DbContext(typeof(PineContext))]
-    [Migration("20210201092734_initial")]
-    partial class initial
+    [Migration("20210202144843_sender")]
+    partial class sender
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -20,6 +20,21 @@ namespace Pine.Migrations
                 .UseIdentityColumns()
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("ProductVersion", "5.0.1");
+
+            modelBuilder.Entity("ChatUser", b =>
+                {
+                    b.Property<string>("chatsid")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("usersInChatId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("chatsid", "usersInChatId");
+
+                    b.HasIndex("usersInChatId");
+
+                    b.ToTable("ChatUser");
+                });
 
             modelBuilder.Entity("CommunityUser", b =>
                 {
@@ -250,6 +265,9 @@ namespace Pine.Migrations
                     b.Property<string>("Chatid")
                         .HasColumnType("nvarchar(450)");
 
+                    b.Property<string>("senderName")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("text")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -344,9 +362,6 @@ namespace Pine.Migrations
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("int");
 
-                    b.Property<string>("Chatid")
-                        .HasColumnType("nvarchar(450)");
-
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
                         .HasColumnType("nvarchar(max)");
@@ -391,6 +406,9 @@ namespace Pine.Migrations
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
 
+                    b.Property<string>("chatId")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("postId")
                         .HasColumnType("nvarchar(max)");
 
@@ -402,8 +420,6 @@ namespace Pine.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("Chatid");
-
                     b.HasIndex("NormalizedEmail")
                         .HasDatabaseName("EmailIndex");
 
@@ -413,6 +429,21 @@ namespace Pine.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers");
+                });
+
+            modelBuilder.Entity("ChatUser", b =>
+                {
+                    b.HasOne("Pine.Data.Entities.Chat", null)
+                        .WithMany()
+                        .HasForeignKey("chatsid")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Pine.Data.Identity.User", null)
+                        .WithMany()
+                        .HasForeignKey("usersInChatId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("CommunityUser", b =>
@@ -534,18 +565,9 @@ namespace Pine.Migrations
                     b.Navigation("creator");
                 });
 
-            modelBuilder.Entity("Pine.Data.Identity.User", b =>
-                {
-                    b.HasOne("Pine.Data.Entities.Chat", null)
-                        .WithMany("usersInChat")
-                        .HasForeignKey("Chatid");
-                });
-
             modelBuilder.Entity("Pine.Data.Entities.Chat", b =>
                 {
                     b.Navigation("messages");
-
-                    b.Navigation("usersInChat");
                 });
 
             modelBuilder.Entity("Pine.Data.Entities.Community", b =>

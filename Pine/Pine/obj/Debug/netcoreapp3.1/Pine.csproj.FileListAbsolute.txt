@@ -546,4 +546,7 @@ D:\It-kariera\Emoty\Pine\Pine\Pine\obj\Debug\netcoreapp3.1\Pine.pdb
 D:\It-kariera\Emoty\Pine\Pine\Pine\obj\Debug\netcoreapp3.1\Pine.genruntimeconfig.cache
 D:\Radi's Folder\Pine\Pine\Pine\obj\Debug\netcoreapp3.1\Razor\Views\Administration\CreateRole.cshtml.g.cs
 D:\Radi's Folder\Pine\Pine\Pine\obj\Debug\netcoreapp3.1\Razor\Views\Shared\ChatView.cshtml.g.cs
-D:\It-kariera\Emoty\Pine\Pine\Pine\obj\Debug\netcoreapp3.1\Razor\Views\Shared\ChatView.cshtml.g.cs
+D:\It-kariera\Emoty\Pine\Pine\Pine\obj\Debug\netcoreapp3.1\Razor\Views\Shared\ChatCard.cshtml.g.cs
+D:\It-kariera\Emoty\Pine\Pine\Pine\obj\Debug\netcoreapp3.1\Razor\Views\Shared\ChatsView.cshtml.g.cs
+D:\It-kariera\Emoty\Pine\Pine\Pine\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Chat.cshtml.g.cs
+D:\It-kariera\Emoty\Pine\Pine\Pine\obj\Debug\netcoreapp3.1\Razor\Views\Shared\SendMessage.cshtml.g.cs
