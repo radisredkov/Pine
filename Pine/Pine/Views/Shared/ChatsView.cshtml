@@ -3,17 +3,18 @@
 
 
 
-@if (Model.chats.Count == 0)
-{
-    <p>Threre are no chats at the moment</p>
-}
-else
+@if (Model.chats != null)
 {
     @foreach (var chat in Model.chats)
     {
 
         <partial name="./ChatCard.cshtml" model=@chat />
-        
 
-    }
+
+     }
+
+}
+else
+{
+    <p>Threre are no chats at the moment</p>
 }

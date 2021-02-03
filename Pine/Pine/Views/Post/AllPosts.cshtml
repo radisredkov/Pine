@@ -1,0 +1,23 @@
+﻿@model Pine.Models.Entities.PostsViewModel
+@{
+    ViewData["Title"] = "All Posts";
+}
+<a class="CreateButton" asp-area="" asp-controller="Post" asp-action="CreatePost">+ Create Post</a>
+<br />
+@if (Model.posts.Count == 0)
+{
+    <p>There are currently no posts. Make one and start a discussion!</p>
+}
+else
+{
+    <a class="SortByButton" asp-area="" asp-controller="Post" asp-action="AllPosts">Recent posts</a>
+    <a class="SortByButton" asp-area="" asp-controller="Post" asp-action="AllPostsSortByDateAscending">Oldest posts</a>
+    <br />
+    @foreach (var post in Model.posts)
+    {
+        if (post.communityId == null)
+        {
+            <partial name="../Shared/PostCard.cshtml" model=@post />
+        }
+    }
+}

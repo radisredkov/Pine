@@ -22,35 +22,6 @@ namespace Pine.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "AspNetUsers",
-                columns: table => new
-                {
-                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    chatId = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    postId = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    profilePicture = table.Column<byte[]>(type: "varbinary(max)", nullable: true),
-                    userDescription = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
-                    NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
-                    Email = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
-                    NormalizedEmail = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
-                    EmailConfirmed = table.Column<bool>(type: "bit", nullable: false),
-                    PasswordHash = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    SecurityStamp = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    ConcurrencyStamp = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    PhoneNumberConfirmed = table.Column<bool>(type: "bit", nullable: false),
-                    TwoFactorEnabled = table.Column<bool>(type: "bit", nullable: false),
-                    LockoutEnd = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true),
-                    LockoutEnabled = table.Column<bool>(type: "bit", nullable: false),
-                    AccessFailedCount = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_AspNetUsers", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "chats",
                 columns: table => new
                 {
@@ -84,44 +55,24 @@ namespace Pine.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "AspNetUserClaims",
+                name: "messages",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    ClaimType = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    ClaimValue = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    senderName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    text = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    time = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Chatid = table.Column<string>(type: "nvarchar(450)", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_AspNetUserClaims", x => x.Id);
+                    table.PrimaryKey("PK_messages", x => x.id);
                     table.ForeignKey(
-                        name: "FK_AspNetUserClaims_AspNetUsers_UserId",
-                        column: x => x.UserId,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "AspNetUserLogins",
-                columns: table => new
-                {
-                    LoginProvider = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    ProviderKey = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    ProviderDisplayName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_AspNetUserLogins", x => new { x.LoginProvider, x.ProviderKey });
-                    table.ForeignKey(
-                        name: "FK_AspNetUserLogins_AspNetUsers_UserId",
-                        column: x => x.UserId,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        name: "FK_messages_chats_Chatid",
+                        column: x => x.Chatid,
+                        principalTable: "chats",
+                        principalColumn: "id",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -140,12 +91,35 @@ namespace Pine.Migrations
                         principalTable: "AspNetRoles",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_AspNetUserRoles_AspNetUsers_UserId",
-                        column: x => x.UserId,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "AspNetUserClaims",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    ClaimType = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ClaimValue = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AspNetUserClaims", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "AspNetUserLogins",
+                columns: table => new
+                {
+                    LoginProvider = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    ProviderKey = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    ProviderDisplayName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AspNetUserLogins", x => new { x.LoginProvider, x.ProviderKey });
                 });
 
             migrationBuilder.CreateTable(
@@ -160,57 +134,6 @@ namespace Pine.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AspNetUserTokens", x => new { x.UserId, x.LoginProvider, x.Name });
-                    table.ForeignKey(
-                        name: "FK_AspNetUserTokens_AspNetUsers_UserId",
-                        column: x => x.UserId,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "communities",
-                columns: table => new
-                {
-                    id = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    description = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    tags = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    ownerId = table.Column<string>(type: "nvarchar(450)", nullable: true),
-                    isPrivate = table.Column<bool>(type: "bit", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_communities", x => x.id);
-                    table.ForeignKey(
-                        name: "FK_communities_AspNetUsers_ownerId",
-                        column: x => x.ownerId,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "listings",
-                columns: table => new
-                {
-                    id = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    description = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    price = table.Column<double>(type: "float", nullable: false),
-                    timeOfCreation = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    creatorId = table.Column<string>(type: "nvarchar(450)", nullable: true),
-                    ListingId = table.Column<string>(type: "nvarchar(max)", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_listings", x => x.id);
-                    table.ForeignKey(
-                        name: "FK_listings_AspNetUsers_creatorId",
-                        column: x => x.creatorId,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -224,12 +147,6 @@ namespace Pine.Migrations
                 {
                     table.PrimaryKey("PK_ChatUser", x => new { x.chatsid, x.usersInChatId });
                     table.ForeignKey(
-                        name: "FK_ChatUser_AspNetUsers_usersInChatId",
-                        column: x => x.usersInChatId,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
                         name: "FK_ChatUser_chats_chatsid",
                         column: x => x.chatsid,
                         principalTable: "chats",
@@ -238,21 +155,74 @@ namespace Pine.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "messages",
+                name: "comments",
                 columns: table => new
                 {
                     id = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    text = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    time = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Chatid = table.Column<string>(type: "nvarchar(450)", nullable: true)
+                    content = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    timeOfCreation = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    commentatorId = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    commentaorId = table.Column<string>(type: "nvarchar(450)", nullable: true),
+                    postId = table.Column<string>(type: "nvarchar(450)", nullable: true),
+                    Img = table.Column<byte[]>(type: "varbinary(max)", nullable: true),
+                    moderatorName = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_messages", x => x.id);
+                    table.PrimaryKey("PK_comments", x => x.id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "communities",
+                columns: table => new
+                {
+                    id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    description = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    tags = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ownerId = table.Column<string>(type: "nvarchar(450)", nullable: true),
+                    moderatorName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    isPrivate = table.Column<bool>(type: "bit", nullable: false),
+                    communityCss = table.Column<byte[]>(type: "varbinary(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_communities", x => x.id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "AspNetUsers",
+                columns: table => new
+                {
+                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    chatId = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    postId = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    profilePicture = table.Column<byte[]>(type: "varbinary(max)", nullable: true),
+                    userDescription = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    userCss = table.Column<byte[]>(type: "varbinary(max)", nullable: true),
+                    moderatorName = table.Column<string>(type: "nvarchar(450)", nullable: true),
+                    UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
+                    NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
+                    Email = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
+                    NormalizedEmail = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
+                    EmailConfirmed = table.Column<bool>(type: "bit", nullable: false),
+                    PasswordHash = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    SecurityStamp = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ConcurrencyStamp = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PhoneNumberConfirmed = table.Column<bool>(type: "bit", nullable: false),
+                    TwoFactorEnabled = table.Column<bool>(type: "bit", nullable: false),
+                    LockoutEnd = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true),
+                    LockoutEnabled = table.Column<bool>(type: "bit", nullable: false),
+                    AccessFailedCount = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AspNetUsers", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_messages_chats_Chatid",
-                        column: x => x.Chatid,
-                        principalTable: "chats",
+                        name: "FK_AspNetUsers_communities_moderatorName",
+                        column: x => x.moderatorName,
+                        principalTable: "communities",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -282,6 +252,29 @@ namespace Pine.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "listings",
+                columns: table => new
+                {
+                    id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    description = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    price = table.Column<double>(type: "float", nullable: false),
+                    timeOfCreation = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    creatorId = table.Column<string>(type: "nvarchar(450)", nullable: true),
+                    ListingId = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_listings", x => x.id);
+                    table.ForeignKey(
+                        name: "FK_listings_AspNetUsers_creatorId",
+                        column: x => x.creatorId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "posts",
                 columns: table => new
                 {
@@ -293,6 +286,7 @@ namespace Pine.Migrations
                     timeOfCreation = table.Column<DateTime>(type: "datetime2", nullable: false),
                     creatorId = table.Column<string>(type: "nvarchar(450)", nullable: true),
                     Img = table.Column<byte[]>(type: "varbinary(max)", nullable: true),
+                    moderatorName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     postId = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
@@ -308,35 +302,6 @@ namespace Pine.Migrations
                         name: "FK_posts_communities_communityId",
                         column: x => x.communityId,
                         principalTable: "communities",
-                        principalColumn: "id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "comments",
-                columns: table => new
-                {
-                    id = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    content = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    timeOfCreation = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    commentatorId = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    commentaorId = table.Column<string>(type: "nvarchar(450)", nullable: true),
-                    postId = table.Column<string>(type: "nvarchar(450)", nullable: true),
-                    Img = table.Column<byte[]>(type: "varbinary(max)", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_comments", x => x.id);
-                    table.ForeignKey(
-                        name: "FK_comments_AspNetUsers_commentaorId",
-                        column: x => x.commentaorId,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_comments_posts_postId",
-                        column: x => x.postId,
-                        principalTable: "posts",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -372,6 +337,11 @@ namespace Pine.Migrations
                 name: "EmailIndex",
                 table: "AspNetUsers",
                 column: "NormalizedEmail");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_AspNetUsers_moderatorName",
+                table: "AspNetUsers",
+                column: "moderatorName");
 
             migrationBuilder.CreateIndex(
                 name: "UserNameIndex",
@@ -424,10 +394,78 @@ namespace Pine.Migrations
                 name: "IX_posts_creatorId",
                 table: "posts",
                 column: "creatorId");
+
+            migrationBuilder.AddForeignKey(
+                name: "FK_AspNetUserRoles_AspNetUsers_UserId",
+                table: "AspNetUserRoles",
+                column: "UserId",
+                principalTable: "AspNetUsers",
+                principalColumn: "Id",
+                onDelete: ReferentialAction.Cascade);
+
+            migrationBuilder.AddForeignKey(
+                name: "FK_AspNetUserClaims_AspNetUsers_UserId",
+                table: "AspNetUserClaims",
+                column: "UserId",
+                principalTable: "AspNetUsers",
+                principalColumn: "Id",
+                onDelete: ReferentialAction.Cascade);
+
+            migrationBuilder.AddForeignKey(
+                name: "FK_AspNetUserLogins_AspNetUsers_UserId",
+                table: "AspNetUserLogins",
+                column: "UserId",
+                principalTable: "AspNetUsers",
+                principalColumn: "Id",
+                onDelete: ReferentialAction.Cascade);
+
+            migrationBuilder.AddForeignKey(
+                name: "FK_AspNetUserTokens_AspNetUsers_UserId",
+                table: "AspNetUserTokens",
+                column: "UserId",
+                principalTable: "AspNetUsers",
+                principalColumn: "Id",
+                onDelete: ReferentialAction.Cascade);
+
+            migrationBuilder.AddForeignKey(
+                name: "FK_ChatUser_AspNetUsers_usersInChatId",
+                table: "ChatUser",
+                column: "usersInChatId",
+                principalTable: "AspNetUsers",
+                principalColumn: "Id",
+                onDelete: ReferentialAction.Cascade);
+
+            migrationBuilder.AddForeignKey(
+                name: "FK_comments_AspNetUsers_commentaorId",
+                table: "comments",
+                column: "commentaorId",
+                principalTable: "AspNetUsers",
+                principalColumn: "Id",
+                onDelete: ReferentialAction.Restrict);
+
+            migrationBuilder.AddForeignKey(
+                name: "FK_comments_posts_postId",
+                table: "comments",
+                column: "postId",
+                principalTable: "posts",
+                principalColumn: "id",
+                onDelete: ReferentialAction.Restrict);
+
+            migrationBuilder.AddForeignKey(
+                name: "FK_communities_AspNetUsers_ownerId",
+                table: "communities",
+                column: "ownerId",
+                principalTable: "AspNetUsers",
+                principalColumn: "Id",
+                onDelete: ReferentialAction.Restrict);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropForeignKey(
+                name: "FK_communities_AspNetUsers_ownerId",
+                table: "communities");
+
             migrationBuilder.DropTable(
                 name: "AspNetRoleClaims");
 
@@ -468,10 +506,10 @@ namespace Pine.Migrations
                 name: "chats");
 
             migrationBuilder.DropTable(
-                name: "communities");
+                name: "AspNetUsers");
 
             migrationBuilder.DropTable(
-                name: "AspNetUsers");
+                name: "communities");
         }
     }
 }

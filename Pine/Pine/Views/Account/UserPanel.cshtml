@@ -39,7 +39,7 @@ else
     <div>
         @foreach (var post in Model.Item1.posts.Where(p => p.userName == Model.Item2.UserName))
         {
-            <partial name="../Community/PostCard.cshtml" model=@post />
+            <partial name="../Shared/PostCard.cshtml" model=@post />
         }
     </div>
 }
@@ -52,7 +52,7 @@ else
 else
 {
     <div>
-        @foreach (var listing in Model.Item3.listings.Where(l => l.userName == Model.Item2.UserName))
+        @foreach (var listing in Model.Item3.listings.Where(l => l.creatorId == Model.Item2.UserName))
         {
             <partial name="../Shop/ListingCard.cshtml" model=@listing />
         }

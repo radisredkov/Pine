@@ -30,7 +30,6 @@ namespace Pine
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-            //services.AddTransient<ComponentService, ComponentService>();
             services.AddDbContext<PineContext>(opt =>
             {
                 opt.UseSqlServer(Configuration.GetConnectionString("PineContextConnection"), b => b.MigrationsAssembly("Pine"));
@@ -79,7 +78,7 @@ namespace Pine
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Community}/{action=AllPosts}/{id?}");
+                    pattern: "{controller=Post}/{action=AllPosts}/{id?}");
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Community}/{action=Communities}/{id?}");

@@ -4,7 +4,7 @@
 @{
     ViewData["Title"] = Model.Item1.name;
 }
-<a type="submit" asp-controller="Community" asp-action="CreatePost" asp-route-communityId="@Model.Item1.id" class="CreateButton">+ Create post</a>
+<a type="submit" asp-controller="Post" asp-action="CreatePost" asp-route-communityId="@Model.Item1.id" class="CreateButton">+ Create post</a>
 @if (@User.Identity.Name != null && Model.Item1.communityMembers.FirstOrDefault(x => x.UserName == User.Identity.Name) != null)
 {
     <a type="submit" asp-controller="Community" asp-action="JoinCommunity" asp-route-communityName="@Model.Item1.name" class="CreateButton" style="float:left;">Join community</a>
@@ -27,7 +27,7 @@
                     </svg>
                 </button>
                 <div id="editUserContainer" class="collapse">
-                    <partial name="./EditCommunity.cshtml" model=@(new CommunityInputModel { communityName = Model.Item1.name }) />
+                    <partial name="../Post/EditCommunity.cshtml" model=@(new CommunityInputModel { communityName = Model.Item1.name }) />
                 </div>
             }
         }
@@ -37,5 +37,5 @@
 @foreach (var post in Model.Item2.posts)
 {
     post.moderatorName = Model.Item1.moderatorName;
-    <partial name="./PostCard.cshtml" model=@post />
+    <partial name="../Shared/PostCard.cshtml" model=@post />
 }

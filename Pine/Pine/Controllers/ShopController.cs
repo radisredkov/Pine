@@ -33,7 +33,8 @@ namespace Pine.Controllers
                     name = l.name,
                     description = l.description,
                     price = l.price,
-                    userName = userServices.getUserNameById(l.creatorId),
+                    creatorName = userServices.getUserNameById(l.creatorId),
+                    creatorId = l.creatorId,
                     uploadDate = l.timeOfCreation
                 }).OrderByDescending(l => l.uploadDate).ToList()
             };
@@ -53,7 +54,8 @@ namespace Pine.Controllers
                     name = l.name,
                     description = l.description,
                     price = l.price,
-                    userName = userServices.getUserNameById(l.creatorId),
+                    creatorName = userServices.getUserNameById(l.creatorId),
+                    creatorId = l.creatorId,
                     uploadDate = l.timeOfCreation
                 }).OrderByDescending(l => l.price).ToList()
             };
@@ -72,7 +74,8 @@ namespace Pine.Controllers
                     name = l.name,
                     description = l.description,
                     price = l.price,
-                    userName = userServices.getUserNameById(l.creatorId),
+                    creatorName = userServices.getUserNameById(l.creatorId),
+                    creatorId = l.creatorId,
                     uploadDate = l.timeOfCreation
                 }).OrderBy(l => l.price).ToList()
             };
@@ -156,9 +159,9 @@ namespace Pine.Controllers
             var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
             var userName = this.userServices.getUserNameById(userId);
 
-            Console.WriteLine(userName, listing.userName, User.Identity.Name);
+            Console.WriteLine(userName, listing.creatorName, User.Identity.Name);
 
-            if (userName != listing.userName)
+            if (userName != listing.creatorName)
             {
                 return this.Redirect("/");
             }

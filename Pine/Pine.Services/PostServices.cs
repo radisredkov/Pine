@@ -35,11 +35,13 @@ namespace Pine.Services
             };
 
             var user = db.Users.FirstOrDefault(u => u.Id == userId);
+
             if (user != null)
             {
                 user.posts.Add(post);
                 db.users.Update(user);
             }
+
             db.posts.Add(post);
             db.SaveChanges();
         }
@@ -59,10 +61,15 @@ namespace Pine.Services
         }
 
         public void deletePost(string postId)
-        {
+        {             
             Post todeletePost = db.posts.FirstOrDefault(p => p.id == postId);
+            List<Comment> commentsToDelete = db.comments.Where(c => c.post == todeletePost).ToList();
+     
+            foreach (var comment in commentsToDelete)
+            {
+                db.comments.Remove(comment);
+            }
 
-            todeletePost.comments.Clear(); //TODO: delete post's comments before deleting the post
             db.posts.Remove(todeletePost);
             db.SaveChanges();
         }

@@ -14,7 +14,9 @@ namespace Pine.Models.Entities
 
         public string description { get; set; }
 
-        public string userName { get; set; }
+        public string creatorId { get; set; }
+        public string creatorName { get; set; }
+
 
         public DateTime uploadDate { get; set; }
     }

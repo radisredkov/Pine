@@ -515,22 +515,15 @@ D:\It-kariera\Emoty\Pine\Pine\Pine\obj\Debug\netcoreapp3.1\Razor\Views\Account\L
 D:\It-kariera\Emoty\Pine\Pine\Pine\obj\Debug\netcoreapp3.1\Razor\Views\Account\Register.cshtml.g.cs
 D:\It-kariera\Emoty\Pine\Pine\Pine\obj\Debug\netcoreapp3.1\Razor\Views\Account\UserPanel.cshtml.g.cs
 D:\It-kariera\Emoty\Pine\Pine\Pine\obj\Debug\netcoreapp3.1\Razor\Views\Administration\CreateRole.cshtml.g.cs
-D:\It-kariera\Emoty\Pine\Pine\Pine\obj\Debug\netcoreapp3.1\Razor\Views\Community\AllPosts.cshtml.g.cs
-D:\It-kariera\Emoty\Pine\Pine\Pine\obj\Debug\netcoreapp3.1\Razor\Views\Community\CommentCard.cshtml.g.cs
 D:\It-kariera\Emoty\Pine\Pine\Pine\obj\Debug\netcoreapp3.1\Razor\Views\Community\Communities.cshtml.g.cs
 D:\It-kariera\Emoty\Pine\Pine\Pine\obj\Debug\netcoreapp3.1\Razor\Views\Community\Community.cshtml.g.cs
 D:\It-kariera\Emoty\Pine\Pine\Pine\obj\Debug\netcoreapp3.1\Razor\Views\Community\CommunityCard.cshtml.g.cs
 D:\It-kariera\Emoty\Pine\Pine\Pine\obj\Debug\netcoreapp3.1\Razor\Views\Community\CreateCommunity.cshtml.g.cs
-D:\It-kariera\Emoty\Pine\Pine\Pine\obj\Debug\netcoreapp3.1\Razor\Views\Community\CreatePost.cshtml.g.cs
-D:\It-kariera\Emoty\Pine\Pine\Pine\obj\Debug\netcoreapp3.1\Razor\Views\Community\EditPost.cshtml.g.cs
-D:\It-kariera\Emoty\Pine\Pine\Pine\obj\Debug\netcoreapp3.1\Razor\Views\Community\InputCommentView.cshtml.g.cs
-D:\It-kariera\Emoty\Pine\Pine\Pine\obj\Debug\netcoreapp3.1\Razor\Views\Community\PostCard.cshtml.g.cs
 D:\It-kariera\Emoty\Pine\Pine\Pine\obj\Debug\netcoreapp3.1\Razor\Views\Shared\404NotFound.cshtml.g.cs
 D:\It-kariera\Emoty\Pine\Pine\Pine\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Error.cshtml.g.cs
 D:\It-kariera\Emoty\Pine\Pine\Pine\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_Layout.cshtml.g.cs
 D:\It-kariera\Emoty\Pine\Pine\Pine\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_LoginPartial.cshtml.g.cs
 D:\It-kariera\Emoty\Pine\Pine\Pine\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
-D:\It-kariera\Emoty\Pine\Pine\Pine\obj\Debug\netcoreapp3.1\Razor\Views\Shop\BuyListing.cshtml.g.cs
 D:\It-kariera\Emoty\Pine\Pine\Pine\obj\Debug\netcoreapp3.1\Razor\Views\Shop\CreateListing.cshtml.g.cs
 D:\It-kariera\Emoty\Pine\Pine\Pine\obj\Debug\netcoreapp3.1\Razor\Views\Shop\EditListing.cshtml.g.cs
 D:\It-kariera\Emoty\Pine\Pine\Pine\obj\Debug\netcoreapp3.1\Razor\Views\Shop\ListingCard.cshtml.g.cs
@@ -554,3 +547,10 @@ D:\Radi's Folder\Pine\Pine\Pine\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Chat.
 D:\Radi's Folder\Pine\Pine\Pine\obj\Debug\netcoreapp3.1\Razor\Views\Shared\ChatCard.cshtml.g.cs
 D:\Radi's Folder\Pine\Pine\Pine\obj\Debug\netcoreapp3.1\Razor\Views\Shared\ChatsView.cshtml.g.cs
 D:\Radi's Folder\Pine\Pine\Pine\obj\Debug\netcoreapp3.1\Razor\Views\Shared\SendMessage.cshtml.g.cs
+D:\It-kariera\Emoty\Pine\Pine\Pine\obj\Debug\netcoreapp3.1\Razor\Views\Community\EditCommunity.cshtml.g.cs
+D:\It-kariera\Emoty\Pine\Pine\Pine\obj\Debug\netcoreapp3.1\Razor\Views\Shared\PostCard.cshtml.g.cs
+D:\It-kariera\Emoty\Pine\Pine\Pine\obj\Debug\netcoreapp3.1\Razor\Views\Post\AllPosts.cshtml.g.cs
+D:\It-kariera\Emoty\Pine\Pine\Pine\obj\Debug\netcoreapp3.1\Razor\Views\Post\CreatePost.cshtml.g.cs
+D:\It-kariera\Emoty\Pine\Pine\Pine\obj\Debug\netcoreapp3.1\Razor\Views\Post\EditPost.cshtml.g.cs
+D:\It-kariera\Emoty\Pine\Pine\Pine\obj\Debug\netcoreapp3.1\Razor\Views\Shared\CommentCard.cshtml.g.cs
+D:\It-kariera\Emoty\Pine\Pine\Pine\obj\Debug\netcoreapp3.1\Razor\Views\Shared\InputCommentView.cshtml.g.cs

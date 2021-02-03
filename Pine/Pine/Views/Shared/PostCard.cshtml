@@ -48,7 +48,7 @@
             <p class="card-text" style="white-space: pre-line;">@Html.DisplayFor(model => model.description)</p>
             @if (User.Identity.Name == Model.userName && User.Identity.Name != null || User.IsInRole("Administrator") || Model.moderatorName == User.Identity.Name)
             {
-                <form method="post" asp-controller="Community" asp-action="DeletePost">
+                <form method="post" asp-controller="Post" asp-action="DeletePost">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                     <div class="form-group">
                         <input type="hidden" asp-for="title" class="form-control" />
@@ -76,7 +76,7 @@
                         </button>
                     </div>
                 </form>
-                <form method="get" asp-controller="Community" asp-action="EditPostView">
+                <form method="get" asp-controller="Post" asp-action="EditPostView">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                     <div class="form-group">
                         <input type="hidden" asp-for="title" class="form-control" />

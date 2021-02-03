@@ -10,8 +10,8 @@ using Pine.Data;
 namespace Pine.Migrations
 {
     [DbContext(typeof(PineContext))]
-    [Migration("20210202144843_sender")]
-    partial class sender
+    [Migration("20210203132318_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -213,6 +213,9 @@ namespace Pine.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("moderatorName")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("postId")
                         .HasColumnType("nvarchar(450)");
 
@@ -233,12 +236,18 @@ namespace Pine.Migrations
                     b.Property<string>("id")
                         .HasColumnType("nvarchar(450)");
 
+                    b.Property<byte[]>("communityCss")
+                        .HasColumnType("varbinary(max)");
+
                     b.Property<string>("description")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("isPrivate")
                         .HasColumnType("bit");
+
+                    b.Property<string>("moderatorName")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("name")
                         .IsRequired()
@@ -298,6 +307,9 @@ namespace Pine.Migrations
 
                     b.Property<string>("description")
                         .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("moderatorName")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("postId")
@@ -409,10 +421,16 @@ namespace Pine.Migrations
                     b.Property<string>("chatId")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("moderatorName")
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<string>("postId")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<byte[]>("profilePicture")
+                        .HasColumnType("varbinary(max)");
+
+                    b.Property<byte[]>("userCss")
                         .HasColumnType("varbinary(max)");
 
                     b.Property<string>("userDescription")
@@ -427,6 +445,8 @@ namespace Pine.Migrations
                         .IsUnique()
                         .HasDatabaseName("UserNameIndex")
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
+
+                    b.HasIndex("moderatorName");
 
                     b.ToTable("AspNetUsers");
                 });
@@ -565,6 +585,13 @@ namespace Pine.Migrations
                     b.Navigation("creator");
                 });
 
+            modelBuilder.Entity("Pine.Data.Identity.User", b =>
+                {
+                    b.HasOne("Pine.Data.Entities.Community", null)
+                        .WithMany("communityModerators")
+                        .HasForeignKey("moderatorName");
+                });
+
             modelBuilder.Entity("Pine.Data.Entities.Chat", b =>
                 {
                     b.Navigation("messages");
@@ -572,6 +599,8 @@ namespace Pine.Migrations
 
             modelBuilder.Entity("Pine.Data.Entities.Community", b =>
                 {
+                    b.Navigation("communityModerators");
+
                     b.Navigation("communityPosts");
                 });
 

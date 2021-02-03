@@ -21,10 +21,10 @@
             @Html.DisplayFor(model => model.description)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.userName)
+            @Html.DisplayNameFor(model => model.creatorName)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.userName)
+            @Html.DisplayFor(model => model.creatorName)
         </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.uploadDate)
@@ -34,11 +34,11 @@
         </dd>
     </dl-->
     <div class="card border-secondary mb-3" style="margin-top: 2.5%; color: black;">
-        <div class="card-header">Listed by <a type="submit" asp-controller="Account" asp-action="UserPanel" asp-route-userName="@Model.userName">@Html.DisplayFor(model => model.userName)</a> <div style="float: right;">@Html.DisplayFor(model => model.uploadDate)</div></div>
+        <div class="card-header">Listed by <a type="submit" asp-controller="Account" asp-action="UserPanel" asp-route-userName="@Model.creatorName">@Html.DisplayFor(model => model.creatorName)</a> <div style="float: right;">@Html.DisplayFor(model => model.uploadDate)</div></div>
         <div class="card-body">
             <h4 class="card-title" style="display:inline">@Html.DisplayFor(model => model.name)</h4><h4 class="card-title" style="display:inline;float:right;color:#00ff21;">@Html.DisplayFor(model => model.price)лв.</h4>
             <p class="card-text" style="white-space: pre-line;">@Html.DisplayFor(model => model.description)</p>
-            @if (User.Identity.Name == Model.userName)
+            @if (User.Identity.Name == Model.creatorName)
             {
                 <form method="post" asp-controller="Shop" asp-action="DeleteListing">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -55,7 +55,7 @@
                         <input type="hidden" asp-for="id" class="form-control" />
                     </div>
                     <div class="form-group">
-                        <input type="hidden" asp-for="userName" class="form-control" />
+                        <input type="hidden" asp-for="creatorName" class="form-control" />
                     </div>
                     <div class="form-group">
                         <input type="hidden" asp-for="uploadDate" class="form-control" />
@@ -83,7 +83,7 @@
                         <input type="hidden" asp-for="id" class="form-control" />
                     </div>
                     <div class="form-group">
-                        <input type="hidden" asp-for="userName" class="form-control" />
+                        <input type="hidden" asp-for="creatorName" class="form-control" />
                     </div>
                     <div class="form-group">
                         <input type="hidden" asp-for="uploadDate" class="form-control" />
@@ -97,7 +97,7 @@
                     </div>
                 </form>
             }
-            else if(User.Identity.Name != Model.userName && User.Identity.Name != null || User.IsInRole("Administrator"))
+            else if(User.Identity.Name != Model.creatorName && User.Identity.Name != null || User.IsInRole("Administrator"))
             {
                 <form method="post" asp-controller="Shop" asp-action="BuyListing">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -114,13 +114,13 @@
                         <input type="hidden" asp-for="id" class="form-control" />
                     </div>
                     <div class="form-group">
-                        <input type="hidden" asp-for="userName" class="form-control" />
+                        <input type="hidden" asp-for="creatorName" class="form-control" />
                     </div>
                     <div class="form-group">
                         <input type="hidden" asp-for="uploadDate" class="form-control" />
                     </div>
                     <div class="moderationButtons">
-                        <button type="submit" class="buyButton" value="Buy Listing">Buy Listing</button>
+                        <a type="submit" asp-controller="Chat" asp-action="CreateChat" asp-route-userId="@Model.creatorId"  class="buyButton" value="Buy Listing">Buy Listing</a>
                     </div>
                 </form>
             }

@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using Pine.Data;
 using Pine.Data.Entities;
 using Pine.Data.Identity;
@@ -140,7 +139,7 @@ namespace Pine.Controllers
                     name = l.name,
                     description = l.description,
                     price = l.price,
-                    userName = l.creator.UserName,
+                    creatorName = l.creator.UserName,
                     uploadDate = l.timeOfCreation
                 }).OrderByDescending(l => l.uploadDate).ToList()
             };

@@ -52,6 +52,8 @@ namespace Pine.Controllers
                 var chats = new List<Chat>();
                 var AllChats = chatService.GetAllChats();
 
+
+               
                 foreach (var chat in AllChats)
                 {
                     if (chat.usersInChat.Contains(user))
@@ -59,7 +61,7 @@ namespace Pine.Controllers
                         chats.Add(chat);
                     }
                 }
-
+                //Do we need this? -- Start
                  chatsModel = new ChatsViewModel()
                  {
                     chats = chats.Select(c => new Chat
@@ -70,6 +72,7 @@ namespace Pine.Controllers
                         usersInChat = c.usersInChat
                      }).ToList()
                  };
+                //Do we need this? -- End
 
                 return View(chatsModel);
             }
