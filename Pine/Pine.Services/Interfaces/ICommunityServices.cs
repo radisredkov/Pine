@@ -13,7 +13,7 @@ namespace Pine.Services.Interfaces
         public Community getCommunityByName(string communityName);
 
         public ICollection<Community> getAllcommunities();
-        public ICollection<Post> getAllPostsFromCommunity(string comName);
+        //public ICollection<Post> getAllPostsFromCommunity(string comName);
 
         void JoinCommunity(User user, Community com);
 

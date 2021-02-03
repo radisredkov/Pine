@@ -74,12 +74,7 @@ namespace Pine.Controllers
         public async Task<IActionResult> Community(string communityName)
         {
             var community = communityService.getCommunityByName(communityName);
-
-            community.communityPosts =  db.posts.Where(p => p.communityId == community.id).ToList();
-            community.communityMembers = db.communities.FirstOrDefault(c => c.id == community.id).communityMembers;
-            community.communityModerators = db.communities.FirstOrDefault(c => c.id == community.id).communityModerators;
-            community.Owner =  userServices.getUserById(community.ownerId);
-
+                   
             ICollection<Post> posts =  community.communityPosts;
             PostsViewModel model = new PostsViewModel()
             {
@@ -95,11 +90,11 @@ namespace Pine.Controllers
                     comments = commentServices.getAllComments(p.id).Select(c => new OutputCommentViewModel
                     {
                         id = c.id,
-                        commentaor = c.commentaor,
+                        commentaor = c.commentator,
                         content = c.content,
                         timeOfCreation = c.timeOfCreation,
                         img = c.Img,
-                        //userName = userServices.getUserNameById(c.commentaor.Id)
+                        userName = c.commentator.UserName
                     }).OrderBy(c => c.timeOfCreation).ToList()
                 }).OrderByDescending(p => p.uploadDate).ToList()
             };

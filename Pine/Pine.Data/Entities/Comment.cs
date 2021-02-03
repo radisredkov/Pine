@@ -24,7 +24,7 @@ namespace Pine.Data.Entities
         public DateTime timeOfCreation { get; set; }
 
         public string commentatorId { get; set; }
-        public virtual User commentaor { get; set; }
+        public virtual User commentator { get; set; }
 
         [ForeignKey("postId")]
         public Post post { get; set; }

@@ -1,4 +1,5 @@
-﻿using Pine.Data;
+﻿using Microsoft.EntityFrameworkCore;
+using Pine.Data;
 using Pine.Data.Entities;
 using Pine.Data.Identity;
 using Pine.Models.Entities;
@@ -14,24 +15,23 @@ namespace Pine.Services
     {
         private PineContext db;
         private readonly IFileService fileService;
-        private readonly IUserServices userServices;
 
-        public CommunityServices(PineContext db, IFileService fileService, IUserServices userServices)
+
+        public CommunityServices(PineContext db, IFileService fileService)
         {
             this.db = db;
             this.fileService = fileService;
-            this.userServices = userServices;
         }
 
         public void JoinCommunity(User user, Community com)
         {
-            if (db.communities.FirstOrDefault(x => x.id == com.id).communityMembers.Contains(user))
+            if (com.communityMembers.Contains(user))
             {
                 return;
             }
             else
             {
-                db.communities.FirstOrDefault(x => x.id == com.id).communityMembers.Add(user);
+                db.communities.Find(com.id).communityMembers.Add(user);
             }
 
             db.SaveChanges();
@@ -45,9 +45,10 @@ namespace Pine.Services
                 ownerId = userId,
                 isPrivate = model.isPrivate
             };
-            User user = new User { Id = userId }; //TODO: join the creator to community
+            User user = new User { Id = userId };
             db.communities.Add(community);
             db.SaveChanges();
+            JoinCommunity(user, community);
         }
 
         public void EditCommunity(Community oldCommunity, CommunityInputModel model)
@@ -84,22 +85,27 @@ namespace Pine.Services
 
         public Community getCommunityByName(string communityName)
         {
-            return db.communities.FirstOrDefault(c => c.name == communityName);
-        }
-
-        public ICollection<Post> GetPostsFromCommunity(string id)
-        {
-            return db.posts.Where(p => p.id == id).ToList();
+            return getAllcommunities().FirstOrDefault(c => c.name == communityName);
         }
 
         public ICollection<Community> getAllcommunities()
         {
-            return db.communities.ToList();
+            return db.communities.Include(c => c.communityMembers)
+                .Include(c => c.communityPosts)
+                .Include(c => c.communityModerators)
+                .Include(C => C.Owner)
+                .ToList();
         }
 
-        public ICollection<Post> getAllPostsFromCommunity(string comName)
-        {
-            return db.communities.FirstOrDefault(c => c.name == comName).communityPosts;
-        }
+        //public ICollection<Post> GetPostsFromCommunity(string id)
+        //{
+        //    return db.posts.Where(p => p.id == id).ToList();
+        //}
+
+
+        //public ICollection<Post> getAllPostsFromCommunity(string comName)
+        //{
+        //    return db.communities.FirstOrDefault(c => c.name == comName).communityPosts;
+        //}
     }
 }

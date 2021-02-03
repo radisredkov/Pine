@@ -7,8 +7,9 @@
 <a type="submit" asp-controller="Post" asp-action="CreatePost" asp-route-communityId="@Model.Item1.id" class="CreateButton">+ Create post</a>
 @if (@User.Identity.Name != null && Model.Item1.communityMembers.FirstOrDefault(x => x.UserName == User.Identity.Name) != null)
 {
-    <a type="submit" asp-controller="Community" asp-action="JoinCommunity" asp-route-communityName="@Model.Item1.name" class="CreateButton" style="float:left;">Join community</a>
 }
+<a type="submit" asp-controller="Community" asp-action="JoinCommunity" asp-route-communityName="@Model.Item1.name" class="CreateButton" style="float:left;">Join community</a>
+
 
 <center>
     <h1 style="color:#00ff21">

@@ -1,4 +1,5 @@
-﻿using Pine.Data;
+﻿using Microsoft.EntityFrameworkCore;
+using Pine.Data;
 using Pine.Data.Entities;
 using Pine.Models.Entities;
 using System;
@@ -25,7 +26,7 @@ namespace Pine.Services
                 content = commentModel.content,
                 post = postToComment,
                 timeOfCreation = DateTime.Now,
-                commentaor = db.Users.FirstOrDefault(u => u.Id == userId),
+                commentator = db.Users.FirstOrDefault(u => u.Id == userId),
                 commentatorId = userId,
                 Img = img
             };
@@ -45,7 +46,7 @@ namespace Pine.Services
 
         public ICollection<Comment> getAllComments(string postId)
         {
-            return db.comments.Where(c => c.post.id == postId).ToList();
+            return db.comments.Where(c => c.post.id == postId).Include(c=> c.commentator).ToList();
         }
     }
 }
