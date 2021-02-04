@@ -20,16 +20,17 @@ namespace Pine.Services
         }
         public void CreateChat(List<User> users, string name)
         {
-
             Chat chat = new Chat
             {
                 usersInChat = users,
                 name = name,
                 messages = new List<Message>()
             };
-
-            db.chats.Add(chat);
-            db.SaveChanges();
+            if (!db.chats.Select(ch => ch.usersInChat).Contains(chat.usersInChat))
+            {
+                db.chats.Add(chat);
+                db.SaveChanges();
+            }        
         }
 
         public List<Chat> GetAllChats()
