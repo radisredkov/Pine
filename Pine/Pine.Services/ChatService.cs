@@ -36,7 +36,6 @@ namespace Pine.Services
         public List<Chat> GetAllChats()
         {
             return db.chats.Include(ch => ch.usersInChat).Include(ch => ch.messages).ToList();
-           
         }
 
         public Chat GetChatById(string id)

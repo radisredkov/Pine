@@ -6,16 +6,10 @@ a.navbar-brand {
     text-align: center;
     word-break: break-all;
 }
-
-/* Provide sufficient contrast against white background */
 a {
-    color: aqua !important;
+    color: aqua;
 }
-
-    a:hover {
-        color: aqua !important;
-    }
-
+/* Provide sufficient contrast against white background */
 .btn-primary {
     color: #fff;
     background-color: #00e9ff;
@@ -80,10 +74,10 @@ body {
     /* Margin bottom by footer height */
     margin-bottom: 60px;
     background-color: #000;
-    color: #d5d5d5 !important;
+    color: #d5d5d5;
     overflow-x: hidden;
     background-image: url(/css/Images//main-background.png);
-    display: flex !important;
+    display: flex;
     flex-direction: column;
 }
 
@@ -110,37 +104,21 @@ div.transbox {
 img {
     border: hidden;
     border-radius: 5px;
-    user-select: none !important;
-    -moz-user-select: none !important;
-    -webkit-user-drag: none !important;
-    -webkit-user-select: none !important;
-    -ms-user-select: none !important;
-}
-
-.backgroundImage {
-    -webkit-animation: mover 15s infinite alternate;
-    animation: mover 15s infinite alternate;
-    /*max-height:100%;
-    max-width:100%;*/
-    position: absolute;
-    transform: scale(5) !important;
-    overflow: hidden;
-    z-index: -1;
     user-select: none;
     -moz-user-select: none;
     -webkit-user-drag: none;
     -webkit-user-select: none;
     -ms-user-select: none;
 }
-
+/*Top left button, site logo*/
 .RGBButton {
     background-color: transparent;
     border-color: transparent;
-    user-select: none !important;
-    -moz-user-select: none !important;
-    -webkit-user-drag: none !important;
-    -webkit-user-select: none !important;
-    -ms-user-select: none !important;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-drag: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
     padding: 0;
     margin: 0;
     border: 0;
@@ -149,7 +127,7 @@ img {
     .RGBButton:focus {
         outline: 0;
     }
-
+/*+ button such as Create Post, Create Listing etc.*/
 .CreateButton {
     float: right;
     font-size: 36px;
@@ -159,18 +137,17 @@ img {
     border: solid 2px;
     border-color: darkgreen;
     border-radius: 2px;
-    color: white !important;
     padding-top: 2px;
     padding-bottom: 2px;
     padding-left: 5px;
     padding-right: 5px;
-    text-decoration: inherit !important;
 }
 
     .CreateButton:hover {
-        background-color: #0a7600
+        background-color: #0a7600;
+        text-decoration: none;
     }
-
+/*for big textareas*/
 .post-comm-description {
     min-width: 30px;
     max-width: 1000px;
@@ -180,25 +157,25 @@ img {
     white-space: pre-line;
     resize: both;
 }
-
+/*textarea for comments*/
 .commentInput{
     max-width: 1000px;
     resize: both;
 }
-
+/*title input for posts/listings*/
 .titleInput {
     min-width: 30px;
     max-width: 1000px;
     width: 1000px;
     border-radius: 5px;
 }
-
+/*edit/delete post buttons*/
 .moderationButtons {
     margin-bottom: 0px;
     float: right;
     margin-left: 1%;
 }
-
+/*buy listing button*/
 .buyButton {
     min-width: 50px;
     min-height: 40px;
@@ -206,13 +183,13 @@ img {
     border: 2px solid #0ea100;
     color: black;
 }
-
+/*tooltips on mouseover*/
 .tooltip {
     position: relative;
     display: inline-block;
     border-bottom: 1px dotted black;
-    color: white !important;
-    opacity: 1 !important;
+    color: white;
+    opacity: 1;
     font-weight: bold;
 }
 
@@ -247,7 +224,7 @@ img {
         visibility: visible;
         opacity: 1;
     }
-
+/*sorting buttons on posts/listings*/
 .SortByButton {
     fill-opacity: 0.5;
     background-color: rgb(3,164,94);
@@ -259,7 +236,6 @@ img {
     padding-bottom: 2px;
     padding-left: 5px;
     padding-right: 5px;
-    text-decoration: inherit !important;
     min-height: 35px;
     margin-right: 0.5%;
 }
@@ -267,14 +243,15 @@ img {
     .SortByButton:hover {
         background-color: rgb(52, 230, 89);
         color: black !important;
+        text-decoration: none;
     }
-
+/*main site container, messes everything up*/
 .containerMain{
     margin-left: 7.5%;
     margin-right: 7.5%;
     margin-top: 5%;
 }
-
+/*red logout button*/
 .logoutButton {
     font-family: fantasy;
     font-size: 20px;
@@ -286,15 +263,15 @@ img {
 .logoutButton:hover{
     color: #8a0000 !important;
 }
-
+/*404 page customizations*/
 .body404 {
-    background-image: url(Images/404-background.png) !important;
+    background-image: url(Images/404-background.png);
     background-position-y: 100%;
     background-position-x: -10%;
     background-repeat: no-repeat;
     background-color: white;
 }
-
+/*comment view*/
 .commentCard {
     position: relative;
     width: 90%;
@@ -306,35 +283,35 @@ img {
     word-wrap: break-word;
     background-color: #000;
     background-clip: border-box;
-    border-radius: 6px !important;
-    margin-top: 15px !important;
+    border-radius: 6px;
+    margin-top: 15px;
     float: right;
     border: 1.5px solid black;
 }
-
+/*comment card header/title*/
 .commentHeader {
     padding: 0.75rem 1.25rem;
     padding-top: 0.4rem;
     margin-bottom: 0;
     background-color: rgb(56, 66, 65);
     border-bottom: 1px solid rgba(0, 0, 0, 0.125);
-    width: 100% !important;
-    color: white !important;
-    border-top-left-radius: 5px !important;
-    border-top-right-radius: 5px !important;
+    width: 100%;
+    color: white;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
     height: 30px;
 }
-
+/*comment card body/content*/
 .commentBody {
     -ms-flex: 1 1 auto;
     flex: 1 1 auto;
     padding: 1.25rem;
     background-color: rgb(3, 164, 94);
-    border-bottom-left-radius: 5px !important;
-    border-bottom-right-radius: 5px !important;
-    color: white !important;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    color: white;
 }
-
+/*file upload box, drag-n-drop style*/
 .uploadImg {
     width: 500px;
     height: 200px;
@@ -361,7 +338,7 @@ img {
         opacity: 0;
 
     }
-
+/*top-bottom repeat moving animation*/
 @-webkit-keyframes mover {
     0% {
         transform: translateY(0);

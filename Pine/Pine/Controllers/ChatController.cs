@@ -14,10 +14,8 @@ namespace Pine.Controllers
 {
     public class ChatController : Controller
     {
-
         private readonly IUserServices userServices;
         private readonly IChatService chatService;
-
 
         private readonly PineContext db;
 
@@ -30,7 +28,6 @@ namespace Pine.Controllers
 
         public IActionResult CreateChat(string userId)
         {
-
             User currentUser = userServices.getUserByUserName(User.Identity.Name);
             User messagedUser = userServices.getUserById(userId);
             List<User> users = new List<User>();
@@ -52,8 +49,6 @@ namespace Pine.Controllers
                 var chats = new List<Chat>();
                 var AllChats = chatService.GetAllChats();
 
-
-               
                 foreach (var chat in AllChats)
                 {
                     if (chat.usersInChat.Contains(user))
@@ -78,13 +73,11 @@ namespace Pine.Controllers
             }
 
             return View(chatsModel);
-
         }
 
         public async Task<IActionResult> Chat(string chatId)
          {
             var chat = chatService.GetChatById(chatId);
-
 
             return View(chat);
         }

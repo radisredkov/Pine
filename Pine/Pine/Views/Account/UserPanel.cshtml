@@ -5,7 +5,7 @@
 @{
     ViewData["Title"] = Model.Item2.UserName;
 }
-
+<link rel="stylesheet" href="@Model.Item2.userCss">
 <center>
     <h1 style="color:#00ff21;">
         @Html.DisplayFor(model => model.Item2.UserName) @if (Model.Item2.UserName == User.Identity.Name)

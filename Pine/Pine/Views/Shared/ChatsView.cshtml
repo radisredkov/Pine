@@ -1,20 +1,15 @@
 ﻿@using Pine.Models.Entities
 @model ChatsViewModel
 
-
-
 @if (Model.chats != null)
 {
     @foreach (var chat in Model.chats)
     {
-
         <partial name="./ChatCard.cshtml" model=@chat />
-
-
      }
 
 }
 else
 {
-    <p>Threre are no chats at the moment</p>
+    <p>You have no open chats. Start one by messaging a user via their profile button!</p>
 }

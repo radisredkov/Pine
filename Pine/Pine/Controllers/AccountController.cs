@@ -95,7 +95,7 @@ namespace Pine.Controllers
 
                 if (result.Succeeded)
                 {
-                    return RedirectToAction("AllPosts", "Community");
+                    return RedirectToAction("AllPosts", "Post");
                 }
 
                 ModelState.AddModelError("", "Login unsuccesful");
@@ -164,7 +164,7 @@ namespace Pine.Controllers
         public ActionResult Logout()
         {
             signInManager.SignOutAsync();
-            return RedirectToAction("AllPosts", "Community");
+            return RedirectToAction("AllPosts", "Post");
         }
     }
 }

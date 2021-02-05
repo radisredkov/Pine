@@ -10,8 +10,8 @@ using Pine.Data;
 namespace Pine.Migrations
 {
     [DbContext(typeof(PineContext))]
-    [Migration("20210203132318_initial")]
-    partial class initial
+    [Migration("20210205124209_aa")]
+    partial class aa
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -203,11 +203,8 @@ namespace Pine.Migrations
                     b.Property<byte[]>("Img")
                         .HasColumnType("varbinary(max)");
 
-                    b.Property<string>("commentaorId")
-                        .HasColumnType("nvarchar(450)");
-
                     b.Property<string>("commentatorId")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("content")
                         .IsRequired()
@@ -224,7 +221,7 @@ namespace Pine.Migrations
 
                     b.HasKey("id");
 
-                    b.HasIndex("commentaorId");
+                    b.HasIndex("commentatorId");
 
                     b.HasIndex("postId");
 
@@ -534,15 +531,15 @@ namespace Pine.Migrations
 
             modelBuilder.Entity("Pine.Data.Entities.Comment", b =>
                 {
-                    b.HasOne("Pine.Data.Identity.User", "commentaor")
+                    b.HasOne("Pine.Data.Identity.User", "commentator")
                         .WithMany()
-                        .HasForeignKey("commentaorId");
+                        .HasForeignKey("commentatorId");
 
                     b.HasOne("Pine.Data.Entities.Post", "post")
                         .WithMany("comments")
                         .HasForeignKey("postId");
 
-                    b.Navigation("commentaor");
+                    b.Navigation("commentator");
 
                     b.Navigation("post");
                 });

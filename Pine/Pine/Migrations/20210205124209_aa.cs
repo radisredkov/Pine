@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Pine.Migrations
 {
-    public partial class initial : Migration
+    public partial class aa : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -161,8 +161,7 @@ namespace Pine.Migrations
                     id = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     content = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     timeOfCreation = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    commentatorId = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    commentaorId = table.Column<string>(type: "nvarchar(450)", nullable: true),
+                    commentatorId = table.Column<string>(type: "nvarchar(450)", nullable: true),
                     postId = table.Column<string>(type: "nvarchar(450)", nullable: true),
                     Img = table.Column<byte[]>(type: "varbinary(max)", nullable: true),
                     moderatorName = table.Column<string>(type: "nvarchar(max)", nullable: true)
@@ -356,9 +355,9 @@ namespace Pine.Migrations
                 column: "usersInChatId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_comments_commentaorId",
+                name: "IX_comments_commentatorId",
                 table: "comments",
-                column: "commentaorId");
+                column: "commentatorId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_comments_postId",
@@ -436,9 +435,9 @@ namespace Pine.Migrations
                 onDelete: ReferentialAction.Cascade);
 
             migrationBuilder.AddForeignKey(
-                name: "FK_comments_AspNetUsers_commentaorId",
+                name: "FK_comments_AspNetUsers_commentatorId",
                 table: "comments",
-                column: "commentaorId",
+                column: "commentatorId",
                 principalTable: "AspNetUsers",
                 principalColumn: "Id",
                 onDelete: ReferentialAction.Restrict);

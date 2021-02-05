@@ -6,12 +6,12 @@
 
 <center>
     <h1 style="color:#00ff21">@Model.name</h1>
-
 </center>
-@foreach (var message in Model.messages)
+@foreach (var message in Model.messages.OrderBy(c => c.time))
 {
-    <p><b>FROM: @message.senderName   </b>@message.text  @message.time </p>
+    <p><b>@message.senderName</b>@message.time</p>
+    <br />
+    <p>@message.text</p>
 }
-
 
 <a class="CreateButton" asp-area="" asp-controller="Chat" asp-route-chatId="@Model.id" asp-action="SendMessage">Send message</a>
