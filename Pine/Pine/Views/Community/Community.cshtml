@@ -29,7 +29,7 @@
                     </svg>
                 </button>
                 <div id="editUserContainer" class="collapse">
-                    <partial name="../Post/EditCommunity.cshtml" model=@(new CommunityInputModel { communityName = Model.Item1.name }) />
+                    <partial name="../Community/EditCommunity.cshtml" model=@(new CommunityInputModel { communityName = Model.Item1.name }) />
                 </div>
             }
         }

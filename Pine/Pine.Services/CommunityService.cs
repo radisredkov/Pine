@@ -25,6 +25,7 @@ namespace Pine.Services
 
         public void JoinCommunity(User user, Community com)
         {
+           
             if (com.communityMembers.Contains(user))
             {
                 return;
@@ -32,9 +33,10 @@ namespace Pine.Services
             else
             {
                 db.communities.Find(com.id).communityMembers.Add(user);
+                db.SaveChanges();
             }
 
-            db.SaveChanges();
+       
         }
         public void CreateCommunity(CommunityViewModel model, string userId)
         {
@@ -45,10 +47,10 @@ namespace Pine.Services
                 ownerId = userId,
                 isPrivate = model.isPrivate
             };
-            User user = new User { Id = userId };
+           // User user = new User { Id = userId };
             db.communities.Add(community);
             db.SaveChanges();
-            JoinCommunity(user, community);
+           // JoinCommunity(user, community);
         }
 
         public void EditCommunity(Community oldCommunity, CommunityInputModel model)

@@ -104,8 +104,8 @@ namespace Pine.Controllers
         }
         public IActionResult JoinCommunity(string communityName)
         {
-            string userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
-            User user = userServices.getUserById(userId);
+            string userName = this.User.Identity.Name;
+            User user = userServices.getUserByUserName(userName);
             Community com = communityService.getCommunityByName(communityName);
             communityService.JoinCommunity(user, com);
             return RedirectToAction("Communities", "Community");
