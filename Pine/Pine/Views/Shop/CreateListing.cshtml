@@ -7,7 +7,7 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-controller="Shop" asp-action="CreateListing" method="post">
+        <form asp-controller="Shop" asp-action="CreateListing" method="post" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="name" class="control-label"></label>
@@ -23,6 +23,10 @@
                 <label asp-for="price" class="control-label"></label>
                 <input asp-for="price" class="form-control" />
                 <span asp-validation-for="price" class="text-danger"></span>
+            </div>
+            <div class="uploadImg">
+                <input asp-for="img" type="file" name="Img" accept=".png,.jpg,.jpeg,.gif">
+                <p>Drag your files here or click this area.</p>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create listing" class="btn btn-primary" />

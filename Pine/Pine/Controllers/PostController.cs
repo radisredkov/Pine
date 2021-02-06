@@ -33,7 +33,6 @@ namespace Pine.Controllers
             this.db = context;
         }
 
-
         public IActionResult AllPosts()
         {
             ICollection<Post> posts = postServices.getAllPosts();

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
@@ -19,5 +20,7 @@ namespace Pine.Models.Entities
         [Required]
         [DisplayName("Price")]
         public double price { get; set; }
+
+        public IFormFile img { get; set; }
     }
 }

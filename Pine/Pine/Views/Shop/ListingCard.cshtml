@@ -36,6 +36,7 @@
     <div class="card border-secondary mb-3" style="margin-top: 2.5%; color: black;">
         <div class="card-header">Listed by <a type="submit" asp-controller="Account" asp-action="UserPanel" asp-route-userName="@Model.creatorName">@Html.DisplayFor(model => model.creatorName)</a> <div style="float: right;">@Html.DisplayFor(model => model.uploadDate)</div></div>
         <div class="card-body">
+            <img id="postImg" onclick="resizeImg(this)" onerror="this.style.display='none'" style="height:187px; width:280px; float:right;" frameborder="0" src="data:image/jpeg;base64,@Convert.ToBase64String(@Model.img)" />
             <h4 class="card-title" style="display:inline">@Html.DisplayFor(model => model.name)</h4><h4 class="card-title" style="display:inline;float:right;color:#00ff21;">@Html.DisplayFor(model => model.price)лв.</h4>
             <p class="card-text" style="white-space: pre-line;">@Html.DisplayFor(model => model.description)</p>
             @if (User.Identity.Name == Model.creatorName)
@@ -97,7 +98,7 @@
                     </div>
                 </form>
             }
-            else if(User.Identity.Name != Model.creatorName && User.Identity.Name != null || User.IsInRole("Administrator"))
+            else if (User.Identity.Name != Model.creatorName && User.Identity.Name != null || User.IsInRole("Administrator"))
             {
                 <form method="post" asp-controller="Shop" asp-action="BuyListing">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -120,10 +121,21 @@
                         <input type="hidden" asp-for="uploadDate" class="form-control" />
                     </div>
                     <div class="moderationButtons">
-                        <a type="submit" asp-controller="Chat" asp-action="CreateChat" asp-route-userId="@Model.creatorId"  class="buyButton" value="Buy Listing">Buy Listing</a>
+                        <a type="submit" asp-controller="Chat" asp-action="CreateChat" asp-route-userId="@Model.creatorId" class="buyButton" value="Buy Listing">Buy Listing</a>
                     </div>
                 </form>
             }
         </div>
     </div>
 </div>
+<script>
+    function resizeImg(img) {
+        if ($(img).hasClass('enlarged')) {
+            $(img).removeClass('enlarged');
+            $(img).stop().animate({ width: 280, height: 187 }, 100);
+        } else {
+            $(img).addClass('enlarged')
+            $(img).stop().animate({ width: 1000, height: 700 }, 100);
+        }
+    }
+</script>

@@ -177,12 +177,16 @@ img {
 }
 /*buy listing button*/
 .buyButton {
-    min-width: 50px;
-    min-height: 40px;
+    min-width: 305px;
+    min-height: 60px;
     background-color: #00ff34;
     border: 2px solid #0ea100;
-    color: black;
+    color: black !important;
 }
+    .buyButton:hover{
+        text-decoration: none;
+        background-color: #0ea100;
+    }
 /*tooltips on mouseover*/
 .tooltip {
     position: relative;

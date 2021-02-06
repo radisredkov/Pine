@@ -1,21 +1,20 @@
 ﻿@model Pine.Data.Entities.Message
 
-
 @{
     ViewData["Title"] = "Send message";
 }
 
 <div class="row">
     <div class="col-md-4">
-        <form asp-controller="Chat" asp-action="SendMEssage" method="post">
+        <form asp-controller="Chat" asp-action="SendMessage" method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="text" class="control-label">Title</label>
-                <input asp-for="text" class="titleInput" />
+                <label asp-for="text" class="control-label">Message</label>
+                <textarea asp-for="text" class="commentInput" style="min-width: 500px" /> </textarea>
                 <span asp-validation-for="text" class="text-danger"></span>
             </div>            
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Send" class="btn btn-primary" />
             </div>
         </form>
     </div>

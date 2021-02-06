@@ -334,6 +334,9 @@ namespace Pine.Migrations
                     b.Property<string>("id")
                         .HasColumnType("nvarchar(450)");
 
+                    b.Property<byte[]>("Img")
+                        .HasColumnType("varbinary(max)");
+
                     b.Property<string>("ListingId")
                         .HasColumnType("nvarchar(max)");
 

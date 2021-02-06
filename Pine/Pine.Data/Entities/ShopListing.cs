@@ -37,6 +37,6 @@ namespace Pine.Data.Entities
         [ForeignKey("creatorId")]
         public virtual User creator { get; set; }
 
-        //public string picture { get; set; }
+        public byte[] Img { get; set; }
     }
 }

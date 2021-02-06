@@ -4,13 +4,17 @@
 @{
     ViewData["Title"] = Model.Item1.name;
 }
+
+@if (Model.Item1.communityCss != null)
+{
+    <style>@System.Text.Encoding.Default.GetString(Model.Item1.communityCss)</style>
+}
+
 <a type="submit" asp-controller="Post" asp-action="CreatePost" asp-route-communityId="@Model.Item1.id" class="CreateButton">+ Create post</a>
 @if (!(Model.Item1.communityMembers.Select(x => x.UserName).Contains(User.Identity.Name)))
 {
     <a type="submit" asp-controller="Community" asp-action="JoinCommunity" asp-route-communityName="@Model.Item1.name" class="CreateButton" style="float:left;">Join community</a>
-
 }
-
 
 <center>
     <h1 style="color:#00ff21">

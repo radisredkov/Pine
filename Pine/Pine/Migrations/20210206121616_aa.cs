@@ -260,6 +260,7 @@ namespace Pine.Migrations
                     price = table.Column<double>(type: "float", nullable: false),
                     timeOfCreation = table.Column<DateTime>(type: "datetime2", nullable: false),
                     creatorId = table.Column<string>(type: "nvarchar(450)", nullable: true),
+                    Img = table.Column<byte[]>(type: "varbinary(max)", nullable: true),
                     ListingId = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>

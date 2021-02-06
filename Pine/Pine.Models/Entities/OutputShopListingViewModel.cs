@@ -17,7 +17,7 @@ namespace Pine.Models.Entities
         public string creatorId { get; set; }
         public string creatorName { get; set; }
 
-
+        public byte[] img { get; set; }
         public DateTime uploadDate { get; set; }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using Pine.Data;
 using Pine.Data.Entities;
 using Pine.Models.Entities;
+using Pine.Services.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,10 +12,12 @@ namespace Pine.Services
     public class ShopListingService : IShopListingService
     {
         private PineContext db;
+        private readonly IFileService fileService;
 
-        public ShopListingService(PineContext db)
+        public ShopListingService(PineContext db, IFileService fileService)
         {
             this.db = db;
+            this.fileService = fileService;
         }
 
         public void createListing(ShopListingViewModel model, string userId)
@@ -26,6 +29,7 @@ namespace Pine.Services
                 price = model.price,
                 timeOfCreation = DateTime.Now,
                 creatorId = userId,
+                Img = fileService.ConvertToByte(model.img),
                 creator = db.Users.FirstOrDefault(u => u.Id == userId)
             };
 

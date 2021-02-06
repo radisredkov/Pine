@@ -140,7 +140,8 @@ namespace Pine.Controllers
                     description = l.description,
                     price = l.price,
                     creatorName = l.creator.UserName,
-                    uploadDate = l.timeOfCreation
+                    uploadDate = l.timeOfCreation,
+                    img = l.Img
                 }).OrderByDescending(l => l.uploadDate).ToList()
             };
             var tuple = new Tuple<PostsViewModel, User, ShopListingsViewModel>(postsModel, user, listingsModel);

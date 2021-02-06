@@ -26,7 +26,7 @@ namespace Pine.Services
                 name = name,
                 messages = new List<Message>()
             };
-            if (!db.chats.Select(ch => ch.usersInChat).Contains(chat.usersInChat))
+            if (!db.chats.Select(ch => ch.name).Contains(chat.name))
             {
                 db.chats.Add(chat);
                 db.SaveChanges();

@@ -131,9 +131,6 @@ namespace Pine.Controllers
             User moderator = userServices.getUserByUserName(model.moderatorName);
             communityService.RemoveModerator(com, moderator);
             return RedirectToAction("Community", "Community", new { communityName = communityName });
-        }
-
-
-     
+        }  
     }
 }

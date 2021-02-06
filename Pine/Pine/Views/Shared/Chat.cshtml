@@ -14,4 +14,6 @@
     <p>@message.text</p>
 }
 
+@*<partial name="./SendMessage.cshtml" model=@Model.Item2 />*@
+
 <a class="CreateButton" asp-area="" asp-controller="Chat" asp-route-chatId="@Model.id" asp-action="SendMessage">Send message</a>

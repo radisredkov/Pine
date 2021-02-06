@@ -5,7 +5,12 @@
 @{
     ViewData["Title"] = Model.Item2.UserName;
 }
-<link rel="stylesheet" href="@Model.Item2.userCss">
+
+@if (Model.Item2.userCss != null)
+{
+    <style>@System.Text.Encoding.Default.GetString(Model.Item2.userCss)</style>
+}
+
 <center>
     <h1 style="color:#00ff21;">
         @Html.DisplayFor(model => model.Item2.UserName) @if (Model.Item2.UserName == User.Identity.Name)
@@ -52,7 +57,7 @@ else
 else
 {
     <div>
-        @foreach (var listing in Model.Item3.listings.Where(l => l.creatorId == Model.Item2.UserName))
+        @foreach (var listing in Model.Item3.listings.Where(l => l.creatorName == Model.Item2.UserName))
         {
             <partial name="../Shop/ListingCard.cshtml" model=@listing />
         }
