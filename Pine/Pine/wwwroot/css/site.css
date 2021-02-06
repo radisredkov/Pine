@@ -342,6 +342,53 @@ img {
         opacity: 0;
 
     }
+
+.messageCard {
+    position: relative;
+    min-width: 5%;
+    max-width: 30%;
+    display: block;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-clip: border-box;
+    border-radius: 6px;
+    float: left;
+    clear: both;
+}
+
+.messageSenderCard {
+    position: relative;
+    min-width: 5%;
+    max-width: 30%;
+    display: block;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-clip: border-box;
+    border-radius: 6px;
+    float: right;
+    clear: both;
+}
+
+.messageSenderCardBody {
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    padding: 1.25rem;
+    background-color: rgb(3, 164, 94);
+    border-radius: 5px;
+    color: white;
+}
+.messageCardBody {
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    padding: 1.25rem;
+    background-color: rgb(72, 72, 74);
+    border-radius: 5px;
+    color: white;
+}
 /*top-bottom repeat moving animation*/
 @-webkit-keyframes mover {
     0% {

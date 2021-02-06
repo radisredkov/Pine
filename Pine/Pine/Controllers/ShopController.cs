@@ -57,7 +57,8 @@ namespace Pine.Controllers
                     price = l.price,
                     creatorName = userServices.getUserNameById(l.creatorId),
                     creatorId = l.creatorId,
-                    uploadDate = l.timeOfCreation
+                    uploadDate = l.timeOfCreation,
+                    img = l.Img
                 }).OrderByDescending(l => l.price).ToList()
             };
 
@@ -77,7 +78,8 @@ namespace Pine.Controllers
                     price = l.price,
                     creatorName = userServices.getUserNameById(l.creatorId),
                     creatorId = l.creatorId,
-                    uploadDate = l.timeOfCreation
+                    uploadDate = l.timeOfCreation,
+                    img = l.Img
                 }).OrderBy(l => l.price).ToList()
             };
 

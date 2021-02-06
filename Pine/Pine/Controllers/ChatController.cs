@@ -93,7 +93,7 @@ namespace Pine.Controllers
             string chatId = TempData["chatId"].ToString();
             chatService.SendMessage(message.text, chatId, User.Identity.Name);
             TempData.Clear();
-            return RedirectToAction("/");
+            return RedirectToAction("Chat", "Chat", new { chatId = chatId});
         }
     }
 }

@@ -6,14 +6,28 @@
 
 <center>
     <h1 style="color:#00ff21">@Model.name</h1>
+    <a class="CreateButton" style="float: inherit;" asp-area="" asp-controller="Chat" asp-route-chatId="@Model.id" asp-action="SendMessage">Send Message</a>
 </center>
 @foreach (var message in Model.messages.OrderBy(c => c.time))
 {
-    <p><b>@message.senderName</b>@message.time</p>
-    <br />
-    <p>@message.text</p>
+    if (message.senderName == User.Identity.Name)
+    {
+        <div class="messageSenderCard">
+            <a type="submit" style="display: inline"asp-controller="Account" asp-action="UserPanel" asp-route-userName="@message.senderName">@message.senderName</a>@message.time
+            <div class="messageSenderCardBody">
+                @message.text
+            </div>
+        </div>
+        <br />
+    }
+    else
+    {
+        <div class="messageCard">
+            <a type="submit" style="display: inline" asp-controller="Account" asp-action="UserPanel" asp-route-userName="@message.senderName">@message.senderName</a>@message.time
+            <div class="messageCardBody">
+                @message.text
+            </div>
+        </div>
+        <br />
+    }
 }
-
-@*<partial name="./SendMessage.cshtml" model=@Model.Item2 />*@
-
-<a class="CreateButton" asp-area="" asp-controller="Chat" asp-route-chatId="@Model.id" asp-action="SendMessage">Send message</a>
