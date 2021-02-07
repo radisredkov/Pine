@@ -11,7 +11,7 @@
 }
 
 <a type="submit" asp-controller="Post" asp-action="CreatePost" asp-route-communityId="@Model.Item1.id" class="CreateButton">+ Create post</a>
-@if (!(Model.Item1.communityMembers.Select(x => x.UserName).Contains(User.Identity.Name)))
+@if (!(Model.Item1.communityMembers.Select(x => x.UserName).Contains(User.Identity.Name)) && User.Identity.Name != null)
 {
     <a type="submit" asp-controller="Community" asp-action="JoinCommunity" asp-route-communityName="@Model.Item1.name" class="CreateButton" style="float:left;">Join community</a>
 }
