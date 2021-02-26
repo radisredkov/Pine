@@ -13,7 +13,7 @@
     if (message.senderName == User.Identity.Name)
     {
         <div class="messageSenderCard">
-            <a type="submit" style="display: inline"asp-controller="Account" asp-action="UserPanel" asp-route-userName="@message.senderName">@message.senderName</a>@message.time
+            <a type="submit" style="display: inline" asp-controller="Account" asp-action="UserPanel" asp-route-userName="@message.senderName">@message.senderName</a>@message.time
             <div class="messageSenderCardBody">
                 @message.text
             </div>
@@ -30,4 +30,6 @@
         </div>
         <br />
     }
+    <script src="~/js/signalr/dist/browser/signalr.js"></script>
+    <script src="~/js/chat.js"></script>
 }

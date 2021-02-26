@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.SignalR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -13,6 +14,7 @@ using Microsoft.Extensions.Hosting;
 using Pine.Data;
 using Pine.Data.Identity;
 using Pine.Services;
+using Pine.Services.Hubs;
 using Pine.Services.Interfaces;
 
 namespace Pine
@@ -45,6 +47,8 @@ namespace Pine
                 options.Password.RequireUppercase = false;
             });
 
+            services.AddSignalR();
+
             services.AddTransient<IPostServices, PostServices>();
             services.AddTransient<IChatService, ChatService>();
             services.AddTransient<IUserServices, UserServices>();
@@ -70,6 +74,9 @@ namespace Pine
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
+
+           
+
             app.UseRouting();
 
             app.UseAuthorization();
@@ -82,6 +89,7 @@ namespace Pine
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Community}/{action=Communities}/{id?}");
+                endpoints.MapHub<MessageHub>("/messagehub");
             });
         }
     }

@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Text;
 
 namespace Pine.Services.Interfaces
-{
+{ 
     public interface  IChatService
     {
         public void CreateChat(List<User> users, string name );
