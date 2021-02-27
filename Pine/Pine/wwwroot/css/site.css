@@ -391,6 +391,13 @@ img {
     border-radius: 5px;
     color: white;
 }
+
+/*chat message input*/
+.chatMsgInput{
+    width: 100%;
+    min-height: 50px;
+    border-radius: 5px;
+}
 /*top-bottom repeat moving animation*/
 @-webkit-keyframes mover {
     0% {

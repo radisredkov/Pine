@@ -1,4 +1,5 @@
 ﻿@model Pine.Data.Entities.Chat
+@using Pine.Data.Entities 
 
 @{
     ViewData["Title"] = Model.name;
@@ -6,7 +7,6 @@
 
 <center>
     <h1 style="color:#00ff21">@Model.name</h1>
-    <a class="CreateButton" style="float: inherit;" asp-area="" asp-controller="Chat" asp-route-chatId="@Model.id" asp-action="SendMessage">Send Message</a>
 </center>
 @foreach (var message in Model.messages.OrderBy(c => c.time))
 {
@@ -33,3 +33,6 @@
     <script src="~/js/signalr/dist/browser/signalr.js"></script>
     <script src="~/js/chat.js"></script>
 }
+<form asp-controller="Chat" asp-action="SendMessage" asp-route-chatId="@Model.id" method="post" style="position: fixed !important; bottom: 0px !important;">
+    <partial name="./SendMessage.cshtml" model=@(new Message {}) />
+</form>

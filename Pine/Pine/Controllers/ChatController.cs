@@ -88,11 +88,9 @@ namespace Pine.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult SendMessage(Message message)
+        public IActionResult SendMessage(Message message, string chatId)
         {
-            string chatId = TempData["chatId"].ToString();
             chatService.SendMessage(message.text, chatId, User.Identity.Name);
-            TempData.Clear();
             return RedirectToAction("Chat", "Chat", new { chatId = chatId});
         }
     }
