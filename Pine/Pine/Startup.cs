@@ -89,7 +89,7 @@ namespace Pine
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Community}/{action=Communities}/{id?}");
-                endpoints.MapHub<MessageHub>("/messagehub");
+                endpoints.MapHub<ChatHub>("/chathub");
             });
         }
     }

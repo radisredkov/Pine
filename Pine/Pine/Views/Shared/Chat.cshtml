@@ -1,5 +1,5 @@
 ﻿@model Pine.Data.Entities.Chat
-@using Pine.Data.Entities 
+@using Pine.Data.Entities
 
 @{
     ViewData["Title"] = Model.name;
@@ -36,3 +36,6 @@
 <form asp-controller="Chat" asp-action="SendMessage" asp-route-chatId="@Model.id" method="post" style="position: fixed !important; bottom: 0px !important;">
     <partial name="./SendMessage.cshtml" model=@(new Message {}) />
 </form>
+
+<script src="~/js/signalr/dist/browser/signalr.js"></script>
+<script src="~/js/chat.js"></script>

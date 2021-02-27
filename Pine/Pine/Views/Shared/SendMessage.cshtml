@@ -6,14 +6,14 @@
 
 <div class="row">
     <div class="col-md-4">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="text" class="control-label">Message</label>
-                <textarea asp-for="text" class="chatMsgInput" style="min-width: 500px" /> </textarea>
-                <span asp-validation-for="text" class="text-danger"></span>
-            </div>            
-            <div class="form-group">
-                <input type="submit" value="Send" class="btn btn-primary" />
-            </div>
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+            <label asp-for="text" class="control-label">Message</label>
+            <textarea asp-for="text" class="chatMsgInput" style="min-width: 500px" /> </textarea>
+            <span asp-validation-for="text" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Send" class="btn btn-primary" />
+        </div>
     </div>
 </div>
