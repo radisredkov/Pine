@@ -14,10 +14,11 @@ using System.Linq;
 using System.Security.Policy;
 using System.Threading.Tasks;
 
+
 namespace Pine.Controllers
 {
-    [Authorize]
-    [Route("[controller]")]
+    //[Authorize]
+    //[Route("[controller]")]
     public class ChatController : Controller
     {
         private readonly IUserServices userServices;
@@ -32,13 +33,23 @@ namespace Pine.Controllers
             this.chatService = chatService;
             this.userServices = userServices;
             this._chat = chat;
-            this.db = context;
+            this.db = context; 
         }
-        [HttpPost("[action]/{connectionId}/{chatName}")]
-        public async Task<IActionResult> JoinChat( string connectionId, string chatName)
+        //[HttpPost("[action]/{connectionId}/{chatName}")]
+       // string connectionId,
+        public async Task<IActionResult> JoinChat( string userId)
         {
-            await _chat.Groups.AddToGroupAsync(connectionId, chatName);
-            return Ok();
+            User currentUser = userServices.getUserByUserName(User.Identity.Name);
+            User messagedUser = userServices.getUserById(userId);
+            List<User> users = new List<User>();
+            users.Add(messagedUser);
+            users.Add(currentUser);
+            string chatName = $"{currentUser.UserName} - {messagedUser.UserName}";
+            chatService.CreateChat(users, chatName);
+
+            
+            //await _chat.Groups.AddToGroupAsync(connectionId, chatName);
+             return RedirectToAction("ChatsView", "Chat");
         }
         [HttpPost("[action]/{connectionId}/{chatName}")]
         public async Task<IActionResult> LeaveChat(string connectionId, string chatName)
@@ -47,6 +58,7 @@ namespace Pine.Controllers
             return Ok();
         }
 
+        [HttpPost("[action]/{connectionId}/{chatName}")]
         public async Task<IActionResult> SendMessage(string message, string chatName, string chatId,
             [FromServices] PineContext ctx)
         {
@@ -137,11 +149,13 @@ namespace Pine.Controllers
         //    chatService.SendMessage(message.text, chatId, User.Identity.Name);
         //    return RedirectToAction("Chat", "Chat", new { chatId = chatId });
         //}
-
+        [HttpGet]
         public IActionResult ChatsView()
         {
             return View();
         }
+        
+        
 
 
 
