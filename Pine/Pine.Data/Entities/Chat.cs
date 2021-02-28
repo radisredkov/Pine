@@ -25,4 +25,5 @@ namespace Pine.Data.Entities
 
         public ICollection<Message> messages { get; set; }
     }
+    
 }

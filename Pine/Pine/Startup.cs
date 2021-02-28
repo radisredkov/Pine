@@ -74,8 +74,7 @@ namespace Pine
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
-
-           
+          
 
             app.UseRouting();
 

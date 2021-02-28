@@ -12,8 +12,8 @@ namespace Pine.Data.Entities
             this.id = Guid.NewGuid().ToString();
         }
         [Key]
-        public string id { get; set; }
-
+        public string id { get; set; }         
+        public string chatId { get; set; }
         public string senderName { get; set; }
         [Required]
         public string text { get; set; }

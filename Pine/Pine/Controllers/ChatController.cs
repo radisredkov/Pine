@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
 using Pine.Data;
 using Pine.Data.Entities;
@@ -15,18 +16,57 @@ using System.Threading.Tasks;
 
 namespace Pine.Controllers
 {
+    [Authorize]
+    [Route("[controller]")]
     public class ChatController : Controller
     {
         private readonly IUserServices userServices;
         private readonly IChatService chatService;
+        private IHubContext<ChatHub> _chat;
      
         private readonly PineContext db;
 
-        public ChatController(IUserServices userServices, IChatService chatService, PineContext context)
+        public ChatController(IUserServices userServices, IChatService chatService, PineContext context,
+            IHubContext<ChatHub> chat)
         {
             this.chatService = chatService;
             this.userServices = userServices;
+            this._chat = chat;
             this.db = context;
+        }
+        [HttpPost("[action]/{connectionId}/{chatName}")]
+        public async Task<IActionResult> JoinChat( string connectionId, string chatName)
+        {
+            await _chat.Groups.AddToGroupAsync(connectionId, chatName);
+            return Ok();
+        }
+        [HttpPost("[action]/{connectionId}/{chatName}")]
+        public async Task<IActionResult> LeaveChat(string connectionId, string chatName)
+        {
+            await _chat.Groups.RemoveFromGroupAsync(connectionId, chatName);
+            return Ok();
+        }
+
+        public async Task<IActionResult> SendMessage(string message, string chatName, string chatId,
+            [FromServices] PineContext ctx)
+        {
+            var newMessage = new Message
+            {
+                chatId = chatId,
+                text = message,
+                senderName = User.Identity.Name,
+                time = DateTime.Now
+            };
+            ctx.messages.Add(newMessage);
+            await ctx.SaveChangesAsync();
+
+            await _chat.Clients.Group(chatName)
+                .SendAsync("RecieveMessage", new { 
+                Text = newMessage.text,
+                Name = newMessage.senderName,
+                Time = newMessage.time.ToString("dd/MM/yyyy hh:mm")
+                });
+            return Ok();
         }
 
         //public IActionResult CreateChat(string userId)
@@ -38,7 +78,7 @@ namespace Pine.Controllers
         //    users.Add(currentUser);
         //    string name = $"{currentUser.UserName} - {messagedUser.UserName}";
 
-        //    chatService.CreateChat(users, name); 
+        //    chatService.CreateChat(users, name);
         //    return RedirectToAction("ChatsView", "Chat");
         //}
 

@@ -33,9 +33,10 @@
     <script src="~/js/signalr/dist/browser/signalr.js"></script>
     <script src="~/js/chat.js"></script>
 }
-<form asp-controller="Chat" asp-action="SendMessage" asp-route-chatId="@Model.id" method="post" style="position: fixed !important; bottom: 0px !important;">
-    <partial name="./SendMessage.cshtml" model=@(new Message {}) />
+<form asp-controller="Chat" asp-action="SendMessage" onsubmit="sendMessage(event)" asp-route-chatId="@Model.id" method="post" style="position: fixed !important; bottom: 0px !important;">
+    <partial name="./SendMessage.cshtml" itemid ="message-input" model=@(new Message {}) />
 </form>
 
 <script src="~/js/signalr/dist/browser/signalr.js"></script>
 <script src="~/js/chat.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
