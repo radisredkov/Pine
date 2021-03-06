@@ -23,6 +23,7 @@ namespace Pine.Data
         public DbSet<Comment> comments { get; set; }
         public DbSet<ShopListing> listings { get; set; }
         public DbSet<Chat> chats { get; set; }
+        public DbSet<ChatUser> chatUsers { get; set; }
         public DbSet<Message> messages { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
@@ -33,7 +34,9 @@ namespace Pine.Data
             builder.Entity<User>().HasMany(u => u.posts).WithOne(p => p.creator);
             builder.Entity<User>().HasMany(u => u.listings).WithOne(l => l.creator);
             builder.Entity<User>().HasMany(u => u.CommunitiesJoined).WithMany(c => c.communityMembers);
-            builder.Entity<User>().HasMany(u => u.chats).WithMany(ch => ch.usersInChat);
+            builder.Entity<ChatUser>()
+              .HasKey(x => new { x.chatId, x.userId });
+            //builder.Entity<User>().HasMany(u => u.chats).WithMany(ch => ch.usersInChat);
 
 
             //   builder.Entity<Chat>().HasMany(ch => ch.usersInChat).WithMany(ch => ch.chats);

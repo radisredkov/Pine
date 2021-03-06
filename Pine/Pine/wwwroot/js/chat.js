@@ -39,7 +39,7 @@ var joinChat = function () {
         .then(res => {
             console.log("Chat Joined!", res);
         })
-        .catch(err = > {
+        .catch(err => {
             console.err("Failed to join chat!", res)
         }
            

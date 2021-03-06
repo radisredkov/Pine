@@ -1,42 +1,67 @@
 ﻿@model Pine.Data.Entities.Chat
-@using Pine.Data.Entities
 
-@{
-    ViewData["Title"] = Model.name;
-}
-
-<center>
-    <h1 style="color:#00ff21">@Model.name</h1>
-</center>
-@foreach (var message in Model.messages.OrderBy(c => c.time))
-{
-    if (message.senderName == User.Identity.Name)
+<div class="chat-body">
+    @foreach (var message in Model.messages)
     {
-        <div class="messageSenderCard">
-            <a type="submit" style="display: inline" asp-controller="Account" asp-action="UserPanel" asp-route-userName="@message.senderName">@message.senderName</a>@message.time
-            <div class="messageSenderCardBody">
-                @message.text
-            </div>
-        </div>
-        <br />
-    }
-    else
-    {
-        <div class="messageCard">
-            <a type="submit" style="display: inline" asp-controller="Account" asp-action="UserPanel" asp-route-userName="@message.senderName">@message.senderName</a>@message.time
-            <div class="messageCardBody">
-                @message.text
-            </div>
-        </div>
-        <br />
-    }
-    <script src="~/js/signalr/dist/browser/signalr.js"></script>
-    <script src="~/js/chat.js"></script>
-}
-<form asp-controller="Chat" asp-action="SendMessage" onsubmit="sendMessage(event)" asp-route-chatId="@Model.id" method="post" style="position: fixed !important; bottom: 0px !important;">
-    <partial name="./SendMessage.cshtml" itemid ="message-input" model=@(new Message {}) />
+<div class="message">
+    <header>@message.name:</header>
+    <p>@message.text</p>
+    <footer>@message.timestamp</footer>
+</div>}
+</div>
+<form class="chat-input" onsubmit="sendMessage(event)" asp-controller="Home" asp-action="CreateMessage">
+    <input type="hidden" name="roomId" value="@Model.id">
+    <input type="text" name="message" id="message-input">
+    <button type="submit">Send</button>
 </form>
 
-<script src="~/js/signalr/dist/browser/signalr.js"></script>
-<script src="~/js/chat.js"></script>
-<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+@section scripts {
+    <script src="~/js/signalr.min.js"></script>
+    <script src="~/js/messageBuilder.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+    var connection = new signalR.HubConnectionBuilder()
+        .withUrl("/chatHub")
+        .build();
+
+    var _connectionId = '';
+
+    connection.on("RecieveMessage", function (data) {
+        var message = messageBuilder()
+            .createMessage()
+            .withHeader(data.name)
+            .withParagraph(data.text)
+            .withFooter(data.timestamp)
+            .build();
+
+        document.querySelector('.chat-body').append(message);
+    })
+
+    connection.start()
+        .then(function () {
+            connection.invoke('joinRoom', '@Model.id');
+        })
+        .catch(function (err) {
+            console.log(err)
+        })
+
+    window.addEventListener('onunload', function () {
+        connection.invoke('leaveRoom', '@Model.id');
+    })
+
+    var sendMessage = function (event) {
+        event.preventDefault();
+
+        var data = new FormData(event.target);
+        document.getElementById('message-input').value = '';
+        axios.post('/Home/SendMessage', data)
+            .then(res => {
+                console.log("Message Sent!")
+            })
+            .catch(err => {
+                console.log("Failed to send message!")
+            })
+    }
+
+    </script>
+}

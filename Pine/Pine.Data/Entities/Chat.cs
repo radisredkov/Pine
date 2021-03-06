@@ -9,21 +9,17 @@ namespace Pine.Data.Entities
 {
     public class Chat
     {
+   
         public Chat()
         {
-            this.id = Guid.NewGuid().ToString();
-            usersInChat = new HashSet<User>();
-            messages = new HashSet<Message>();
-
+            messages = new List<Message>();
+            users = new List<ChatUser>();
         }
         [Key]
-        [ForeignKey("ChatId")]
         public string id { get; set; }
         public string name { get; set; }
-
-        public ICollection<User> usersInChat { get; set; }
-
         public ICollection<Message> messages { get; set; }
+        public ICollection<ChatUser> users { get; set; }
     }
-    
+
 }

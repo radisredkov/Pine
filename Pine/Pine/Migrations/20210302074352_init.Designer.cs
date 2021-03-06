@@ -10,8 +10,8 @@ using Pine.Data;
 namespace Pine.Migrations
 {
     [DbContext(typeof(PineContext))]
-    [Migration("20210227075139_aa")]
-    partial class aa
+    [Migration("20210302074352_init")]
+    partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -20,21 +20,6 @@ namespace Pine.Migrations
                 .UseIdentityColumns()
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("ProductVersion", "5.0.1");
-
-            modelBuilder.Entity("ChatUser", b =>
-                {
-                    b.Property<string>("chatsid")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("usersInChatId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasKey("chatsid", "usersInChatId");
-
-                    b.HasIndex("usersInChatId");
-
-                    b.ToTable("ChatUser");
-                });
 
             modelBuilder.Entity("CommunityUser", b =>
                 {
@@ -187,12 +172,32 @@ namespace Pine.Migrations
                     b.Property<string>("id")
                         .HasColumnType("nvarchar(450)");
 
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<string>("name")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("id");
 
+                    b.HasIndex("UserId");
+
                     b.ToTable("chats");
+                });
+
+            modelBuilder.Entity("Pine.Data.Entities.ChatUser", b =>
+                {
+                    b.Property<string>("chatId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("userId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("chatId", "userId");
+
+                    b.HasIndex("userId");
+
+                    b.ToTable("chatUsers");
                 });
 
             modelBuilder.Entity("Pine.Data.Entities.Comment", b =>
@@ -268,22 +273,21 @@ namespace Pine.Migrations
                     b.Property<string>("id")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("Chatid")
+                    b.Property<string>("chatId")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("senderName")
+                    b.Property<string>("name")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("text")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("time")
+                    b.Property<DateTime>("timestamp")
                         .HasColumnType("datetime2");
 
                     b.HasKey("id");
 
-                    b.HasIndex("Chatid");
+                    b.HasIndex("chatId");
 
                     b.ToTable("messages");
                 });
@@ -418,9 +422,6 @@ namespace Pine.Migrations
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
 
-                    b.Property<string>("chatId")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("moderatorName")
                         .HasColumnType("nvarchar(450)");
 
@@ -449,21 +450,6 @@ namespace Pine.Migrations
                     b.HasIndex("moderatorName");
 
                     b.ToTable("AspNetUsers");
-                });
-
-            modelBuilder.Entity("ChatUser", b =>
-                {
-                    b.HasOne("Pine.Data.Entities.Chat", null)
-                        .WithMany()
-                        .HasForeignKey("chatsid")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Pine.Data.Identity.User", null)
-                        .WithMany()
-                        .HasForeignKey("usersInChatId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
                 });
 
             modelBuilder.Entity("CommunityUser", b =>
@@ -532,6 +518,32 @@ namespace Pine.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("Pine.Data.Entities.Chat", b =>
+                {
+                    b.HasOne("Pine.Data.Identity.User", null)
+                        .WithMany("chats")
+                        .HasForeignKey("UserId");
+                });
+
+            modelBuilder.Entity("Pine.Data.Entities.ChatUser", b =>
+                {
+                    b.HasOne("Pine.Data.Entities.Chat", "chat")
+                        .WithMany("users")
+                        .HasForeignKey("chatId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Pine.Data.Identity.User", "user")
+                        .WithMany("Chats")
+                        .HasForeignKey("userId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("chat");
+
+                    b.Navigation("user");
+                });
+
             modelBuilder.Entity("Pine.Data.Entities.Comment", b =>
                 {
                     b.HasOne("Pine.Data.Identity.User", "commentator")
@@ -558,9 +570,11 @@ namespace Pine.Migrations
 
             modelBuilder.Entity("Pine.Data.Entities.Message", b =>
                 {
-                    b.HasOne("Pine.Data.Entities.Chat", null)
+                    b.HasOne("Pine.Data.Entities.Chat", "chat")
                         .WithMany("messages")
-                        .HasForeignKey("Chatid");
+                        .HasForeignKey("chatId");
+
+                    b.Navigation("chat");
                 });
 
             modelBuilder.Entity("Pine.Data.Entities.Post", b =>
@@ -595,6 +609,8 @@ namespace Pine.Migrations
             modelBuilder.Entity("Pine.Data.Entities.Chat", b =>
                 {
                     b.Navigation("messages");
+
+                    b.Navigation("users");
                 });
 
             modelBuilder.Entity("Pine.Data.Entities.Community", b =>
@@ -611,6 +627,10 @@ namespace Pine.Migrations
 
             modelBuilder.Entity("Pine.Data.Identity.User", b =>
                 {
+                    b.Navigation("chats");
+
+                    b.Navigation("Chats");
+
                     b.Navigation("listings");
 
                     b.Navigation("posts");

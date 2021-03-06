@@ -3,6 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>@ViewData["Title"] - Pine</title>
     <link rel="icon" href="~/css/Images/site-logo.png">
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
@@ -78,6 +79,21 @@
             });
         });
     </script>
+
+
+    <div class="modal" id="create-room-modal">
+        <form asp-controller="Home" asp-action="CreateRoom" class="modal-body">
+            <button type="button" class="close" onclick="closeModal()">X</button>
+            <header>Create Room</header>
+            <div>
+                <input name="name">
+            </div>
+            <footer>
+                <button>Create</button>
+            </footer>
+        </form>
+    </div>
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
