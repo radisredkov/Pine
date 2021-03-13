@@ -96,13 +96,11 @@ namespace Pine.Controllers
             {
                 case "empty":
                     this.postServices.createPost(post, userId, img);
-                    break;
+                    return Redirect("/");
                 default:
                     this.postServices.createPost(post, userId, img, TempData["CommunityId"].ToString());
-                    break;
+                    return this.RedirectToAction("Community", "Community", new { communityName = communityService.getCommunityById(TempData["CommunityId"].ToString()).name });
             }
-            TempData.Clear();
-            return this.Redirect("/");
         }
 
         [HttpPost]

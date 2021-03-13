@@ -35,8 +35,6 @@ namespace Pine.Services
                 db.communities.Find(com.id).communityMembers.Add(user);
                 db.SaveChanges();
             }
-
-       
         }
         public void CreateCommunity(CommunityViewModel model, string userId)
         {
@@ -89,6 +87,10 @@ namespace Pine.Services
         public Community getCommunityByName(string communityName)
         {
             return getAllcommunities().FirstOrDefault(c => c.name == communityName);
+        }
+        public Community getCommunityById(string communityId)
+        {
+            return getAllcommunities().FirstOrDefault(c => c.id == communityId);
         }
 
         public ICollection<Community> getAllcommunities()

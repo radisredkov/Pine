@@ -70,7 +70,7 @@ namespace Pine.Controllers
 
             var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
             this.communityService.CreateCommunity(com, userId);
-            return this.RedirectToAction("Communities", "Community");
+            return this.RedirectToAction("Community", "Community", new { communityName = com.name });
         }
         public async Task<IActionResult> Community(string communityName)
         {
@@ -114,11 +114,16 @@ namespace Pine.Controllers
             User user = userServices.getUserByUserName(userName);
             Community com = communityService.getCommunityByName(communityName);
             communityService.JoinCommunity(user, com);
-            return RedirectToAction("Communities", "Community");
+            return RedirectToAction("Community", "Community", new { communityName = communityName });
         }
 
         public IActionResult EditCommunity(CommunityInputModel community)
         {
+            if (!this.ModelState.IsValid)
+            {
+                return this.View();
+            }
+
             Community com = communityService.getCommunityByName(community.communityName);
             communityService.EditCommunity(com, community);
             return RedirectToAction("Community", "Community", new { communityName = community.communityName });
