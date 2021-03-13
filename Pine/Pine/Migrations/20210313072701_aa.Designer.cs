@@ -10,8 +10,8 @@ using Pine.Data;
 namespace Pine.Migrations
 {
     [DbContext(typeof(PineContext))]
-    [Migration("20210302074352_init")]
-    partial class init
+    [Migration("20210313072701_aa")]
+    partial class aa
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -245,6 +245,9 @@ namespace Pine.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<bool>("isAnonymous")
+                        .HasColumnType("bit");
+
                     b.Property<bool>("isPrivate")
                         .HasColumnType("bit");
 
@@ -309,6 +312,9 @@ namespace Pine.Migrations
                     b.Property<string>("description")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("inAnonymousCommunity")
+                        .HasColumnType("bit");
 
                     b.Property<string>("moderatorName")
                         .HasColumnType("nvarchar(max)");

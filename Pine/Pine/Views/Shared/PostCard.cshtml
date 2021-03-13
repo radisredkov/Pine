@@ -37,10 +37,14 @@
     </dl-->
     <div class="card border-secondary mb-3" style="margin-top: 2.5%; color: black;">
         <div class="card-header">
-            Post by @if (Model.userName == null)
+            Post by @if (Model.userName == null || Model.inAnonymousCommunity)
             {
                 @Html.DisplayName("Anonymous");
-            }<a type="submit" asp-controller="Account" asp-action="UserPanel" asp-route-userName="@Model.userName">@Html.DisplayFor(model => model.userName)</a> <div style="float: right;">@Html.DisplayFor(model => model.uploadDate)</div>
+            }
+            else
+            {
+            <a type="submit" asp-controller="Account" asp-action="UserPanel" asp-route-userName="@Model.userName">@Html.DisplayFor(model => model.userName)</a>
+            }<div style="float: right;">@Html.DisplayFor(model => model.uploadDate)</div>
         </div>
         <div class="card-body">
             <img id="postImg" onclick="resizeImg(this)" onerror="this.style.display='none'" style="height:187px; width:280px; float:right;" frameborder="0" src="data:image/jpeg;base64,@Convert.ToBase64String(@Model.img)" />

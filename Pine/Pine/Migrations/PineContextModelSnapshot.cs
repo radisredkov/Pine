@@ -243,6 +243,9 @@ namespace Pine.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<bool>("isAnonymous")
+                        .HasColumnType("bit");
+
                     b.Property<bool>("isPrivate")
                         .HasColumnType("bit");
 
@@ -307,6 +310,9 @@ namespace Pine.Migrations
                     b.Property<string>("description")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("inAnonymousCommunity")
+                        .HasColumnType("bit");
 
                     b.Property<string>("moderatorName")
                         .HasColumnType("nvarchar(max)");

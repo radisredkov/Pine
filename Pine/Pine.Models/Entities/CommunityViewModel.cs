@@ -14,5 +14,6 @@ namespace Pine.Models.Entities
         public string ownerId { get; set; }
         public IFormFile backgroundImg { get; set; }
         public bool isPrivate { get; set; }
+        public bool isAnonymous { get; set; }
     }
 }

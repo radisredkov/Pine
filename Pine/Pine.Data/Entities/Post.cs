@@ -41,5 +41,6 @@ namespace Pine.Data.Entities
         public virtual ICollection<Comment> comments { get; set; } = new List<Comment>();
 
         public string moderatorName { get; set; }
+        public bool inAnonymousCommunity { get; set; }
     }
 }

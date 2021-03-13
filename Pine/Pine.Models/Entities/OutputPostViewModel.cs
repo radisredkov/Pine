@@ -29,5 +29,6 @@ namespace Pine.Models.Entities
         public ICollection<OutputCommentViewModel> comments { get; set; }
 
         public string moderatorName { get; set; }
+        public bool inAnonymousCommunity { get; set; }
     }
 }

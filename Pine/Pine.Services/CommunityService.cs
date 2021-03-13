@@ -45,7 +45,8 @@ namespace Pine.Services
                 name = model.name,
                 description = model.description,
                 ownerId = userId,
-                isPrivate = model.isPrivate
+                isPrivate = model.isPrivate,
+                isAnonymous = model.isAnonymous
             };
            // User user = new User { Id = userId };
             db.communities.Add(community);

@@ -41,6 +41,8 @@ namespace Pine.Data.Entities
 
         public bool isPrivate { get; set; }
 
+        public bool isAnonymous { get; set; }
+
         public byte[] communityCss { get; set; }
     }
 }

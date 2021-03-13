@@ -47,7 +47,8 @@ namespace Pine.Controllers
                     id = c.id,
                     name = c.name,
                     description = c.description,
-                    isPrivate = c.isPrivate
+                    isPrivate = c.isPrivate,
+                    isAnonymous = c.isAnonymous
                 }).OrderBy(c => c.name).ToList()
             };
 
@@ -74,6 +75,10 @@ namespace Pine.Controllers
         public async Task<IActionResult> Community(string communityName)
         {
             var community = communityService.getCommunityByName(communityName);
+            if (community.isPrivate && !community.communityMembers.Contains(userServices.getUserByUserName(User.Identity.Name)))
+            {
+                return Redirect("404notfound");
+            }
                    
             ICollection<Post> posts =  community.communityPosts;
             PostsViewModel model = new PostsViewModel()
@@ -87,6 +92,7 @@ namespace Pine.Controllers
                     tags = p.tags,
                     userName = userServices.getUserNameById(p.creatorId),
                     uploadDate = p.timeOfCreation,
+                    inAnonymousCommunity = p.inAnonymousCommunity,
                     comments = commentServices.getAllComments(p.id).Select(c => new OutputCommentViewModel
                     {
                         id = c.id,

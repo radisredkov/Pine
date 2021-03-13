@@ -49,6 +49,7 @@ namespace Pine.Controllers
                     userName = userServices.getUserNameById(p.creatorId),
                     uploadDate = p.timeOfCreation,
                     communityId = p.communityId,
+                    inAnonymousCommunity = p.inAnonymousCommunity,
                     comments = commentServices.getAllComments(p.id).Select(c => new OutputCommentViewModel
                     {
                         id = c.id,
@@ -172,6 +173,7 @@ namespace Pine.Controllers
                     creatorId = p.creatorId,
                     uploadDate = p.timeOfCreation,
                     communityId = p.communityId,
+                    inAnonymousCommunity = p.inAnonymousCommunity,
                     comments = commentServices.getAllComments(p.id).Select(c => new OutputCommentViewModel
                     {
                         id = c.id,
@@ -183,10 +185,7 @@ namespace Pine.Controllers
                     }).OrderBy(c => c.timeOfCreation).ToList()
                 }).OrderBy(p => p.uploadDate).ToList()
             };
-
             return View("AllPosts", model);
         }
-
-
     }
 }

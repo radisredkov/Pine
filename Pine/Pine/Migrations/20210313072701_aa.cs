@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Pine.Migrations
 {
-    public partial class init : Migration
+    public partial class aa : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -183,6 +183,7 @@ namespace Pine.Migrations
                     ownerId = table.Column<string>(type: "nvarchar(450)", nullable: true),
                     moderatorName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     isPrivate = table.Column<bool>(type: "bit", nullable: false),
+                    isAnonymous = table.Column<bool>(type: "bit", nullable: false),
                     communityCss = table.Column<byte[]>(type: "varbinary(max)", nullable: true)
                 },
                 constraints: table =>
@@ -287,6 +288,7 @@ namespace Pine.Migrations
                     creatorId = table.Column<string>(type: "nvarchar(450)", nullable: true),
                     Img = table.Column<byte[]>(type: "varbinary(max)", nullable: true),
                     moderatorName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    inAnonymousCommunity = table.Column<bool>(type: "bit", nullable: false),
                     postId = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>

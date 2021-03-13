@@ -43,5 +43,6 @@
 @foreach (var post in Model.Item2.posts)
 {
     post.moderatorName = Model.Item1.moderatorName;
+    post.inAnonymousCommunity = Model.Item1.isAnonymous;
     <partial name="../Shared/PostCard.cshtml" model=@post />
 }
