@@ -12,14 +12,15 @@ namespace Pine.Data.Entities
    
         public Chat()
         {
+            id = Guid.NewGuid().ToString();
             messages = new List<Message>();
-            users = new List<ChatUser>();
+            usersInChat = new List<User>();
         }
         [Key]
         public string id { get; set; }
         public string name { get; set; }
         public ICollection<Message> messages { get; set; }
-        public ICollection<ChatUser> users { get; set; }
+        public ICollection<User> usersInChat { get; set; }
     }
 
 }

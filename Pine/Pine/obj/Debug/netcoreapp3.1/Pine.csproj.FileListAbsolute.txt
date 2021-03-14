@@ -553,11 +553,7 @@ D:\Radi's Folder\Pine\Pine\Pine\obj\Debug\netcoreapp3.1\Razor\Views\Post\EditPos
 D:\Radi's Folder\Pine\Pine\Pine\obj\Debug\netcoreapp3.1\Razor\Views\Shared\CommentCard.cshtml.g.cs
 D:\Radi's Folder\Pine\Pine\Pine\obj\Debug\netcoreapp3.1\Razor\Views\Shared\InputCommentView.cshtml.g.cs
 D:\Radi's Folder\Pine\Pine\Pine\obj\Debug\netcoreapp3.1\Razor\Views\Shared\PostCard.cshtml.g.cs
-D:\It-kariera\Emoty\Pine\Pine\Pine\obj\Debug\netcoreapp3.1\Razor\Views\Shared\ChatTest.cshtml.g.cs
 D:\It-kariera\Emoty\Pine\Pine\Pine\bin\Debug\netcoreapp3.1\libman.json
-D:\It-kariera\Emoty\Pine\Pine\Pine\obj\Debug\netcoreapp3.1\Razor\Views\Shared\OldChatsView.cshtml.g.cs
-D:\It-kariera\Emoty\Pine\Pine\Pine\obj\Debug\netcoreapp3.1\Razor\Views\Shared\ОлдChat.cshtml.g.cs
-D:\It-kariera\Emoty\Pine\Pine\Pine\obj\Debug\netcoreapp3.1\Razor\Views\Components\Room\Default.cshtml.g.cs
 D:\Radi's Folder\Pine\Pine\Pine\bin\Debug\netcoreapp3.1\libman.json
 D:\Radi's Folder\Pine\Pine\Pine\obj\Debug\netcoreapp3.1\Razor\Views\Components\Room\Default.cshtml.g.cs
 D:\Radi's Folder\Pine\Pine\Pine\obj\Debug\netcoreapp3.1\Razor\Views\Shared\ChatTest.cshtml.g.cs

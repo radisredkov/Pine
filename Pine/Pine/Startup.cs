@@ -14,9 +14,7 @@ using Microsoft.Extensions.Hosting;
 using Pine.Data;
 using Pine.Data.Identity;
 using Pine.Services;
-using Pine.Hubs;
 using Pine.Services.Interfaces;
-using Pine.Services.Repostory;
 
 namespace Pine
 {
@@ -57,7 +55,7 @@ namespace Pine
             services.AddTransient<ICommunityServices, CommunityServices>();
             services.AddTransient<IShopListingService, ShopListingService>();
             services.AddTransient<ICommentServices, CommentServices>();
-            services.AddTransient<IChatRepository, ChatRepository>();
+         
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -90,7 +88,7 @@ namespace Pine
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Community}/{action=Communities}/{id?}");
-                endpoints.MapHub<ChatHub>("/chathub");
+                
             });
         }
     }

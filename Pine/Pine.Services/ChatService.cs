@@ -18,43 +18,43 @@ namespace Pine.Services
         {
             this.db = db;
         }
-        //public void CreateChat(List<User> users, string name)
-        //{
-        //    Chat chat = new Chat
-        //    {
-        //        usersInChat = users,
-        //        name = name,
-        //        messages = new List<Message>()
-        //    };
-        //    if (!db.chats.Select(ch => ch.name).Contains(chat.name))
-        //    {
-        //        db.chats.Add(chat);
-        //        db.SaveChanges();
-        //    }        
-        //}
+        public void CreateChat(List<User> users, string name)
+        {
+            Chat chat = new Chat
+            {
+                usersInChat = users,
+                name = name,
+                messages = new List<Message>()
+            };
+            if (!db.chats.Select(ch => ch.name).Contains(chat.name))
+            {
+                db.chats.Add(chat);
+                db.SaveChanges();
+            }
+        }
 
-        //public List<Chat> GetAllChats()
-        //{
-        //    return db.chats.Include(ch => ch.usersInChat).Include(ch => ch.messages).ToList();
-        //}
+        public List<Chat> GetAllChats()
+        {
+            return db.chats.Include(ch => ch.usersInChat).Include(ch => ch.messages).ToList();
+        }
 
-        //public Chat GetChatById(string id)
-        //{
-        //    return GetAllChats().Find(ch => ch.id == id);
-        //}
+        public Chat GetChatById(string id)
+        {
+            return GetAllChats().Find(ch => ch.id == id);
+        }
 
-        //public void SendMessage(string message, string chatId, string senderName)
-        //{
+        public void SendMessage(string message, string chatId, string senderName)
+        {
 
-        //    Message newMessage = new Message
-        //    {
-        //        text = message,
-        //        senderName = senderName,
-        //        time = DateTime.Now
-        //    };
+            Message newMessage = new Message
+            {
+                text = message,
+                senderName = senderName,
+                timestamp = DateTime.Now
+            };
 
-        //    db.chats.Find(chatId).messages.Add(newMessage);
-        //    db.SaveChanges();
-        //}
+            db.chats.Find(chatId).messages.Add(newMessage);
+            db.SaveChanges();
+        }
     }
 }

@@ -1,9 +1,45 @@
-﻿@model IEnumerable<Pine.Data.Entities.Chat>
+﻿@using Pine.Models.Entities
+    @model ChatsViewModel
 
-<div class="chat-body">
-    @foreach(var chat in Model) {
-    <a class="room-button" asp-controller="Home" asp-action="JoinRoom" asp-route-id="@chat.id">
-        @chat.name
-    </a>
-        }
+    @if (Model.chats != null)
+    {
+        @foreach (var chat in Model.chats)
+        {
+            <partial name="./ChatCard.cshtml" model=@chat />
+         }
+
+    }
+    else
+    {
+        <p>You have no open chats. Start one by messaging a user via their profile button!</p>
+    }
+
+@*<div class="container">
+    <div class="row">&nbsp;</div>
+    <div class="row">
+        <div class="col-2">User</div>
+        <div class="col-4"><input type="text" id="userInput" /></div>
+    </div>
+    <div class="row">
+        <div class="col-2">Message</div>
+        <div class="col-4"><input type="text" id="messageInput" /></div>
+    </div>
+    <div class="row">&nbsp;</div>
+    <div class="row">
+        <div class="col-6">
+            <input type="button" id="sendButton" value="Send Message" />
+        </div>
+    </div>
 </div>
+<div class="row">
+    <div class="col-12">
+        <hr />
+    </div>
+</div>
+<div class="row">
+    <div class="col-6">
+        <ul id="messagesList"></ul>
+    </div>
+</div>
+<script src="~/js/signalr/dist/browser/signalr.js"></script>
+<script src="~/js/chat.js"></script>*@

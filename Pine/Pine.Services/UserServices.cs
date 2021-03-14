@@ -13,11 +13,17 @@ namespace Pine.Services
     {
         private PineContext db;
         private readonly IFileService fileService;
+        private readonly ICommunityServices communityService;
+        private readonly IPostServices postServices;
 
-        public UserServices(PineContext db, IFileService fileService)
+
+
+        public UserServices(PineContext db, IFileService fileService, ICommunityServices communityService, IPostServices postServices)
         {
             this.db = db;
             this.fileService = fileService;
+            this.communityService = communityService;
+            this.postServices = postServices;
         }
 
         public User getUserById(string id)
@@ -28,6 +34,27 @@ namespace Pine.Services
         public User getUserByUserName(string userName)
         {
             return db.users.FirstOrDefault(u => u.UserName == userName);
+        }
+
+        public void DeleteUser(User user)
+        {
+            foreach (var com in user.CommunitiesJoined)
+            {
+                com.communityMembers.Remove(user);
+            }
+            foreach (var post in user.posts)
+            {
+                postServices.deletePost(post.id);
+            }
+            foreach (var chat in user.chats)
+            {
+                foreach (var message in chat.messages)
+                {
+                   db.messages.Remove(message);
+                }                 
+                db.chats.Remove(chat);
+            }
+            db.users.Remove(user);
         }
 
         public string getUserNameById(string id)

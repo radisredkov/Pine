@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Pine.Migrations
 {
-    public partial class aa : Migration
+    public partial class init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -19,6 +19,18 @@ namespace Pine.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AspNetRoles", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "chats",
+                columns: table => new
+                {
+                    id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    name = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_chats", x => x.id);
                 });
 
             migrationBuilder.CreateTable(
@@ -40,6 +52,27 @@ namespace Pine.Migrations
                         principalTable: "AspNetRoles",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "messages",
+                columns: table => new
+                {
+                    id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    senderName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    text = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    timestamp = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    chatId = table.Column<string>(type: "nvarchar(450)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_messages", x => x.id);
+                    table.ForeignKey(
+                        name: "FK_messages_chats_chatId",
+                        column: x => x.chatId,
+                        principalTable: "chats",
+                        principalColumn: "id",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -104,52 +137,18 @@ namespace Pine.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "chats",
+                name: "ChatUser",
                 columns: table => new
                 {
-                    id = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    name = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: true)
+                    chatsid = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    usersInChatId = table.Column<string>(type: "nvarchar(450)", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_chats", x => x.id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "messages",
-                columns: table => new
-                {
-                    id = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    name = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    text = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    timestamp = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    chatId = table.Column<string>(type: "nvarchar(450)", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_messages", x => x.id);
+                    table.PrimaryKey("PK_ChatUser", x => new { x.chatsid, x.usersInChatId });
                     table.ForeignKey(
-                        name: "FK_messages_chats_chatId",
-                        column: x => x.chatId,
-                        principalTable: "chats",
-                        principalColumn: "id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "chatUsers",
-                columns: table => new
-                {
-                    userId = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    chatId = table.Column<string>(type: "nvarchar(450)", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_chatUsers", x => new { x.chatId, x.userId });
-                    table.ForeignKey(
-                        name: "FK_chatUsers_chats_chatId",
-                        column: x => x.chatId,
+                        name: "FK_ChatUser_chats_chatsid",
+                        column: x => x.chatsid,
                         principalTable: "chats",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
@@ -353,14 +352,9 @@ namespace Pine.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
-                name: "IX_chats_UserId",
-                table: "chats",
-                column: "UserId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_chatUsers_userId",
-                table: "chatUsers",
-                column: "userId");
+                name: "IX_ChatUser_usersInChatId",
+                table: "ChatUser",
+                column: "usersInChatId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_comments_commentatorId",
@@ -435,17 +429,9 @@ namespace Pine.Migrations
                 onDelete: ReferentialAction.Cascade);
 
             migrationBuilder.AddForeignKey(
-                name: "FK_chats_AspNetUsers_UserId",
-                table: "chats",
-                column: "UserId",
-                principalTable: "AspNetUsers",
-                principalColumn: "Id",
-                onDelete: ReferentialAction.Restrict);
-
-            migrationBuilder.AddForeignKey(
-                name: "FK_chatUsers_AspNetUsers_userId",
-                table: "chatUsers",
-                column: "userId",
+                name: "FK_ChatUser_AspNetUsers_usersInChatId",
+                table: "ChatUser",
+                column: "usersInChatId",
                 principalTable: "AspNetUsers",
                 principalColumn: "Id",
                 onDelete: ReferentialAction.Cascade);
@@ -497,7 +483,7 @@ namespace Pine.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "chatUsers");
+                name: "ChatUser");
 
             migrationBuilder.DropTable(
                 name: "comments");

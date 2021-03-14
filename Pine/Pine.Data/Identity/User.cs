@@ -16,7 +16,7 @@ namespace Pine.Data.Identity
             this.CommunitiesJoined = new HashSet<Community>();
             this.posts = new HashSet<Post>();
             this.chats = new HashSet<Chat>();
-            Chats = new List<ChatUser>();
+
         }
 
         [Key]
@@ -26,7 +26,6 @@ namespace Pine.Data.Identity
         public string postId { get; set; }
         [ForeignKey("postId")]
         public ICollection<Post> posts { get; set; }
-        public ICollection<ChatUser> Chats { get; set; }
 
         public virtual ICollection<Community> CommunitiesJoined { get; set; }
 

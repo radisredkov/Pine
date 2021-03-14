@@ -8,10 +8,10 @@ namespace Pine.Services.Interfaces
 { 
     public interface  IChatService
     {
-        //public void CreateChat(List<User> users, string name );
+        public void CreateChat(List<User> users, string name);
 
-        //public void SendMessage(string message, string chatId, string senderName);
-        //public List<Chat> GetAllChats();
-        //public Chat GetChatById(string id);
+        public void SendMessage(string message, string chatId, string senderName);
+        public List<Chat> GetAllChats();
+        public Chat GetChatById(string id);
     }
 }

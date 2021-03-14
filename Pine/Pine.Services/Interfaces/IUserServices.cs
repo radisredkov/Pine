@@ -12,5 +12,6 @@ namespace Pine.Services
         public User getUserById(string id);
         public User getUserByUserName(string name);
         void editUser(User oldUser, UserPanelInputModel model);
+        public void DeleteUser(User user);
     }
 }

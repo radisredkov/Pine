@@ -161,6 +161,12 @@ namespace Pine.Controllers
             return RedirectToAction("UserPanel", "Account", new { userName = userName});
         }
 
+        public IActionResult DeleteUser()
+        {
+            User user = userServices.getUserByUserName(User.Identity.Name);
+            userServices.DeleteUser(user);
+            return Redirect("Home");
+        }
         public IActionResult MessageUser(string userid)
         {
             return Redirect("/");

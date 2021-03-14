@@ -8,9 +8,15 @@ namespace Pine.Data.Entities
 {
     public class Message
     {
+
+        public Message()
+        {
+            id = Guid.NewGuid().ToString(); 
+        }
+        
         [Key]
         public string id { get; set; }
-        public string name { get; set; }
+        public string senderName { get; set; }
         public string text { get; set; }
         public DateTime timestamp { get; set; }
         [ForeignKey("chatId")]
