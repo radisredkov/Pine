@@ -160,6 +160,10 @@ namespace Pine.Controllers
         public ChatController(IChatRepository repo) => _repo = repo;
         public IActionResult ChatsView()
         {
+            if (!User.Identity.IsAuthenticated)
+            {
+                return Redirect("/");
+            }
             var chats = _repo.GetChats(User.FindFirst(ClaimTypes.NameIdentifier).Value);
 
             return View(chats);

@@ -43,7 +43,7 @@ namespace Pine.Controllers
             return View("Shop", model);
         }
 
-        [HttpGet("/Shop/orderbypricedescending")]
+        [HttpGet("/Shop/OrderByPriceDescending")]
         public IActionResult ShopHighToLow()
         {
             ICollection<ShopListing> listings = shopListingService.getAllListings();
@@ -64,7 +64,7 @@ namespace Pine.Controllers
 
             return View("Shop", model);
         }
-        [HttpGet("/Shop/orderbypriceascending")]
+        [HttpGet("/Shop/OrderByPriceAscending")]
         public IActionResult ShopLowToHigh()
         {
             ICollection<ShopListing> listings = shopListingService.getAllListings();
@@ -100,11 +100,6 @@ namespace Pine.Controllers
         [HttpPost("/listings/edit")]
         public IActionResult EditListing(OutputShopListingViewModel model)
         {
-            if (!this.User.Identity.IsAuthenticated)
-            {
-                return this.Redirect("/");
-            }
-
             if (!this.ModelState.IsValid)
             {
                 return this.View();

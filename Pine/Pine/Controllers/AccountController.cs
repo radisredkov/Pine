@@ -55,7 +55,7 @@ namespace Pine.Controllers
             {
                 User user = new User()
                 {
-                    UserName = registration.Username, //USERNAME =!= EMAIL
+                    UserName = registration.Username,
                     Email = registration.Email,
                     profilePicture = fileService.ConvertToByte(registration.profilePicture),
                     userDescription = registration.userDescription
@@ -105,7 +105,12 @@ namespace Pine.Controllers
 
         public async Task<IActionResult> UserPanel(string userName)
         {
+            if (userServices.getUserByUserName(userName) == null)
+            {
+                return Redirect("404notfound");
+            }
             var user = userServices.getUserByUserName(userName);
+
             ICollection<Post> posts =  postServices.getAllPosts().Where(p => p.creatorId == user.Id).ToList();
             PostsViewModel postsModel = new PostsViewModel()
             {
@@ -155,7 +160,6 @@ namespace Pine.Controllers
             userServices.editUser(user, model);
             return RedirectToAction("UserPanel", "Account", new { userName = userName});
         }
-
 
         public IActionResult MessageUser(string userid)
         {

@@ -21,7 +21,6 @@ namespace Pine.Data.Entities
         [Required]
         public string name { get; set; }
 
-        [Required]
         public string? description { get; set; }
 
         public string tags { get; set; }

@@ -65,7 +65,7 @@ namespace Pine.Controllers
             return View("AllPosts", model);
         }
 
-        [HttpGet("/posts/communityId/create")]
+        [HttpGet("/post/create")]
         public IActionResult CreatePost(string communityId)
         {
             switch (communityId)
@@ -80,7 +80,7 @@ namespace Pine.Controllers
             return View();
         }
 
-        [HttpPost("/posts/communityId/create")]
+        [HttpPost("/post/create")]
         public IActionResult CreatePost(PostViewModel post)
         {
             if (!this.ModelState.IsValid)
@@ -154,7 +154,7 @@ namespace Pine.Controllers
 
             return this.Redirect("/");
         }
-        [HttpGet("/Posts/AllPosts/orderbydateascending")]
+        [HttpGet("/Posts/OrderByDateAscending")]
         public IActionResult AllPostsSortByDateAscending()
         {
             ICollection<Post> posts = postServices.getAllPosts();

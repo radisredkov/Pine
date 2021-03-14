@@ -25,7 +25,6 @@ namespace Pine.Services
 
         public void JoinCommunity(User user, Community com)
         {
-           
             if (com.communityMembers.Contains(user))
             {
                 return;

@@ -69,15 +69,19 @@ namespace Pine.Controllers
             }
 
             var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+            User user = userServices.getUserByUserName(User.Identity.Name);
             this.communityService.CreateCommunity(com, userId);
+            Community community = communityService.getCommunityByName(com.name);
+            this.communityService.JoinCommunity(user, community);
             return this.RedirectToAction("Community", "Community", new { communityName = com.name });
         }
+        [HttpGet("/Community")]
         public async Task<IActionResult> Community(string communityName)
         {
             var community = communityService.getCommunityByName(communityName);
             if (community.isPrivate && !community.communityMembers.Contains(userServices.getUserByUserName(User.Identity.Name)))
             {
-                return Redirect("404notfound");
+                return Redirect("/Community/404notfound");
             }
                    
             ICollection<Post> posts =  community.communityPosts;
@@ -119,11 +123,6 @@ namespace Pine.Controllers
 
         public IActionResult EditCommunity(CommunityInputModel community)
         {
-            if (!this.ModelState.IsValid)
-            {
-                return this.View();
-            }
-
             Community com = communityService.getCommunityByName(community.communityName);
             communityService.EditCommunity(com, community);
             return RedirectToAction("Community", "Community", new { communityName = community.communityName });
@@ -132,8 +131,15 @@ namespace Pine.Controllers
         public IActionResult AddModerator(string communityName, CommunityInputModel model)
         {
             Community com = communityService.getCommunityByName(communityName);
-            User moderator = userServices.getUserByUserName(model.moderatorName);
-            communityService.AddModerator(com, moderator);
+            if (userServices.getUserByUserName(model.moderatorName) == null)
+            {
+                return RedirectToAction("Community", "Community", new { communityName = communityName });
+            }
+            else
+            {
+                User moderator = userServices.getUserByUserName(model.moderatorName);
+                communityService.AddModerator(com, moderator);
+            }
             return RedirectToAction("Community", "Community", new { communityName = communityName });
         }
         public IActionResult RemoveModerator(string communityName, CommunityInputModel model)

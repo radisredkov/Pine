@@ -178,7 +178,7 @@ namespace Pine.Migrations
                 {
                     id = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    description = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    description = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     tags = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     ownerId = table.Column<string>(type: "nvarchar(450)", nullable: true),
                     moderatorName = table.Column<string>(type: "nvarchar(max)", nullable: true),

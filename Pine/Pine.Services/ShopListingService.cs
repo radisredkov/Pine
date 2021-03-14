@@ -45,6 +45,7 @@ namespace Pine.Services
             oldListing.price = model.price;
             oldListing.description = model.description;
             oldListing.timeOfCreation = DateTime.Now;
+            //oldListing.Img = fileService.ConvertToByte(model.img);
 
             db.listings.Update(oldListing);
             db.SaveChanges(); 

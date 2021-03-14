@@ -240,7 +240,6 @@ namespace Pine.Migrations
                         .HasColumnType("varbinary(max)");
 
                     b.Property<string>("description")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("isAnonymous")

@@ -11,7 +11,6 @@ namespace Pine.Models.Entities
         public string id { get; set; }
         [Required]
         public string name { get; set; }
-        [Required]
         public string description { get; set; }
         public ICollection<PostsViewModel> posts {get;set;}
         public string ownerId { get; set; }
