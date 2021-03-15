@@ -33,7 +33,7 @@
     @if (Model.Item2.UserName != User.Identity.Name && User.Identity.Name != null)
     {
         <div>
-            <a type="submit" asp-controller="Chat" asp-action="JoinChat" asp-route-userId="@Model.Item2.Id">Message User</a>
+            <a type="submit" asp-controller="Chat" asp-action="CreateChat" asp-route-userId="@Model.Item2.Id">Message User</a>
         </div>
     }
 

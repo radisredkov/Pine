@@ -45,10 +45,10 @@ namespace Pine.Services
                 isPrivate = model.isPrivate,
                 isAnonymous = model.isAnonymous
             };
-           // User user = new User { Id = userId };
+            User user = db.users.Find(userId);
             db.communities.Add(community);
             db.SaveChanges();
-           // JoinCommunity(user, community);
+            JoinCommunity(user, community);
         }
 
         public void EditCommunity(Community oldCommunity, CommunityInputModel model)

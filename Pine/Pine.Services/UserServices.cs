@@ -2,10 +2,12 @@
 using Pine.Data.Identity;
 using Pine.Models.Entities;
 using Pine.Services.Interfaces;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Pine.Data.Entities;
 
 namespace Pine.Services
 {
@@ -33,28 +35,51 @@ namespace Pine.Services
 
         public User getUserByUserName(string userName)
         {
-            return db.users.FirstOrDefault(u => u.UserName == userName);
+            return db.users.Include(u => u.posts)
+                .Include(u => u.chats)
+                .Include(u => u.listings)
+                .Include(u => u.CommunitiesJoined)
+                .FirstOrDefault(user => user.UserName == userName);
         }
 
         public void DeleteUser(User user)
         {
-            foreach (var com in user.CommunitiesJoined)
+            List<Community> communitiesJoined = user.CommunitiesJoined.ToList();
+            foreach (var com in communitiesJoined)
             {
                 com.communityMembers.Remove(user);
+                if (com.ownerId == user.Id)
+                {
+                    db.communities.Remove(com);
+                }
+                db.SaveChanges();
             }
-            foreach (var post in user.posts)
+
+            List<Post> posts = user.posts.ToList();
+            foreach (var post in posts)
             {
                 postServices.deletePost(post.id);
             }
-            foreach (var chat in user.chats)
+
+            List<ShopListing> Listings = user.listings.ToList();
+            foreach (var listing in Listings)
             {
-                foreach (var message in chat.messages)
+                db.listings.Remove(listing);
+            }
+
+            List<Chat> chats = user.chats.ToList();
+            foreach (var chat in chats)
+            {
+                var mesages = db.messages.Where(m => m.chatId == chat.id);
+                foreach (var message in mesages)
                 {
                    db.messages.Remove(message);
-                }                 
+                }
                 db.chats.Remove(chat);
             }
+
             db.users.Remove(user);
+            db.SaveChanges();
         }
 
         public string getUserNameById(string id)

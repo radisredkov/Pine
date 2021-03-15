@@ -165,12 +165,13 @@ namespace Pine.Controllers
         {
             User user = userServices.getUserByUserName(User.Identity.Name);
             userServices.DeleteUser(user);
+            signInManager.SignOutAsync();
             return Redirect("Home");
         }
-        public IActionResult MessageUser(string userid)
-        {
-            return Redirect("/");
-        }
+        //public IActionResult MessageUser(string userid)
+        //{
+        //    return Redirect("/");
+        //}
 
         public ActionResult Logout()
         {
